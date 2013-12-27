@@ -29,8 +29,8 @@ class Documents extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('idDOCUMENTS, RECIPE_idRECIPE', 'required'),
-			array('idDOCUMENTS, RECIPE_idRECIPE', 'numerical', 'integerOnly'=>true),
+			array('file_name, RECIPE_idRECIPE', 'required'),
+			array('RECIPE_idRECIPE', 'numerical', 'integerOnly'=>true),
 			array('file_name', 'length', 'max'=>45),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.

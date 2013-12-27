@@ -14,7 +14,6 @@
  * @property Courses[] $courses
  * @property Documents[] $documents
  * @property Ingredents[] $ingredents
- * @property Pictures[] $pictures
  * @property PicturesRecipe[] $picturesRecipes
  * @property User $uSERIdUser
  * @property Specialties[] $specialties
@@ -58,7 +57,6 @@ class Recipe extends CActiveRecord
 			'courses' => array(self::HAS_MANY, 'Courses', 'RECIPE_idRECIPE'),
 			'documents' => array(self::HAS_MANY, 'Documents', 'RECIPE_idRECIPE'),
 			'ingredents' => array(self::HAS_MANY, 'Ingredents', 'RECIPE_idRECIPE'),
-			'pictures' => array(self::HAS_MANY, 'Pictures', 'RECIPE_idRECIPE'),
 			'picturesRecipes' => array(self::HAS_MANY, 'PicturesRecipe', 'RECIPE_idRECIPE'),
 			'uSERIdUser' => array(self::BELONGS_TO, 'User', 'USER_idUser'),
 			'specialties' => array(self::HAS_MANY, 'Specialties', 'RECIPE_idRECIPE'),

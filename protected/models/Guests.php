@@ -31,8 +31,8 @@ class Guests extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('idGUESTS, EVENTS_idEVENTS, USER_idUser', 'required'),
-			array('idGUESTS, EVENTS_idEVENTS, USER_idUser, approved', 'numerical', 'integerOnly'=>true),
+			array('EVENTS_idEVENTS, USER_idUser', 'required'),
+			array('EVENTS_idEVENTS, USER_idUser, approved', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('idGUESTS, EVENTS_idEVENTS, USER_idUser, approved', 'safe', 'on'=>'search'),
