@@ -212,3 +212,31 @@ Stack trace:
 REQUEST_URI=/meet-and-eat-yii/index.php?r=site/login
 HTTP_REFERER=http://localhost/meet-and-eat-yii/index.php?r=site/login
 ---
+2014/01/07 15:51:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Das System konnte die angeforderte Action "user" nicht finden.' in C:\xampp\htdocs\meet-and-eat-yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\meet-and-eat-yii\framework\web\CController.php(270): CController->missingAction('user')
+#1 C:\xampp\htdocs\meet-and-eat-yii\framework\web\CWebApplication.php(282): CController->run('user')
+#2 C:\xampp\htdocs\meet-and-eat-yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/user')
+#3 C:\xampp\htdocs\meet-and-eat-yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\meet-and-eat-yii\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/meet-and-eat-yii/index.php?r=site/user
+---
+2014/01/07 15:51:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Das System konnte die angeforderte Action "users" nicht finden.' in C:\xampp\htdocs\meet-and-eat-yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\meet-and-eat-yii\framework\web\CController.php(270): CController->missingAction('users')
+#1 C:\xampp\htdocs\meet-and-eat-yii\framework\web\CWebApplication.php(282): CController->run('users')
+#2 C:\xampp\htdocs\meet-and-eat-yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/users')
+#3 C:\xampp\htdocs\meet-and-eat-yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\meet-and-eat-yii\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/meet-and-eat-yii/index.php?r=site/users
+---
+2014/01/07 15:51:27 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Konnte den Request "users" nicht auflösen.' in C:\xampp\htdocs\meet-and-eat-yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\meet-and-eat-yii\framework\web\CWebApplication.php(141): CWebApplication->runController('users')
+#1 C:\xampp\htdocs\meet-and-eat-yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\meet-and-eat-yii\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/meet-and-eat-yii/index.php?r=users
+---
