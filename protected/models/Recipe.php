@@ -36,7 +36,7 @@ class Recipe extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('name, USER_idUser, manual, number_of_persons', 'required'),
+			array('name, manual, number_of_persons', 'required'),
 			array('USER_idUser, number_of_persons', 'numerical', 'integerOnly'=>true),
 			array('name', 'length', 'max'=>45),
 			array('manual', 'length', 'max'=>10000),
@@ -105,6 +105,17 @@ class Recipe extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+	
+	
+	protected function beforeSave() {
+    //methode zum setzen des Benutzernames
+  
+            # set time on creating posts
+            $this->USER_idUser=Yii::app()->user->getId();
+            
+        
+        return true;
+    }
 
 	/**
 	 * Returns the static model of the specified AR class.

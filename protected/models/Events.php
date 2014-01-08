@@ -34,7 +34,7 @@ class Events extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('date, USER_idUser', 'required'),
+			array('date', 'required'),
 			array('USER_idUser, max_guests', 'numerical', 'integerOnly'=>true),
 			array('description', 'length', 'max'=>500),
 			// The following rule is used by search().
@@ -101,6 +101,19 @@ class Events extends CActiveRecord
 		));
 	}
 
+	protected function beforeSave() {
+    //methode zum setzen des Benutzernames
+  
+            # set time on creating posts
+            $this->USER_idUser=Yii::app()->user->getId();
+            
+        
+        return true;
+    }
+    
+
+	
+	
 	/**
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!

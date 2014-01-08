@@ -25,11 +25,7 @@
 		<?php echo $form->error($model,'name'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'USER_idUser'); ?>
-		<?php echo $form->textField($model,'USER_idUser'); ?>
-		<?php echo $form->error($model,'USER_idUser'); ?>
-	</div>
+	
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'manual'); ?>

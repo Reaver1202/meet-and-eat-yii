@@ -240,3 +240,51 @@ Stack trace:
 #3 {main}
 REQUEST_URI=/meet-and-eat-yii/index.php?r=users
 ---
+2014/01/08 15:17:11 [error] [php] Indirect modification of overloaded property Recipe::$attributes has no effect (C:\xampp\htdocs\meet-and-eat-yii\protected\controllers\RecipeController.php:73)
+Stack trace:
+#0 C:\xampp\htdocs\meet-and-eat-yii\framework\web\filters\CFilterChain.php(133): RecipeController->runAction()
+#1 C:\xampp\htdocs\meet-and-eat-yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 C:\xampp\htdocs\meet-and-eat-yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 C:\xampp\htdocs\meet-and-eat-yii\framework\web\filters\CInlineFilter.php(58): RecipeController->filterAccessControl()
+#4 C:\xampp\htdocs\meet-and-eat-yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 C:\xampp\htdocs\meet-and-eat-yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\meet-and-eat-yii\framework\web\CController.php(265): RecipeController->runActionWithFilters()
+#7 C:\xampp\htdocs\meet-and-eat-yii\framework\web\CWebApplication.php(282): RecipeController->run()
+#8 C:\xampp\htdocs\meet-and-eat-yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\xampp\htdocs\meet-and-eat-yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\meet-and-eat-yii\index.php(13): CWebApplication->run()
+REQUEST_URI=/meet-and-eat-yii/index.php?r=recipe/create
+in C:\xampp\htdocs\meet-and-eat-yii\protected\controllers\RecipeController.php (73)
+in C:\xampp\htdocs\meet-and-eat-yii\index.php (13)
+2014/01/08 15:17:59 [error] [php] Indirect modification of overloaded property Events::$attributes has no effect (C:\xampp\htdocs\meet-and-eat-yii\protected\controllers\EventsController.php:73)
+Stack trace:
+#0 C:\xampp\htdocs\meet-and-eat-yii\framework\web\filters\CFilterChain.php(133): EventsController->runAction()
+#1 C:\xampp\htdocs\meet-and-eat-yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 C:\xampp\htdocs\meet-and-eat-yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 C:\xampp\htdocs\meet-and-eat-yii\framework\web\filters\CInlineFilter.php(58): EventsController->filterAccessControl()
+#4 C:\xampp\htdocs\meet-and-eat-yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 C:\xampp\htdocs\meet-and-eat-yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\meet-and-eat-yii\framework\web\CController.php(265): EventsController->runActionWithFilters()
+#7 C:\xampp\htdocs\meet-and-eat-yii\framework\web\CWebApplication.php(282): EventsController->run()
+#8 C:\xampp\htdocs\meet-and-eat-yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\xampp\htdocs\meet-and-eat-yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\meet-and-eat-yii\index.php(13): CWebApplication->run()
+REQUEST_URI=/meet-and-eat-yii/index.php?r=events/create
+in C:\xampp\htdocs\meet-and-eat-yii\protected\controllers\EventsController.php (73)
+in C:\xampp\htdocs\meet-and-eat-yii\index.php (13)
+2014/01/08 15:40:26 [error] [php] Indirect modification of overloaded property Recipe::$attributes has no effect (C:\xampp\htdocs\meet-and-eat-yii\protected\controllers\RecipeController.php:73)
+Stack trace:
+#0 C:\xampp\htdocs\meet-and-eat-yii\framework\web\filters\CFilterChain.php(133): RecipeController->runAction()
+#1 C:\xampp\htdocs\meet-and-eat-yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 C:\xampp\htdocs\meet-and-eat-yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 C:\xampp\htdocs\meet-and-eat-yii\framework\web\filters\CInlineFilter.php(58): RecipeController->filterAccessControl()
+#4 C:\xampp\htdocs\meet-and-eat-yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 C:\xampp\htdocs\meet-and-eat-yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\meet-and-eat-yii\framework\web\CController.php(265): RecipeController->runActionWithFilters()
+#7 C:\xampp\htdocs\meet-and-eat-yii\framework\web\CWebApplication.php(282): RecipeController->run()
+#8 C:\xampp\htdocs\meet-and-eat-yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\xampp\htdocs\meet-and-eat-yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\meet-and-eat-yii\index.php(13): CWebApplication->run()
+REQUEST_URI=/meet-and-eat-yii/index.php?r=recipe/create
+in C:\xampp\htdocs\meet-and-eat-yii\protected\controllers\RecipeController.php (73)
+in C:\xampp\htdocs\meet-and-eat-yii\index.php (13)

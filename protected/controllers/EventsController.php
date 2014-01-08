@@ -70,7 +70,7 @@ class EventsController extends Controller
 		if(isset($_POST['Events']))
 		{
 			$model->attributes=$_POST['Events'];
-			$model->attributes->USER_idUser=Yii::app()->user->getId();
+			//$model->attributes->USER_idUser=Yii::app()->user->getId();
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->idEVENTS));
 		}

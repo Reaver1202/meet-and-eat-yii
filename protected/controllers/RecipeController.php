@@ -70,6 +70,9 @@ class RecipeController extends Controller
 		if(isset($_POST['Recipe']))
 		{
 			$model->attributes=$_POST['Recipe'];
+			
+			//setting the current user id while creating a new recipe
+			//$model->attributes->USER_idUser=Yii::app()->user->getId();
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->idRECIPE));
 		}
