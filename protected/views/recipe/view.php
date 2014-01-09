@@ -28,3 +28,15 @@ $this->menu=array(
 		'number_of_persons',
 	),
 )); ?>
+
+
+
+<div id="ingredents">
+    <?php //if($model->commentCount>=1) //bereich um Zutatetn über eigenen view zu rendern : ?>
+       
+        <?php $this->renderPartial('ingredents_view',array(
+            'post'=>$model,
+            'ingredents'=>$model->ingredents,
+        )); ?>
+   
+</div>
