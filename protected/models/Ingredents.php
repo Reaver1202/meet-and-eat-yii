@@ -31,7 +31,7 @@ class Ingredents extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('RECIPE_idRECIPE, name, amount, amount_description', 'required'),
+			array('name, amount, amount_description', 'required'),
 			array('RECIPE_idRECIPE', 'numerical', 'integerOnly'=>true),
 			array('amount', 'numerical'),
 			array('name, amount_description', 'length', 'max'=>45),
@@ -96,6 +96,30 @@ class Ingredents extends CActiveRecord
 		));
 	}
 
+	
+	
+	
+	
+	
+	
+	//setzen der letzten rezeptid für diese zutat
+	protected function beforeSave() {
+    //methode zum setzen des Benutzernames
+  
+            # set time on creating posts
+            
+			$test=Recipe::model()->findBySql("SELECT * FROM Recipe WHERE idRecipe = (SELECT MAX(idRecipe) FROM Recipe)");
+			
+			$this->RECIPE_idRECIPE= $test->idRECIPE; 
+           // $this->RECIPE_idRECIPE= $this->RECIPE_idRECIPE+1; 
+        
+        return true;
+    }
+	
+	
+	
+	
+	
 	/**
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!

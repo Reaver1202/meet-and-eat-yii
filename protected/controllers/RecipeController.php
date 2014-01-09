@@ -63,22 +63,27 @@ class RecipeController extends Controller
 	public function actionCreate()
 	{
 		$model=new Recipe;
+		$model_ingredents=new Ingredents; 
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Recipe']))
+		if(isset($_POST['Recipe'],$_POST['Ingredents']))
 		{
 			$model->attributes=$_POST['Recipe'];
+						$model_ingredents->attributes=$_POST['Ingredents'];
+
 			
 			//setting the current user id while creating a new recipe
 			//$model->attributes->USER_idUser=Yii::app()->user->getId();
 			if($model->save())
+$model_ingredents->save(); 
 				$this->redirect(array('view','id'=>$model->idRECIPE));
 		}
 
 		$this->render('create',array(
 			'model'=>$model,
+			'model_ingredents'=>$model_ingredents,
 		));
 	}
 
@@ -156,6 +161,8 @@ class RecipeController extends Controller
 	public function loadModel($id)
 	{
 		$model=Recipe::model()->findByPk($id);
+		//model für die Zutaten 
+		//$model_ingredents=Ingredents::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -173,4 +180,11 @@ class RecipeController extends Controller
 			Yii::app()->end();
 		}
 	}
+	
+	
+	//Erstellen der Zuatetn durch liste kp ob es hier richtig am platz ist  
+	
+	
+	
+	
 }

@@ -14,5 +14,5 @@ $this->menu=array(
 ?>
 
 <h1>Create Recipe</h1>
-
-<?php $this->renderPartial('_form', array('model'=>$model)); ?>
+<!--rendern des 2ten modells -->
+<?php $this->renderPartial('_form', array('model'=>$model, 'model_ingredents'=>$model_ingredents)); ?>

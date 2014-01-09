@@ -170,4 +170,15 @@ class IngredentsController extends Controller
 			Yii::app()->end();
 		}
 	}
+	
+	
+	
+	//Erstellen der Zuatetn durch liste kp ob es hier richtig am platz ist  
+	
+	
+	
+	
+	
+	
+	
 }
