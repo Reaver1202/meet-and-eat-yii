@@ -38,6 +38,12 @@
 		<?php echo $form->error($model,'max_guests'); ?>
 	</div>
 
+	<div class="row">
+	<?php 
+		//print_r(CHtml::listData(Recipe::model()->findAll(),'idRECIPE','name'));
+		echo $form->dropDownList($model_course,'RECIPE_idRECIPE',CHtml::listData(Recipe::model()->findAll(),'idRECIPE','name'));
+	?>
+	</div>
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
 	</div>

@@ -111,7 +111,12 @@ class Events extends CActiveRecord
         return true;
     }
     
-
+public function getRecipeOptions(){
+$recipeArray= CHTML::listData( Recipe::model()->findBySql("SELECT idRECIPE FROM Recipe") , 'idRECIPE', 'name');
+return $recipeArray; 
+}
+	
+	
 	
 	
 	/**

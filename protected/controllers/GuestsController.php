@@ -32,7 +32,7 @@ class GuestsController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','update','createManual'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -79,6 +79,28 @@ class GuestsController extends Controller
 		));
 	}
 
+	public function actionCreateManual()
+	{
+		$model=new Guests;
+
+		// Uncomment the following line if AJAX validation is needed
+		// $this->performAjaxValidation($model);
+
+		
+		
+			$model->EVENTS_idEVENTS=$_GET['id'];
+			$model->USER_idUser=Yii::app()->user->getId();;
+			$model->approved=1;
+			if($model->save())
+				$this->redirect(array('view','id'=>$model->idGUESTS));
+		
+
+		
+		//$this->render('create',array(
+			//'model'=>$model,
+		//));
+	}
+	
 	/**
 	 * Updates a particular model.
 	 * If update is successful, the browser will be redirected to the 'view' page.

@@ -64,6 +64,7 @@ class RecipeController extends Controller
 	{
 		$model=new Recipe;
 		$model_ingredents=new Ingredents; 
+		
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
@@ -185,6 +186,9 @@ $model_ingredents->save();
 	//Erstellen der Zuatetn durch liste kp ob es hier richtig am platz ist  
 	
 	
+	
+	
+
 	
 	
 }

@@ -63,6 +63,7 @@ class EventsController extends Controller
 	public function actionCreate()
 	{
 		$model=new Events;
+		$model_course= new Courses; 
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
@@ -70,13 +71,21 @@ class EventsController extends Controller
 		if(isset($_POST['Events']))
 		{
 			$model->attributes=$_POST['Events'];
+			//$model_course->attributes=$_POST['Courses'];
+		//	$model_course->course_number=1; 
+		   // $model_course->EVENTS_idEVENTS=$model->idEVENTS;
+		//	$model_course->RECIPE_idRECIPE=2; 
 			//$model->attributes->USER_idUser=Yii::app()->user->getId();
+			  
+			  $model_course->create(); 
 			if($model->save())
+			   $model_course->save(); 
 				$this->redirect(array('view','id'=>$model->idEVENTS));
 		}
 
 		$this->render('create',array(
 			'model'=>$model,
+			'model_course'=>$model_course,
 		));
 	}
 

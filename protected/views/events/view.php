@@ -28,3 +28,46 @@ $this->menu=array(
 		'max_guests',
 	),
 )); ?>
+
+<div id="user">
+    <?php 
+		
+	?>
+       
+        <?php $this->renderPartial('user_view',array(
+            'post'=>$model,
+            'user'=>$model->uSERIdUser,
+        )); ?>
+   
+</div>
+
+<div id="recipe">
+    <?php 
+		//$course_tbl = $model->courses;
+		//foreach $course_tbl
+		//echo $course_tbl->idCOURSES;
+		
+		//$test=Recipe::model()->findBySql("SELECT * FROM Recipe WHERE idRecipe = ".course_tbl->RECIPE_idRECIPE.";");
+		//echo $test;
+	?>
+		
+		
+        <?php $this->renderPartial('recipe_view',array(
+            'post'=>$model,
+            'course'=>$model->courses,
+        )); ?>
+   
+</div>
+<div id="guests">
+    
+		
+		
+        <?php $this->renderPartial('guests_view',array(
+            'post'=>$model,
+            'guests'=>$model->guests,
+        )); ?>
+   
+</div>
+
+<?php echo CHtml::button('Teilnehmen', array('onclick' => 'js:document.location.href="index.php?r=guests/createManual&id='.$model->idEVENTS.'"')); ?>
+
