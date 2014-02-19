@@ -41,7 +41,9 @@
 	<div class="row">
 	<?php 
 		//print_r(CHtml::listData(Recipe::model()->findAll(),'idRECIPE','name'));
+		echo $form->labelEx($model_course,'RECIPE_idRECIPE'); 
 		echo $form->dropDownList($model_course,'RECIPE_idRECIPE',CHtml::listData(Recipe::model()->findAll(),'idRECIPE','name'));
+		echo $form->error($model_course,'RECIPE_idRECIPE');
 	?>
 	</div>
 	<div class="row buttons">

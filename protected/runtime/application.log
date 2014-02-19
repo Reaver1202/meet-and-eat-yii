@@ -4557,3 +4557,41 @@ Stack trace:
 REQUEST_URI=/meet-and-eat-yii/index.php?r=events/create
 HTTP_REFERER=http://localhost/meet-and-eat-yii/index.php?r=events/create
 ---
+2014/02/19 12:28:47 [error] [exception.CException] exception 'CException' with message 'Weder Courses noch zugehörige Behavior haben einen Scope "create".' in C:\xampp\htdocs\meet-and-eat-yii\framework\base\CComponent.php:266
+Stack trace:
+#0 C:\xampp\htdocs\meet-and-eat-yii\framework\db\ar\CActiveRecord.php(227): CComponent->__call('create', Array)
+#1 C:\xampp\htdocs\meet-and-eat-yii\protected\controllers\EventsController.php(80): CActiveRecord->__call('create', Array)
+#2 C:\xampp\htdocs\meet-and-eat-yii\protected\controllers\EventsController.php(80): Courses->create()
+#3 C:\xampp\htdocs\meet-and-eat-yii\framework\web\actions\CInlineAction.php(49): EventsController->actionCreate()
+#4 C:\xampp\htdocs\meet-and-eat-yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\meet-and-eat-yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\meet-and-eat-yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\xampp\htdocs\meet-and-eat-yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\xampp\htdocs\meet-and-eat-yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\xampp\htdocs\meet-and-eat-yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\xampp\htdocs\meet-and-eat-yii\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\xampp\htdocs\meet-and-eat-yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\htdocs\meet-and-eat-yii\framework\web\CWebApplication.php(282): CController->run('create')
+#13 C:\xampp\htdocs\meet-and-eat-yii\framework\web\CWebApplication.php(141): CWebApplication->runController('events/create')
+#14 C:\xampp\htdocs\meet-and-eat-yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\meet-and-eat-yii\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/meet-and-eat-yii/index.php?r=events/create
+HTTP_REFERER=http://localhost/meet-and-eat-yii/index.php?r=events/create
+---
+2014/02/19 12:50:55 [error] [php] Indirect modification of overloaded property Events::$attributes has no effect (C:\xampp\htdocs\meet-and-eat-yii\protected\controllers\EventsController.php:80)
+Stack trace:
+#0 C:\xampp\htdocs\meet-and-eat-yii\framework\web\filters\CFilterChain.php(133): EventsController->runAction()
+#1 C:\xampp\htdocs\meet-and-eat-yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 C:\xampp\htdocs\meet-and-eat-yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 C:\xampp\htdocs\meet-and-eat-yii\framework\web\filters\CInlineFilter.php(58): EventsController->filterAccessControl()
+#4 C:\xampp\htdocs\meet-and-eat-yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 C:\xampp\htdocs\meet-and-eat-yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\meet-and-eat-yii\framework\web\CController.php(265): EventsController->runActionWithFilters()
+#7 C:\xampp\htdocs\meet-and-eat-yii\framework\web\CWebApplication.php(282): EventsController->run()
+#8 C:\xampp\htdocs\meet-and-eat-yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\xampp\htdocs\meet-and-eat-yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\meet-and-eat-yii\index.php(13): CWebApplication->run()
+REQUEST_URI=/meet-and-eat-yii/index.php?r=events/create
+in C:\xampp\htdocs\meet-and-eat-yii\protected\controllers\EventsController.php (80)
+in C:\xampp\htdocs\meet-and-eat-yii\index.php (13)
