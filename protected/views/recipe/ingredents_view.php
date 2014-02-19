@@ -9,9 +9,11 @@
 	
 
 	<div class="Name">
-		<?php echo $ingredent->amount;
+		<?php 
+		echo $ingredent->amount;
 		echo $ingredent->amount_description;
-echo " ".$ingredent->name;		?> 
+		echo " ".$ingredent->name;		
+		?> 
 	</div>
 
 

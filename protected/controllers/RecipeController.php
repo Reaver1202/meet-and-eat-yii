@@ -63,7 +63,7 @@ class RecipeController extends Controller
 	public function actionCreate()
 	{
 		$model=new Recipe;
-		$model_ingredents=new Ingredents; 
+		$model_ingredents= new Ingredents; 
 		
 
 		// Uncomment the following line if AJAX validation is needed
@@ -72,14 +72,27 @@ class RecipeController extends Controller
 		if(isset($_POST['Recipe'],$_POST['Ingredents']))
 		{
 			$model->attributes=$_POST['Recipe'];
-						$model_ingredents->attributes=$_POST['Ingredents'];
+
+			var_dump($_POST);
 
 			
 			//setting the current user id while creating a new recipe
 			//$model->attributes->USER_idUser=Yii::app()->user->getId();
 			if($model->save())
-$model_ingredents->save(); 
-				$this->redirect(array('view','id'=>$model->idRECIPE));
+			{
+			//´go through array of ingredents and save it 
+				for ($i=0; $i< sizeof($model_ingredents); $i++){
+					//$model_ingredents[i]->attributes=$_POST['Ingredents['$i']'];
+					//$model_ingredents[i]->save();
+
+					//var_dump($_POST['Ingredents->0']);
+					//var_dump($_POST['Ingredents[0]["name"]']);
+				}
+				
+				
+				//$this->redirect(array('view','id'=>$model->idRECIPE));	
+			}
+				
 		}
 
 		$this->render('create',array(
