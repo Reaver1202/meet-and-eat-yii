@@ -63,7 +63,7 @@ class RecipeController extends Controller
 	public function actionCreate()
 	{
 		$model=new Recipe;
-		$model_ingredents= new Ingredents; 
+		$model_ingredents= new Ingredents; // für den Array in der $_POSTS Variable
 		
 
 		// Uncomment the following line if AJAX validation is needed
@@ -73,24 +73,28 @@ class RecipeController extends Controller
 		{
 			$model->attributes=$_POST['Recipe'];
 
-			var_dump($_POST);
-
+			var_dump($_POST['Recipe']);
+			var_dump($_POST['Ingredents']);
+			var_dump($_POST['Ingredents']['0']);
 			
 			//setting the current user id while creating a new recipe
 			//$model->attributes->USER_idUser=Yii::app()->user->getId();
 			if($model->save())
 			{
 			//´go through array of ingredents and save it 
-				for ($i=0; $i< sizeof($model_ingredents); $i++){
-					//$model_ingredents[i]->attributes=$_POST['Ingredents['$i']'];
-					//$model_ingredents[i]->save();
+				for ($i=0; $i< sizeof($_POST['Ingredents']); $i++){
+					
+					$model_ingredent= new Ingredents; // einzelnes Ingredent
 
-					//var_dump($_POST['Ingredents->0']);
-					//var_dump($_POST['Ingredents[0]["name"]']);
+					$model_ingredent->RECIPE_idRECIPE=$model->idRECIPE;
+					$model_ingredent->name=$_POST['Ingredents'][$i]['name'];
+					$model_ingredent->amount=$_POST['Ingredents'][$i]['amount'];
+					$model_ingredent->amount_description=$_POST['Ingredents'][$i]['amount_description'];
+					$model_ingredent->save();
 				}
 				
 				
-				//$this->redirect(array('view','id'=>$model->idRECIPE));	
+				$this->redirect(array('view','id'=>$model->idRECIPE));	
 			}
 				
 		}
