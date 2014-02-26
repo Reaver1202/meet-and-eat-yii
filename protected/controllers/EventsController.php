@@ -63,16 +63,19 @@ class EventsController extends Controller
 	public function actionCreate()
 	{
 		$model=new Events;
-		$model_course= new Courses; 
+		$model_courses= new Courses; 
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['Events']))
 		{
+		
+		//var_dump($_POST);
 			$model->attributes=$_POST['Events'];
+			
 
-			$model_course->attributes=$_POST['Courses'];
+			//$model_course->attributes=$_POST['Courses'];
 			//var_dump($_POST);
 			//$model_course->course_number=1;
 		    
@@ -83,16 +86,29 @@ class EventsController extends Controller
 			//$model_course->create(); 
 			if($model->save())
 			 {
-			 	$model_course->EVENTS_idEVENTS=$model->idEVENTS;
-			 	if ($model_course->save())
-			 		$this->redirect(array('view','id'=>$model->idEVENTS));
+			 
+			 for ($i=0; $i< sizeof($_POST['Courses']); $i++){
+					
+					$model_course= new Courses; // einzelnes course
+
+					$model_course->EVENTS_idEVENTS=$model->idEVENTS;
+					$model_course->RECIPE_idRECIPE=$_POST['Courses'][$i]['idRECIPE'];
+					$model_course->course_number=$i+1;
+					
+					$model_course->save();
+				}
+			 
+			 
+			 //	$model_course->EVENTS_idEVENTS=$model->idEVENTS;
+			 	//if ($model_course->save())
+			 		//$this->redirect(array('view','id'=>$model->idEVENTS));
 			 } 
 				
 		}
 
 		$this->render('create',array(
 			'model'=>$model,
-			'model_course'=>$model_course,
+			'model_courses'=>$model_courses,
 		));
 	}
 

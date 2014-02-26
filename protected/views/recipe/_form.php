@@ -47,24 +47,24 @@
 	<div id="div_ingredents">
 	<!--
 		<div class="row">
-			<?php echo $form->labelEx($model_ingredents,'RECIPE_idRECIPE'); ?>
-			<?php echo $form->textField($model_ingredents,'RECIPE_idRECIPE'); ?>
-			<?php echo $form->error($model_ingredents,'RECIPE_idRECIPE'); ?>
+			<?php // echo $form->labelEx($model_ingredents,'RECIPE_idRECIPE'); ?>
+			<?php // echo $form->textField($model_ingredents,'RECIPE_idRECIPE'); ?>
+			<?php //echo $form->error($model_ingredents,'RECIPE_idRECIPE'); ?>
 		</div>
 		<div class="row">
-			<?php echo $form->labelEx($model_ingredents,'name'); ?>
-			<?php echo $form->textField($model_ingredents,'name'); ?>
-			<?php echo $form->error($model_ingredents,'name'); ?>
+			<?php //echo $form->labelEx($model_ingredents,'name'); ?>
+			<?php // echo $form->textField($model_ingredents,'name'); ?>
+			<?php //echo $form->error($model_ingredents,'name'); ?>
 		</div>
 		<div class="row">
-			<?php echo $form->labelEx($model_ingredents,'amount'); ?>
-			<?php echo $form->textField($model_ingredents,'amount'); ?>
-			<?php echo $form->error($model_ingredents,'amount'); ?>
+			<?php //echo $form->labelEx($model_ingredents,'amount'); ?>
+			<?php //echo $form->textField($model_ingredents,'amount'); ?>
+			<?php //echo $form->error($model_ingredents,'amount'); ?>
 		</div>
 		<div class="row">
-			<?php echo $form->labelEx($model_ingredents,'amount_description'); ?>
-			<?php echo $form->textField($model_ingredents,'amount_description'); ?>
-			<?php echo $form->error($model_ingredents,'amount_description'); ?>
+			<?php //echo $form->labelEx($model_ingredents,'amount_description'); ?>
+			<?php //echo $form->textField($model_ingredents,'amount_description'); ?>
+			<?php //echo $form->error($model_ingredents,'amount_description'); ?>
 		</div>
 	-->
 

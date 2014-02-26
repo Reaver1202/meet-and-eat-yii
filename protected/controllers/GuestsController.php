@@ -82,18 +82,45 @@ class GuestsController extends Controller
 	public function actionCreateManual()
 	{
 		$model=new Guests;
+		$compare_model = new Guests; 
+		$event = new Events; 
 
+        		
+			
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
 		
+		//$compare_model=Guests::model()->findByPk($id);
 		
 			$model->EVENTS_idEVENTS=$_GET['id'];
 			$model->USER_idUser=Yii::app()->user->getId();;
 			$model->approved=1;
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->idGUESTS));
+			
+			//$compare_model=Guests::model()->findByAttributes($id);
+			$compare_model=Guests::model()->find(array(
+				'select'=>'*',
+				'condition'=>'EVENTS_idEVENTS=:eventID',
+				'params'=>array(':eventID'=>$model->EVENTS_idEVENTS),
+				'condition'=>'USER_idUser=:userID',
+				'params'=>array(':userID'=>$model->USER_idUser),
+			));
+		 
+			
+			
+			if(!$compare_model){
+			if($model->save()){};
+				//$this->redirect(array('view','id'=>$model->idGUESTS));
+		}else{
+
+      //  Yii::app()->user->setFlash('block-error', '<h4 class="alert-heading">Attention</h4><p>Lorem ipsum dolor sit amet, consetetur sadipscing elite...</p><p>'.EBootstrap::ibutton('Primary', '#', 'danger').' '.EBootstrap::ibutton('Default', '#').'</p>');
+//print '<script> window.confirm("Sie haben sich bereits eingetragen"); window.location.href="index.php?r=events/view&id='.$model->EVENTS_idEVENTS.'"</script>';
+		 		 Yii::app()->user->setFlash('notice', "Sie sind schon eingetragen");
+
+        // $this->redirect('js:document.location.href="index.php?r=events/view&id='.$model->EVENTS_idEVENTS); 
 		
+		 
+		}
 
 		
 		//$this->render('create',array(
