@@ -81,8 +81,24 @@
 
 	<script>
 		var counter_ingredents=0;
-
+		var previous_input_name = new Array(); 
+		var previous_input_amount = new Array(); 
+		var previous_input_amount_des = new Array(); 
+		
 		function generateNewIngredent(){
+		//	console.log(document.getElementsByName("Ingredents[0][amount_description]"));
+		
+		//save previous inputs
+		for(var x=0; x<=counter_ingredents; x++){
+		previous_input_name[x]=document.getElementsByName("Ingredents["+x+"][name]")[0].value; 
+		previous_input_amount[x]=document.getElementsByName("Ingredents["+x+"][amount]")[0].value; 
+		previous_input_amount_des[x]=document.getElementsByName("Ingredents["+x+"][amount_description]")[0].value; 
+		//console.log(previous_input[x]); 
+		//console.log(counter_ingredents); 
+	//	var_dump(previous_input[x]); 
+		}
+		
+		
 			var div_ingredents = document.getElementById("div_ingredents");
 			counter_ingredents++;
 			var i = counter_ingredents;
@@ -107,8 +123,28 @@
 		+'amount: <input type="text" name="Ingredents['+i+'][amount]">'
 		+'amount_description: <input type="text" name="Ingredents['+i+'][amount_description]">'
 		+'</div>';
+		
+		
+		
+		//save previous inputs
+		//for(var x=0; x<counter_ingredents; x++){
+		//previous_input[x]=document.getElementsByName("Ingredents["+x+"][amount_description]")[0].Value; 
+		//console.log(previous_input[x]); 
+	//	console.log(counter_ingredents); 
+	//	var_dump(previous_input[x]); 
+	//	}
+		//   < weil counter vorher erhöt wird ( nach dem speichern ) 
+for(var y=0; y<counter_ingredents; y++){
+		document.getElementsByName("Ingredents["+y+"][name]")[0].value=previous_input_name[y]; 
+		document.getElementsByName("Ingredents["+y+"][amount]")[0].value=previous_input_amount[y]; 
+		document.getElementsByName("Ingredents["+y+"][amount_description]")[0].value=previous_input_amount_des[y]; 
 
+		}		
 			
+		//document.getElementsByName("Ingredents[0][amount_description]")[0].Value='test'; 
+		
+		//document.getElementsByName("Ingredents[0][amount_description]").setValue("test"); 
+	//	console.log(document.getElementsByName("Ingredents[0][amount_description]")); 
 		}
 	</script>
 	<div class="row buttons">

@@ -15,7 +15,9 @@
 			'items'=>$this->menu,
 			'htmlOptions'=>array('class'=>'operations'),
 		));
+		var_dump($this->menu); 
 		$this->endWidget();
+		
 	?>
 	</div><!-- sidebar -->
 </div>

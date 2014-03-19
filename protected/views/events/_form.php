@@ -42,31 +42,29 @@ $_GET['test']=CHtml::listData(Recipe::model()->findAll(),'idRECIPE','name');
 	</div>
 
 	
-	<div id="div_courses">
-	<div class="row">
-	<?php 
-		//print_r(CHtml::listData(Recipe::model()->findAll(),'idRECIPE','name'));
-		//echo $form->labelEx($model_course,'RECIPE_idRECIPE'); 
-		
-		//echo $form->dropDownList($model_course,'RECIPE_idRECIPE',CHtml::listData(Recipe::model()->findAll(),'idRECIPE','name'));
-		
-		//echo $form->error($model_course,'RECIPE_idRECIPE');
-	?>
-	</div>
-	</div>
-	
 	<script>
 		
 	var counter_courses=0;
 	
 	var js_array = <?php echo json_encode($_GET['test']); ?>;
+	var previous_course = new Array(); 
+	
 	
 	function generateNewCourse(){
 	var div_courses = document.getElementById("div_courses");
 			
 			var i = counter_courses;
 			//alert(js_array[4]);
-
+    
+	console.log(document.getElementsByName("Courses[0][idRECIPE]")[0]);
+	if(typeof(document.getElementsByName("Courses[0][idRECIPE]")[0])!='undefined'){
+	
+		for(var x=0;x<=counter_courses-1; x++){
+			previous_course[x]=document.getElementsByName("Courses["+x+"][idRECIPE]")[0].value; 
+		}
+			
+	}		
+			
 	/* DOM Manipulation einbauen, sodass die Inhalte von bisher 
 		erzeugten Input-Feldern erhalten bleibt.
 		Momentan wird das Div neu geschrieben.
@@ -92,10 +90,41 @@ $_GET['test']=CHtml::listData(Recipe::model()->findAll(),'idRECIPE','name');
 			
 			
 		counter_courses++;	
+		
+		
+	if(previous_course[0]){
+	
+		for(var y=0;y<counter_courses; y++){
+			document.getElementsByName("Courses["+y+"][idRECIPE]")[0].value=previous_course[y]; 
+		}
+			
+	}	
+		
+		
+		
+		
 	}
 	
 	
 	</script>
+	
+	<div id="div_courses">
+	<div class="row">
+	<?php 
+		//print_r(CHtml::listData(Recipe::model()->findAll(),'idRECIPE','name'));
+		//echo $form->labelEx($model_course,'RECIPE_idRECIPE'); 
+		
+		//echo $form->dropDownList($model_course,'RECIPE_idRECIPE',CHtml::listData(Recipe::model()->findAll(),'idRECIPE','name'));
+		
+		//echo $form->error($model_course,'RECIPE_idRECIPE');
+	?>
+	
+	<script>generateNewCourse(); </script>
+	
+	</div>
+	</div>
+	
+	
 	<div class="row buttons">
 		<button type="button" onClick="generateNewCourse()">New Course</button>
 	</div>

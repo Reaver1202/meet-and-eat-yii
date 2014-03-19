@@ -114,11 +114,11 @@ class GuestsController extends Controller
 		}else{
 
       //  Yii::app()->user->setFlash('block-error', '<h4 class="alert-heading">Attention</h4><p>Lorem ipsum dolor sit amet, consetetur sadipscing elite...</p><p>'.EBootstrap::ibutton('Primary', '#', 'danger').' '.EBootstrap::ibutton('Default', '#').'</p>');
-//print '<script> window.confirm("Sie haben sich bereits eingetragen"); window.location.href="index.php?r=events/view&id='.$model->EVENTS_idEVENTS.'"</script>';
-		 		 Yii::app()->user->setFlash('notice', "Sie sind schon eingetragen");
+print '<script> window.confirm("Sie haben sich bereits eingetragen"); window.location.href="index.php?r=events/view&id='.$model->EVENTS_idEVENTS.'"</script>';
+		 		// Yii::app()->user->setFlash('notice', "Sie sind schon eingetragen");
 
-        // $this->redirect('js:document.location.href="index.php?r=events/view&id='.$model->EVENTS_idEVENTS); 
-		
+         //$this->redirect('js:document.location.href="index.php?r=events/view&id='.$model->EVENTS_idEVENTS); 
+		  //    CHtml::refresh('',''); 
 		 
 		}
 

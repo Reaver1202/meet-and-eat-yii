@@ -296,6 +296,10 @@ class CWebUser extends CApplicationComponent implements IWebUser
 	{
 		return $this->getState('__id');
 	}
+	
+	public function getRole(){
+	return $this->getState('__role'); 
+	}
 
 	/**
 	 * @param mixed $value the unique identifier for the user. If null, it means the user is a guest.

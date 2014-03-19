@@ -123,7 +123,7 @@ class EventsController extends Controller
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
-
+if(Yii::app()->user->getId()==$model->USER_idUser){
 		if(isset($_POST['Events']))
 		{
 			$model->attributes=$_POST['Events'];
@@ -134,6 +134,8 @@ class EventsController extends Controller
 		$this->render('update',array(
 			'model'=>$model,
 		));
+	}else $this->redirect(array('view','id'=>$model->idEVENTS));;
+		
 	}
 
 	/**
@@ -143,11 +145,14 @@ class EventsController extends Controller
 	 */
 	public function actionDelete($id)
 	{
+	if(Yii::app()->user->getId()==$model->USER_idUser){
 		$this->loadModel($id)->delete();
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))
 			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+	}else $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));		
+			
 	}
 
 	/**
@@ -166,6 +171,7 @@ class EventsController extends Controller
 	 */
 	public function actionAdmin()
 	{
+	if(Yii::app()->user->getRole()==0){
 		$model=new Events('search');
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['Events']))
@@ -174,6 +180,8 @@ class EventsController extends Controller
 		$this->render('admin',array(
 			'model'=>$model,
 		));
+	}
+	
 	}
 
 	/**

@@ -16,6 +16,8 @@ class UserIdentity extends CUserIdentity
 	 * @return boolean whether authentication succeeds.
 	 */
 	private $_id;
+	private $_role;
+	public $user; 
  
     public function authenticate()
     {
@@ -28,14 +30,22 @@ class UserIdentity extends CUserIdentity
         else
         {
            $this->_id=$user->idUser;
+		   $this->_role=$user->role; 
             $this->username=$user->Username;
             $this->errorCode=self::ERROR_NONE;
         }
         return $this->errorCode==self::ERROR_NONE;
     }
- 
+ public function getRole()
+    {
+        return $this->_role;
+    }
+	public function getUser(){
+	return $this->user; 
+	}
     public function getId()
     {
         return $this->_id;
     }
+	
 }
