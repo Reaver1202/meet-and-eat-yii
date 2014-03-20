@@ -1,0 +1,34 @@
+$auth=Yii::app()->authManager;
+ 
+$auth->createOperation('createEvent','create a Event');
+$auth->createOperation('readEvent','read a Event');
+$auth->createOperation('updateEvent','update a Event');
+$auth->createOperation('deleteEvent','delete a Event');
+$auth->createOperation('manageEvent','manage a Event');
+ 
+$bizRule='return Yii::app()->user->id==$params["events"]->USER_idUser;';
+$task=$auth->createTask('updateOwnEvent','update a Event by author himself',$bizRule);
+$task->addChild('updateEvent');
+
+$bizRule='return Yii::app()->user->id==$params["events"]->USER_idUser;';
+$task=$auth->createTask('deleteOwnEvent','update a Event by author himself',$bizRule);
+$task->addChild('deleteEvent');
+ 
+$role=$auth->createRole('reader');
+$role->addChild('readEvent');
+ 
+$role=$auth->createRole('author');
+$role->addChild('reader');
+$role->addChild('createEvent');
+$role->addChild('updateOwnEvent');
+$role->addChild('deleteOwnEvent');
+
+$role=$auth->createRole('admin');
+$role->addChild('author');
+$role->addChild('deleteEvent');
+$role->addChild('manageEvent');
+
+$auth->assign('admin','1');
+$auth->assign('reader','2');
+$auth->assign('reader','3');
+$auth->assign('author','4');

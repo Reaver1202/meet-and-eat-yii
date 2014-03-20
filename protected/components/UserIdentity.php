@@ -36,13 +36,13 @@ class UserIdentity extends CUserIdentity
         }
         return $this->errorCode==self::ERROR_NONE;
     }
- public function getRole()
-    {
-        return $this->_role;
-    }
-	public function getUser(){
-	return $this->user; 
-	}
+    //public function getRole()
+    //{
+    //    return $this->_role;
+    //}
+	//public function getUser(){
+	//   return $this->user; 
+	//}
     public function getId()
     {
         return $this->_id;

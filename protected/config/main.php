@@ -62,6 +62,13 @@ return array(
 			'charset' => 'utf8',
 		),
 		
+		'authManager'=>array(
+            'class'=>'CDbAuthManager',
+            'connectionID'=>'db',
+            'defaultRoles'=>array('reader'),
+        ),
+
+
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors
 			'errorAction'=>'site/error',

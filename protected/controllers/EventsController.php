@@ -26,22 +26,37 @@ class EventsController extends Controller
 	 */
 	public function accessRules()
 	{
+
+/* 
+ * Die Regeln bestimmen, ob der aktuelle benutzer überhaupt auf die Funktion zugreifen kann. 
+ * d.h. falls er nicht berechtigt ist, wird nicht die Funktion aufgerufen und dessen Fehlermeldung,
+ * sondern die generische Fehlermeldung 403 für keine Berechtigung.
+ * Beispiel: 	gebe user-role 'auther' zu den bisherigen Berchtigungen zu 'create','update','delete'
+ * 				noch ,'admin' hinzu.
+ * Vorher: 		sie haben keine Berechtigung
+ * Nachher: 	Funktion wird aufgerufen und auf UNSERE Weise geprüft, ob er Zugriff hat.
+ */
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
-				'users'=>array('*'),
+				'actions'=>array('index','view'),	// actions, die users oder roles verwenden dürfen
+				'users'=>array('*'),				// spezielle User auswählen; HIER: alle
+				'roles'=>array('reader'),			// spezielle Rolle: reader
 			),
-			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
-				'users'=>array('@'),
+		
+			array('allow', // allow authenticated user to perform 'create' 'update' 'delete' actions
+				'actions'=>array('create','update','delete'),
+				'roles'=>array('author'),
 			),
-			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
+		
+			array('allow', // allow admin user to perform all actions
+				'actions'=>array('create','update','delete','admin'),
+				'roles'=>array('admin'),
 			),
+
 			array('deny',  // deny all users
 				'users'=>array('*'),
 			),
+		
 		);
 	}
 
@@ -51,6 +66,13 @@ class EventsController extends Controller
 	 */
 	public function actionView($id)
 	{
+
+// TESTING: funktioniert
+$model = $this->loadModel($id);
+$params = array('events'=>$model);
+var_dump(Yii::app()->user->checkAccess('updateOwnEvent',$params));
+var_dump(Yii::app()->user->id);
+
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
 		));
@@ -65,6 +87,11 @@ class EventsController extends Controller
 		$model=new Events;
 		$model_courses= new Courses; 
 
+
+//var_dump($params);
+var_dump(Yii::app()->user->checkAccess('createEvent'));
+var_dump(Yii::app()->user->id);
+if (Yii::app()->user->checkAccess('createEvent')){
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
@@ -73,7 +100,7 @@ class EventsController extends Controller
 		
 		//var_dump($_POST);
 			$model->attributes=$_POST['Events'];
-			
+
 
 			//$model_course->attributes=$_POST['Courses'];
 			//var_dump($_POST);
@@ -105,11 +132,14 @@ class EventsController extends Controller
 			 } 
 				
 		}
+		
 
 		$this->render('create',array(
 			'model'=>$model,
 			'model_courses'=>$model_courses,
 		));
+
+}
 	}
 
 	/**
@@ -121,23 +151,37 @@ class EventsController extends Controller
 	{
 		$model=$this->loadModel($id);
 
+// TESTING: funktioniert
+$params = array('events'=>$model);
+var_dump(Yii::app()->user->checkAccess('updateOwnEvent',$params));
+var_dump(Yii::app()->user->id);
+var_dump($params["events"]->USER_idUser);
+
+
+
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
-if(Yii::app()->user->getId()==$model->USER_idUser){
-		if(isset($_POST['Events']))
-		{
-			$model->attributes=$_POST['Events'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->idEVENTS));
-		}
+		//if(Yii::app()->user->getId()==$model->USER_idUser){
+		$params = array('events'=>$model);
+		if(Yii::app()->user->checkAccess('updateOwnEvent',$params)){
+			if(isset($_POST['Events']))
+			{
+				$model->attributes=$_POST['Events'];
+				if($model->save())
+					$this->redirect(array('view','id'=>$model->idEVENTS));
+			}
 
-		$this->render('update',array(
-			'model'=>$model,
-		));
-	}else $this->redirect(array('view','id'=>$model->idEVENTS));;
+			$this->render('update',array(
+				'model'=>$model,
+			));
+
+		}else $this->redirect(array('view','id'=>$model->idEVENTS));;
 		
 	}
 
+// #########################################
+// FUNKTIONIERT NICHT: DB Fehler!!!
+// #########################################
 	/**
 	 * Deletes a particular model.
 	 * If deletion is successful, the browser will be redirected to the 'admin' page.
@@ -145,7 +189,9 @@ if(Yii::app()->user->getId()==$model->USER_idUser){
 	 */
 	public function actionDelete($id)
 	{
-	if(Yii::app()->user->getId()==$model->USER_idUser){
+	//if(Yii::app()->user->getId()==$model->USER_idUser){
+	if(Yii::app()->user->checkAccess('deleteEvent')){
+
 		$this->loadModel($id)->delete();
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
@@ -160,10 +206,25 @@ if(Yii::app()->user->getId()==$model->USER_idUser){
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Events');
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-		));
+
+// TESTING:
+//$params = array('events'=>$model);
+//var_dump($params);
+var_dump(Yii::app()->user->checkAccess('readEvent'));
+var_dump(Yii::app()->user->checkAccess('createEvent'));
+var_dump(Yii::app()->user->checkAccess('updateEvent'));
+var_dump(Yii::app()->user->checkAccess('updateOwnEvent'));
+var_dump(Yii::app()->user->checkAccess('deleteEvent'));
+var_dump(Yii::app()->user->checkAccess('manageEvent'));
+var_dump(Yii::app()->user->id);
+var_dump(Yii::app()->user->isGuest);
+
+//if(Yii::app()->user->checkAccess('readEvent')){
+			$dataProvider=new CActiveDataProvider('Events');
+			$this->render('index',array(
+				'dataProvider'=>$dataProvider,
+			));
+//}
 	}
 
 	/**
@@ -171,9 +232,17 @@ if(Yii::app()->user->getId()==$model->USER_idUser){
 	 */
 	public function actionAdmin()
 	{
-	if(Yii::app()->user->getRole()==0){
+	//if(Yii::app()->user->getRole()==0){
+		//var_dump(checkAccess('manageEvent'));
+	
 		$model=new Events('search');
 		$model->unsetAttributes();  // clear any default values
+
+	$params = array('events'=>$model);
+	var_dump(Yii::app()->user->checkAccess('manageEvent'));
+
+	if (Yii::app()->user->checkAccess('manageEvent')){
+
 		if(isset($_GET['Events']))
 			$model->attributes=$_GET['Events'];
 
@@ -181,6 +250,7 @@ if(Yii::app()->user->getId()==$model->USER_idUser){
 			'model'=>$model,
 		));
 	}
+	//Yii::app()->end();
 	
 	}
 
