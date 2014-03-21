@@ -8,12 +8,35 @@ $this->breadcrumbs=array(
 	'Update',
 );
 
-$this->menu=array(
-	array('label'=>'List Events', 'url'=>array('index')),
-	array('label'=>'Create Events', 'url'=>array('create')),
-	array('label'=>'View Events', 'url'=>array('view', 'id'=>$model->idEVENTS)),
-	array('label'=>'Manage Events', 'url'=>array('admin')),
-);
+// ###########################################################
+// ###### Menu Column2 on the right ##########################
+// ###########################################################
+$params = array('events'=>$model);
+
+// role: author
+if (Yii::app()->user->checkAccess('readEvent') &&
+	Yii::app()->user->checkAccess('createEvent') &&
+	Yii::app()->user->checkAccess('updateOwnEvent',$params) &&
+	Yii::app()->user->checkAccess('deleteOwnEvent',$params))
+{
+	$this->menu=array(
+		array('label'=>'List Events', 'url'=>array('index')),
+		array('label'=>'Create Events', 'url'=>array('create')),
+		array('label'=>'View Events', 'url'=>array('view', 'id'=>$model->idEVENTS)),
+	);
+}
+
+// role: admin
+if (Yii::app()->user->checkAccess('manageEvent'))
+{
+	$this->menu=array(
+		array('label'=>'List Events', 'url'=>array('index')),
+		array('label'=>'Create Events', 'url'=>array('create')),
+		array('label'=>'View Events', 'url'=>array('view', 'id'=>$model->idEVENTS)),
+		array('label'=>'Manage Events', 'url'=>array('admin')),
+	);
+}
+
 ?>
 
 <h1>Update Events <?php echo $model->idEVENTS; ?></h1>

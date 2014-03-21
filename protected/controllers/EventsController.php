@@ -70,8 +70,12 @@ class EventsController extends Controller
 // TESTING: funktioniert
 $model = $this->loadModel($id);
 $params = array('events'=>$model);
+var_dump(Yii::app()->user->checkAccess('readEvent'));
+var_dump(Yii::app()->user->checkAccess('createEvent'));
 var_dump(Yii::app()->user->checkAccess('updateOwnEvent',$params));
-var_dump(Yii::app()->user->id);
+var_dump(Yii::app()->user->checkAccess('deleteOwnEvent',$params));
+var_dump(Yii::app()->user->checkAccess('manageEvent'));
+
 
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
@@ -91,55 +95,55 @@ var_dump(Yii::app()->user->id);
 //var_dump($params);
 var_dump(Yii::app()->user->checkAccess('createEvent'));
 var_dump(Yii::app()->user->id);
-if (Yii::app()->user->checkAccess('createEvent')){
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		if (Yii::app()->user->checkAccess('createEvent')){
+			// Uncomment the following line if AJAX validation is needed
+			// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Events']))
-		{
-		
-		//var_dump($_POST);
-			$model->attributes=$_POST['Events'];
-
-
-			//$model_course->attributes=$_POST['Courses'];
+			if(isset($_POST['Events']))
+			{
+			
 			//var_dump($_POST);
-			//$model_course->course_number=1;
-		    
-			//$model_course->RECIPE_idRECIPE=2; 
-			$model->USER_idUser=Yii::app()->user->getId();
-			// echo "<script> console.log(".$model_course.");</script>";
-			  
-			//$model_course->create(); 
-			if($model->save())
-			 {
-			 
-			 for ($i=0; $i< sizeof($_POST['Courses']); $i++){
-					
-					$model_course= new Courses; // einzelnes course
+				$model->attributes=$_POST['Events'];
 
-					$model_course->EVENTS_idEVENTS=$model->idEVENTS;
-					$model_course->RECIPE_idRECIPE=$_POST['Courses'][$i]['idRECIPE'];
-					$model_course->course_number=$i+1;
+
+				//$model_course->attributes=$_POST['Courses'];
+				//var_dump($_POST);
+				//$model_course->course_number=1;
+			    
+				//$model_course->RECIPE_idRECIPE=2; 
+				$model->USER_idUser=Yii::app()->user->getId();
+				// echo "<script> console.log(".$model_course.");</script>";
+				  
+				//$model_course->create(); 
+				if($model->save())
+				 {
+				 
+				 for ($i=0; $i< sizeof($_POST['Courses']); $i++){
+						
+						$model_course= new Courses; // einzelnes course
+
+						$model_course->EVENTS_idEVENTS=$model->idEVENTS;
+						$model_course->RECIPE_idRECIPE=$_POST['Courses'][$i]['idRECIPE'];
+						$model_course->course_number=$i+1;
+						
+						$model_course->save();
+					}
+				 
+				 
+				 //	$model_course->EVENTS_idEVENTS=$model->idEVENTS;
+				 	//if ($model_course->save())
+				 		//$this->redirect(array('view','id'=>$model->idEVENTS));
+				 } 
 					
-					$model_course->save();
-				}
-			 
-			 
-			 //	$model_course->EVENTS_idEVENTS=$model->idEVENTS;
-			 	//if ($model_course->save())
-			 		//$this->redirect(array('view','id'=>$model->idEVENTS));
-			 } 
-				
+			}
+			
+
+			$this->render('create',array(
+				'model'=>$model,
+				'model_courses'=>$model_courses,
+			));
+
 		}
-		
-
-		$this->render('create',array(
-			'model'=>$model,
-			'model_courses'=>$model_courses,
-		));
-
-}
 	}
 
 	/**
@@ -163,7 +167,7 @@ var_dump($params["events"]->USER_idUser);
 		// $this->performAjaxValidation($model);
 		//if(Yii::app()->user->getId()==$model->USER_idUser){
 		$params = array('events'=>$model);
-		if(Yii::app()->user->checkAccess('updateOwnEvent',$params)){
+		if(Yii::app()->user->checkAccess('updateOwnEvent',$params) || Yii::app()->user->checkAccess('updateEvent')){
 			if(isset($_POST['Events']))
 			{
 				$model->attributes=$_POST['Events'];
@@ -175,7 +179,7 @@ var_dump($params["events"]->USER_idUser);
 				'model'=>$model,
 			));
 
-		}else $this->redirect(array('view','id'=>$model->idEVENTS));;
+		}else throw new CHttpException(403, 'You are not authorized to perform this action');
 		
 	}
 
@@ -189,16 +193,18 @@ var_dump($params["events"]->USER_idUser);
 	 */
 	public function actionDelete($id)
 	{
-	//if(Yii::app()->user->getId()==$model->USER_idUser){
-	if(Yii::app()->user->checkAccess('deleteEvent')){
+		//if(Yii::app()->user->getId()==$model->USER_idUser){
+		$params = array('events'=>$model);
+		if(Yii::app()->user->checkAccess('deleteOwnEvent', $params) || Yii::app()->user->checkAccess('deleteEvent')){
 
-		$this->loadModel($id)->delete();
+			$this->loadModel($id)->delete();
 
-		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
-	}else $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));		
-			
+			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+			if(!isset($_GET['ajax']))
+				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+
+		}else $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));		
+				
 	}
 
 	/**
@@ -232,26 +238,21 @@ var_dump(Yii::app()->user->isGuest);
 	 */
 	public function actionAdmin()
 	{
-	//if(Yii::app()->user->getRole()==0){
-		//var_dump(checkAccess('manageEvent'));
+		//if(Yii::app()->user->getRole()==0){
 	
 		$model=new Events('search');
 		$model->unsetAttributes();  // clear any default values
 
-	$params = array('events'=>$model);
-	var_dump(Yii::app()->user->checkAccess('manageEvent'));
+		var_dump(Yii::app()->user->checkAccess('manageEvent'));
+		if (Yii::app()->user->checkAccess('manageEvent')){
 
-	if (Yii::app()->user->checkAccess('manageEvent')){
+			if(isset($_GET['Events']))
+				$model->attributes=$_GET['Events'];
 
-		if(isset($_GET['Events']))
-			$model->attributes=$_GET['Events'];
-
-		$this->render('admin',array(
-			'model'=>$model,
-		));
-	}
-	//Yii::app()->end();
-	
+			$this->render('admin',array(
+				'model'=>$model,
+			));
+		}
 	}
 
 	/**

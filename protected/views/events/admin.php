@@ -7,10 +7,21 @@ $this->breadcrumbs=array(
 	'Manage',
 );
 
-$this->menu=array(
-	array('label'=>'List Events', 'url'=>array('index')),
-	array('label'=>'Create Events', 'url'=>array('create')),
-);
+
+// ###########################################################
+// ###### Menu Column2 on the right ##########################
+// ###########################################################
+
+// role: admin
+if (Yii::app()->user->checkAccess('manageEvent'))
+{
+	$this->menu=array(
+		array('label'=>'List Events', 'url'=>array('index')),
+		array('label'=>'Create Events', 'url'=>array('create'))		
+	);
+}
+
+
 
 Yii::app()->clientScript->registerScript('search', "
 $('.search-button').click(function(){

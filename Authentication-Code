@@ -25,6 +25,7 @@ $role->addChild('deleteOwnEvent');
 
 $role=$auth->createRole('admin');
 $role->addChild('author');
+$role->addChild('updateEvent');
 $role->addChild('deleteEvent');
 $role->addChild('manageEvent');
 

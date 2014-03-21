@@ -7,13 +7,51 @@ $this->breadcrumbs=array(
 	$model->idEVENTS,
 );
 
-$this->menu=array(
-	array('label'=>'List Events', 'url'=>array('index')),
-	array('label'=>'Create Events', 'url'=>array('create')),
-	array('label'=>'Update Events', 'url'=>array('update', 'id'=>$model->idEVENTS)),
-	array('label'=>'Delete Events', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->idEVENTS),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Events', 'url'=>array('admin')),
-);
+
+// ###########################################################
+// ###### Menu Column2 on the right ##########################
+// ###########################################################
+$params = array('events'=>$model);
+// role: reader
+if (Yii::app()->user->checkAccess('createEvent') && Yii::app()->user->checkAccess('readEvent'))
+{
+	$this->menu=array(
+		array('label'=>'List Events', 'url'=>array('index')),
+		array('label'=>'Create Events', 'url'=>array('create'))
+	);
+}
+
+// role: author
+if (Yii::app()->user->checkAccess('readEvent') &&
+	Yii::app()->user->checkAccess('createEvent') &&
+	Yii::app()->user->checkAccess('updateOwnEvent',$params) &&
+	Yii::app()->user->checkAccess('deleteOwnEvent',$params))
+{
+	$this->menu=array(
+		array('label'=>'List Events', 'url'=>array('index')),
+		array('label'=>'Create Events', 'url'=>array('create')),
+		array('label'=>'Update Events', 'url'=>array('update', 'id'=>$model->idEVENTS)),
+		array('label'=>'Delete Events', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->idEVENTS),'confirm'=>'Are you sure you want to delete this item?')),
+	);
+}
+
+// role: admin
+if (Yii::app()->user->checkAccess('readEvent')   &&
+	Yii::app()->user->checkAccess('createEvent') &&
+	Yii::app()->user->checkAccess('updateEvent') &&
+	Yii::app()->user->checkAccess('deleteEvent') &&
+	Yii::app()->user->checkAccess('manageEvent'))
+{
+	$this->menu=array(
+		array('label'=>'List Events', 'url'=>array('index')),
+		array('label'=>'Create Events', 'url'=>array('create')),
+		array('label'=>'Update Events', 'url'=>array('update', 'id'=>$model->idEVENTS)),
+		array('label'=>'Delete Events', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->idEVENTS),'confirm'=>'Are you sure you want to delete this item?')),
+		array('label'=>'Manage Events', 'url'=>array('admin')),
+	);
+}
+
+
 ?>
 
 <h1>View Events #<?php echo $model->idEVENTS; ?></h1>
