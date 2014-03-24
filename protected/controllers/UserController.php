@@ -71,12 +71,18 @@ class UserController extends Controller
 		{
 			$model->attributes=$_POST['User'];
 			if($model->save())
+				$auth=Yii::app()->authManager;
+$auth->assign('author',$model->idUser);
 				$this->redirect(array('view','id'=>$model->idUser));
 		}
 
 		$this->render('create',array(
 			'model'=>$model,
 		));
+	
+
+		
+		
 	}
 
 	/**

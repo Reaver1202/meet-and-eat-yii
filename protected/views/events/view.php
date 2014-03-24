@@ -13,7 +13,7 @@ $this->breadcrumbs=array(
 // ###########################################################
 $params = array('events'=>$model);
 // role: reader
-if (Yii::app()->user->checkAccess('createEvent') && Yii::app()->user->checkAccess('readEvent'))
+if (Yii::app()->user->checkAccess('readEvent'))
 {
 	$this->menu=array(
 		array('label'=>'List Events', 'url'=>array('index')),
@@ -22,8 +22,7 @@ if (Yii::app()->user->checkAccess('createEvent') && Yii::app()->user->checkAcces
 }
 
 // role: author
-if (Yii::app()->user->checkAccess('readEvent') &&
-	Yii::app()->user->checkAccess('createEvent') &&
+if (Yii::app()->user->checkAccess('createEvent') &&
 	Yii::app()->user->checkAccess('updateOwnEvent',$params) &&
 	Yii::app()->user->checkAccess('deleteOwnEvent',$params))
 {
@@ -36,11 +35,7 @@ if (Yii::app()->user->checkAccess('readEvent') &&
 }
 
 // role: admin
-if (Yii::app()->user->checkAccess('readEvent')   &&
-	Yii::app()->user->checkAccess('createEvent') &&
-	Yii::app()->user->checkAccess('updateEvent') &&
-	Yii::app()->user->checkAccess('deleteEvent') &&
-	Yii::app()->user->checkAccess('manageEvent'))
+if (Yii::app()->user->checkAccess('manageEvent'))
 {
 	$this->menu=array(
 		array('label'=>'List Events', 'url'=>array('index')),

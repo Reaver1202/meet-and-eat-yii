@@ -11,7 +11,7 @@ $task=$auth->createTask('updateOwnEvent','update a Event by author himself',$biz
 $task->addChild('updateEvent');
 
 $bizRule='return Yii::app()->user->id==$params["events"]->USER_idUser;';
-$task=$auth->createTask('deleteOwnEvent','update a Event by author himself',$bizRule);
+$task=$auth->createTask('deleteOwnEvent','delete a Event by author himself',$bizRule);
 $task->addChild('deleteEvent');
  
 $role=$auth->createRole('reader');

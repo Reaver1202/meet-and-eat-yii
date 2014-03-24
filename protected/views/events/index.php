@@ -11,7 +11,7 @@ $this->breadcrumbs=array(
 // ###########################################################
 
 // role: reader or author
-if (Yii::app()->user->checkAccess('createEvent'))
+if (Yii::app()->user->checkAccess('readEvent'))
 {
 	$this->menu=array(
 		array('label'=>'Create Event', 'url'=>array('create'))
@@ -19,8 +19,7 @@ if (Yii::app()->user->checkAccess('createEvent'))
 }
 
 // role: admin
-if (Yii::app()->user->checkAccess('createEvent') &&
-	Yii::app()->user->checkAccess('manageEvent'))
+if (Yii::app()->user->checkAccess('manageEvent'))
 {
 	$this->menu=array(
 		array('label'=>'Create Event', 'url'=>array('create')),

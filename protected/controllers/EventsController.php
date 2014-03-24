@@ -93,8 +93,8 @@ class EventsController extends Controller
 
 
 //var_dump($params);
-var_dump(Yii::app()->user->checkAccess('createEvent'));
-var_dump(Yii::app()->user->id);
+//var_dump(Yii::app()->user->checkAccess('createEvent'));
+//var_dump(Yii::app()->user->id);
 		if (Yii::app()->user->checkAccess('createEvent')){
 			// Uncomment the following line if AJAX validation is needed
 			// $this->performAjaxValidation($model);
@@ -163,6 +163,13 @@ var_dump(Yii::app()->user->id);
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
+		$model_course= Courses::model()->findAllByAttributes(
+			array('EVENTS_idEVENTS'=>$model->idEVENTS)); 
+		//var_dump($model_course[1]->idCOURSES);
+		//var_dump($model); 
+	
+		//$model_coruses = new Array();		
+		// $model_course->EVENTS_idEVENTS=$model->idEVENTS;
 
 // TESTING: funktioniert
 // $params = array('events'=>$model);
@@ -186,6 +193,7 @@ var_dump(Yii::app()->user->id);
 
 			$this->render('update',array(
 				'model'=>$model,
+				'model_course'=>$model_course,
 			));
 
 		}else throw new CHttpException(403, 'You are not authorized to perform this action');
