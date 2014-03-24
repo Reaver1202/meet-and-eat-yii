@@ -17,7 +17,7 @@ if (Yii::app()->user->checkAccess('manageEvent'))
 {
 	$this->menu=array(
 		array('label'=>'List Events', 'url'=>array('index')),
-		array('label'=>'Create Events', 'url'=>array('create'))		
+		array('label'=>'Create Event', 'url'=>array('create'))		
 	);
 }
 

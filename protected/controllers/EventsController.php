@@ -68,13 +68,13 @@ class EventsController extends Controller
 	{
 
 // TESTING: funktioniert
-$model = $this->loadModel($id);
-$params = array('events'=>$model);
-var_dump(Yii::app()->user->checkAccess('readEvent'));
-var_dump(Yii::app()->user->checkAccess('createEvent'));
-var_dump(Yii::app()->user->checkAccess('updateOwnEvent',$params));
-var_dump(Yii::app()->user->checkAccess('deleteOwnEvent',$params));
-var_dump(Yii::app()->user->checkAccess('manageEvent'));
+// $model = $this->loadModel($id);
+// $params = array('events'=>$model);
+// var_dump(Yii::app()->user->checkAccess('readEvent'));
+// var_dump(Yii::app()->user->checkAccess('createEvent'));
+// var_dump(Yii::app()->user->checkAccess('updateOwnEvent',$params));
+// var_dump(Yii::app()->user->checkAccess('deleteOwnEvent',$params));
+// var_dump(Yii::app()->user->checkAccess('manageEvent'));
 
 
 		$this->render('view',array(
@@ -146,6 +146,15 @@ var_dump(Yii::app()->user->id);
 		}
 	}
 
+
+/*
+ #########################################
+ FUNKTIONIERT NICHT RICHTIG: 
+- es werden nur die Event-Informationen geupdated
+- nicht die Gänge
+- ebenso sollte man Teilnehmer sehen und approven oder ablehnen können
+ #########################################
+ */
 	/**
 	 * Updates a particular model.
 	 * If update is successful, the browser will be redirected to the 'view' page.
@@ -156,10 +165,10 @@ var_dump(Yii::app()->user->id);
 		$model=$this->loadModel($id);
 
 // TESTING: funktioniert
-$params = array('events'=>$model);
-var_dump(Yii::app()->user->checkAccess('updateOwnEvent',$params));
-var_dump(Yii::app()->user->id);
-var_dump($params["events"]->USER_idUser);
+// $params = array('events'=>$model);
+// var_dump(Yii::app()->user->checkAccess('updateOwnEvent',$params));
+// var_dump(Yii::app()->user->id);
+// var_dump($params["events"]->USER_idUser);
 
 
 
@@ -183,9 +192,13 @@ var_dump($params["events"]->USER_idUser);
 		
 	}
 
-// #########################################
-// FUNKTIONIERT NICHT: DB Fehler!!!
-// #########################################
+/*
+ #########################################
+ FUNKTIONIERT NICHT: DB Fehler!!!
+- vielleicht weil Events gelöscht wird, aber die Beziehung zu Courses noch existiert --> Konsistenz-Probleme
+- hierzu vorher Courses löschen und dann das dazugehörige Event
+ #########################################
+ */
 	/**
 	 * Deletes a particular model.
 	 * If deletion is successful, the browser will be redirected to the 'admin' page.
@@ -194,6 +207,7 @@ var_dump($params["events"]->USER_idUser);
 	public function actionDelete($id)
 	{
 		//if(Yii::app()->user->getId()==$model->USER_idUser){
+		$model=$this->loadModel($id);
 		$params = array('events'=>$model);
 		if(Yii::app()->user->checkAccess('deleteOwnEvent', $params) || Yii::app()->user->checkAccess('deleteEvent')){
 
@@ -216,14 +230,14 @@ var_dump($params["events"]->USER_idUser);
 // TESTING:
 //$params = array('events'=>$model);
 //var_dump($params);
-var_dump(Yii::app()->user->checkAccess('readEvent'));
-var_dump(Yii::app()->user->checkAccess('createEvent'));
-var_dump(Yii::app()->user->checkAccess('updateEvent'));
-var_dump(Yii::app()->user->checkAccess('updateOwnEvent'));
-var_dump(Yii::app()->user->checkAccess('deleteEvent'));
-var_dump(Yii::app()->user->checkAccess('manageEvent'));
-var_dump(Yii::app()->user->id);
-var_dump(Yii::app()->user->isGuest);
+// var_dump(Yii::app()->user->checkAccess('readEvent'));
+// var_dump(Yii::app()->user->checkAccess('createEvent'));
+// var_dump(Yii::app()->user->checkAccess('updateEvent'));
+// var_dump(Yii::app()->user->checkAccess('updateOwnEvent'));
+// var_dump(Yii::app()->user->checkAccess('deleteEvent'));
+// var_dump(Yii::app()->user->checkAccess('manageEvent'));
+// var_dump(Yii::app()->user->id);
+// var_dump(Yii::app()->user->isGuest);
 
 //if(Yii::app()->user->checkAccess('readEvent')){
 			$dataProvider=new CActiveDataProvider('Events');

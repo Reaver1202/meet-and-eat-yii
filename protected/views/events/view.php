@@ -17,7 +17,7 @@ if (Yii::app()->user->checkAccess('createEvent') && Yii::app()->user->checkAcces
 {
 	$this->menu=array(
 		array('label'=>'List Events', 'url'=>array('index')),
-		array('label'=>'Create Events', 'url'=>array('create'))
+		array('label'=>'Create Event', 'url'=>array('create'))
 	);
 }
 
@@ -29,9 +29,9 @@ if (Yii::app()->user->checkAccess('readEvent') &&
 {
 	$this->menu=array(
 		array('label'=>'List Events', 'url'=>array('index')),
-		array('label'=>'Create Events', 'url'=>array('create')),
-		array('label'=>'Update Events', 'url'=>array('update', 'id'=>$model->idEVENTS)),
-		array('label'=>'Delete Events', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->idEVENTS),'confirm'=>'Are you sure you want to delete this item?')),
+		array('label'=>'Create Event', 'url'=>array('create')),
+		array('label'=>'Update Event', 'url'=>array('update', 'id'=>$model->idEVENTS)),
+		array('label'=>'Delete Event', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->idEVENTS),'confirm'=>'Are you sure you want to delete this item?')),
 	);
 }
 
@@ -44,9 +44,9 @@ if (Yii::app()->user->checkAccess('readEvent')   &&
 {
 	$this->menu=array(
 		array('label'=>'List Events', 'url'=>array('index')),
-		array('label'=>'Create Events', 'url'=>array('create')),
-		array('label'=>'Update Events', 'url'=>array('update', 'id'=>$model->idEVENTS)),
-		array('label'=>'Delete Events', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->idEVENTS),'confirm'=>'Are you sure you want to delete this item?')),
+		array('label'=>'Create Event', 'url'=>array('create')),
+		array('label'=>'Update Event', 'url'=>array('update', 'id'=>$model->idEVENTS)),
+		array('label'=>'Delete Event', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->idEVENTS),'confirm'=>'Are you sure you want to delete this item?')),
 		array('label'=>'Manage Events', 'url'=>array('admin')),
 	);
 }

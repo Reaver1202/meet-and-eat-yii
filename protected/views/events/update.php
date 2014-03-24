@@ -14,6 +14,7 @@ $this->breadcrumbs=array(
 $params = array('events'=>$model);
 
 // role: author
+// reader can´t update 
 if (Yii::app()->user->checkAccess('readEvent') &&
 	Yii::app()->user->checkAccess('createEvent') &&
 	Yii::app()->user->checkAccess('updateOwnEvent',$params) &&
@@ -21,8 +22,8 @@ if (Yii::app()->user->checkAccess('readEvent') &&
 {
 	$this->menu=array(
 		array('label'=>'List Events', 'url'=>array('index')),
-		array('label'=>'Create Events', 'url'=>array('create')),
-		array('label'=>'View Events', 'url'=>array('view', 'id'=>$model->idEVENTS)),
+		array('label'=>'Create Event', 'url'=>array('create')),
+		array('label'=>'View Event', 'url'=>array('view', 'id'=>$model->idEVENTS)),
 	);
 }
 
@@ -31,8 +32,8 @@ if (Yii::app()->user->checkAccess('manageEvent'))
 {
 	$this->menu=array(
 		array('label'=>'List Events', 'url'=>array('index')),
-		array('label'=>'Create Events', 'url'=>array('create')),
-		array('label'=>'View Events', 'url'=>array('view', 'id'=>$model->idEVENTS)),
+		array('label'=>'Create Event', 'url'=>array('create')),
+		array('label'=>'View Event', 'url'=>array('view', 'id'=>$model->idEVENTS)),
 		array('label'=>'Manage Events', 'url'=>array('admin')),
 	);
 }
