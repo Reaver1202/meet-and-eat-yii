@@ -42,4 +42,4 @@ if (Yii::app()->user->checkAccess('manageEvent'))
 
 <h1>Update Events <?php echo $model->idEVENTS; ?></h1>
 
-<?php $this->renderPartial('_form2', array('model'=>$model, 'model_course'=>$model_course)); ?>
+<?php $this->renderPartial('_form2', array('model'=>$model, 'model_courses'=>$model_courses)); ?>

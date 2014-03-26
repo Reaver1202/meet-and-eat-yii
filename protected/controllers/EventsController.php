@@ -163,9 +163,15 @@ class EventsController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-		$model_course= Courses::model()->findAllByAttributes(
+		$model_courses= Courses::model()->findAllByAttributes(
 			array('EVENTS_idEVENTS'=>$model->idEVENTS)); 
-		//var_dump($model_course[1]->idCOURSES);
+		//$idArray = new Array(); 
+		for( $i=0; $i<count($model_courses); $i++){
+			$idArray[$i]=$model_courses[$i]->RECIPE_idRECIPE; 
+		}
+		$_GET['courses_IDs']=$idArray; 
+		var_dump($idArray); 
+		
 		//var_dump($model); 
 	
 		//$model_coruses = new Array();		
@@ -188,12 +194,28 @@ class EventsController extends Controller
 			{
 				$model->attributes=$_POST['Events'];
 				if($model->save())
+				for($d=0; $d<sizeof($model_courses); $d++){
+					$model_courses[$d]->delete(); 
+				}
+				// bei denen, die geupdated wurden KEINEN neuen Course erstellen
+				// für neu erstellte müssen neue Courses erstellen
+				for ($i=0; $i< sizeof($_POST['Courses']); $i++){
+						
+						$model_course= new Courses; // einzelnes course
+
+						$model_course->EVENTS_idEVENTS=$model->idEVENTS;
+						$model_course->RECIPE_idRECIPE=$_POST['Courses'][$i]['idRECIPE'];
+						$model_course->course_number=$i+1;
+						
+						$model_course->save();
+					}
+				
 					$this->redirect(array('view','id'=>$model->idEVENTS));
 			}
 
 			$this->render('update',array(
 				'model'=>$model,
-				'model_course'=>$model_course,
+				'model_courses'=>$model_courses,
 			));
 
 		}else throw new CHttpException(403, 'You are not authorized to perform this action');

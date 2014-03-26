@@ -2,7 +2,13 @@
 /* @var $this EventsController */
 /* @var $model Events */
 /* @var $form CActiveForm */
+//alle verfügbaren Rezepte für DropDown 
 $_GET['test']=CHtml::listData(Recipe::model()->findAll(),'idRECIPE','name');
+//var_dump($_GET['test']); 
+//bisher ausgewählte Rezepte
+//$_GET['courses']=$_GET; 
+//var_dump($_GET['courses']); 
+
 //var_dump($_GET['test']); 
 
 ?>
@@ -47,7 +53,47 @@ $_GET['test']=CHtml::listData(Recipe::model()->findAll(),'idRECIPE','name');
 	var counter_courses=0;
 	
 	var js_array = <?php echo json_encode($_GET['test']); ?>;
+	console.log(js_array);
 	var previous_course = new Array(); 
+	
+	
+	function initiateCourse(){
+		js_array_courses = new Array();
+		js_array_courses = <?php echo json_encode($_GET['courses_IDs']); ?>;
+		console.log(js_array_courses);
+		
+		var div_courses = document.getElementById("div_courses");
+		counter_courses=Object.keys(js_array_courses).length;  
+		var i = counter_courses; 
+		
+		for(i=0; i<counter_courses; i++){
+		
+		div_courses.innerHTML+='<div class="row">'
+				+'<select name="Courses['+i+'][idRECIPE]" id="x'+i+'">';
+		
+		
+		 
+			select_Recipe = document.getElementById('x'+i);
+			console.log(select_Recipe);
+			select_Recipe.innerHTML+='<option value="'+j+'">'+js_array[j]+'</option>';
+		
+			for(var j=1; j<Object.keys(js_array).length;j++){
+				
+				select_Recipe.innerHTML+='<option value="'+j+'">'+js_array[j]+'</option>';
+			
+				if(j==Object.keys(js_array).length-1)div_courses.innerHTML+='</select></div>';
+			
+			}
+}
+		
+		//console.log(js_array_courses);
+		for(var y=0;y<counter_courses; y++){
+			document.getElementsByName("Courses["+y+"][idRECIPE]")[0].value=js_array_courses[y]; 
+		}
+		
+		
+		
+	}
 	
 	
 	function generateNewCourse(){
@@ -119,7 +165,7 @@ $_GET['test']=CHtml::listData(Recipe::model()->findAll(),'idRECIPE','name');
 		//echo $form->error($model_course,'RECIPE_idRECIPE');
 	?>
 	
-	<script>generateNewCourse(); </script>
+	<script>initiateCourse();  </script>
 	
 	</div>
 	</div>
