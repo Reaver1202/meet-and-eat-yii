@@ -88,59 +88,44 @@ class EventsController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Events;
-		$model_courses= new Courses; 
+		$model=new Events;				// Events Object das an View via render() übergeben wird
+		$model_courses= new Courses; 	// Courses Object das an View via render() übergeben wird
 
 
 //var_dump($params);
 //var_dump(Yii::app()->user->checkAccess('createEvent'));
 //var_dump(Yii::app()->user->id);
-		if (Yii::app()->user->checkAccess('createEvent')){
+
+		if (Yii::app()->user->checkAccess('createEvent')){		// checkt ob aktueller Benutzer das Recht hat diese Funktion zu verwenden. (Nur Author order Admin)
 			// Uncomment the following line if AJAX validation is needed
 			// $this->performAjaxValidation($model);
 
-			if(isset($_POST['Events']))
+			if(isset($_POST['Events']))		// Events object in POST Variable kommt vom ???
 			{
 			
 			//var_dump($_POST);
 				$model->attributes=$_POST['Events'];
 
-
-				//$model_course->attributes=$_POST['Courses'];
-				//var_dump($_POST);
-				//$model_course->course_number=1;
-			    
-				//$model_course->RECIPE_idRECIPE=2; 
 				$model->USER_idUser=Yii::app()->user->getId();
-				// echo "<script> console.log(".$model_course.");</script>";
 				  
-				//$model_course->create(); 
-				if($model->save())
+				if($model->save())		// speichert Event model in DB und gibt bei Erfolg "true" zurück
 				 {
-				 
+				 // für jeden Gang / Course ein neues Courses Object, welches mit Werten gefüllt und dann gespeichert wird
 				 for ($i=0; $i< sizeof($_POST['Courses']); $i++){
 						
 						$model_course= new Courses; // einzelnes course
-
 						$model_course->EVENTS_idEVENTS=$model->idEVENTS;
 						$model_course->RECIPE_idRECIPE=$_POST['Courses'][$i]['idRECIPE'];
-						$model_course->course_number=$i+1;
-						
-						$model_course->save();
+						$model_course->course_number=$i+1;						
+						$model_course->save();		// speichern in DB
 					}
-				 
-				 
-				 //	$model_course->EVENTS_idEVENTS=$model->idEVENTS;
-				 	//if ($model_course->save())
-				 		//$this->redirect(array('view','id'=>$model->idEVENTS));
-				 } 
-					
+				 } 					
 			}
 			
 
-			$this->render('create',array(
-				'model'=>$model,
-				'model_courses'=>$model_courses,
+			$this->render('create',array(		// rendered create view von Events
+				'model'=>$model,					// event model wird übergeben
+				'model_courses'=>$model_courses,	// courses model wird übergeben
 			));
 
 		}
@@ -162,20 +147,16 @@ class EventsController extends Controller
 	 */
 	public function actionUpdate($id)
 	{
-		$model=$this->loadModel($id);
+		$model=$this->loadModel($id);		// lädt aktuelles Event Model
 		$model_courses= Courses::model()->findAllByAttributes(
-			array('EVENTS_idEVENTS'=>$model->idEVENTS)); 
-		//$idArray = new Array(); 
-		for( $i=0; $i<count($model_courses); $i++){
+			array('EVENTS_idEVENTS'=>$model->idEVENTS)); 	// lädt alle Courses, deren EVENTS_idEVENTS als Wert die ID des aktuellen Events haben
+// ein Wert, falls keine Gänge Existieren, damit keine Exception auftritt sondern lediglich ein nicht gesetztes Select-Menü
+		$idArray[0] = 0; 
+		for( $i=0; $i<count($model_courses); $i++){			// für jeden Gang / Course wird hier speziell nur die ID des jeweiligen Rezeptes in einen Array gespeichert
 			$idArray[$i]=$model_courses[$i]->RECIPE_idRECIPE; 
 		}
-		$_GET['courses_IDs']=$idArray; 
+		$_GET['courses_IDs']=$idArray; 		// damit die View später in JavaScript mit den Daten arbeiten kann, wird hier das Array mit den Courses bzw. Rezept IDs in eine GET Variable geschrieben
 		var_dump($idArray); 
-		
-		//var_dump($model); 
-	
-		//$model_coruses = new Array();		
-		// $model_course->EVENTS_idEVENTS=$model->idEVENTS;
 
 // TESTING: funktioniert
 // $params = array('events'=>$model);
@@ -187,33 +168,30 @@ class EventsController extends Controller
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
-		//if(Yii::app()->user->getId()==$model->USER_idUser){
 		$params = array('events'=>$model);
 		if(Yii::app()->user->checkAccess('updateOwnEvent',$params) || Yii::app()->user->checkAccess('updateEvent')){
 			if(isset($_POST['Events']))
 			{
-				$model->attributes=$_POST['Events'];
-				if($model->save())
-				for($d=0; $d<sizeof($model_courses); $d++){
-					$model_courses[$d]->delete(); 
+				$model->attributes=$_POST['Events'];	// holt sich aus der POST Variable Events die Daten des veränderten Formulars
+				if($model->save()){						// speichert das gesamte aktualisierte Event Object
+					for($d=0; $d<sizeof($model_courses); $d++){		// löscht zunächst alle bisherigen Courses
+						$model_courses[$d]->delete(); 
+					}
 				}
-				// bei denen, die geupdated wurden KEINEN neuen Course erstellen
-				// für neu erstellte müssen neue Courses erstellen
-				for ($i=0; $i< sizeof($_POST['Courses']); $i++){
+
+				for ($i=0; $i< sizeof($_POST['Courses']); $i++){	// erstellt für alle Courses im Fromular ein neues Course Object, dass in die DB gespeichert wird
 						
 						$model_course= new Courses; // einzelnes course
-
 						$model_course->EVENTS_idEVENTS=$model->idEVENTS;
 						$model_course->RECIPE_idRECIPE=$_POST['Courses'][$i]['idRECIPE'];
-						$model_course->course_number=$i+1;
-						
+						$model_course->course_number=$i+1;						
 						$model_course->save();
 					}
 				
-					$this->redirect(array('view','id'=>$model->idEVENTS));
+					$this->redirect(array('view','id'=>$model->idEVENTS));	// redirects to the Event page 
 			}
 
-			$this->render('update',array(
+			$this->render('update',array(		// renders update view
 				'model'=>$model,
 				'model_courses'=>$model_courses,
 			));
