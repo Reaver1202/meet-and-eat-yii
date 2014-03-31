@@ -8896,3 +8896,378 @@ Stack trace:
 REQUEST_URI=/meet-and-eat-yii/index.php?r=events/update&id=14
 in C:\xampp\htdocs\meet-and-eat-yii\protected\controllers\EventsController.php (170)
 in C:\xampp\htdocs\meet-and-eat-yii\index.php (13)
+2014/03/31 15:29:42 [error] [system.db.CDbCommand] CDbCommand::execute() fehlgeschlagen: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`meet-and-eat`.`guests`, CONSTRAINT `fk_GUESTS_EVENTS1` FOREIGN KEY (`EVENTS_idEVENTS`) REFERENCES `events` (`idEVENTS`) ON DELETE NO ACTION ON UPDATE NO ACTION). Der SQL-Ausdruck war: DELETE FROM `events` WHERE `events`.`idEVENTS`=2.
+in C:\xampp\htdocs\meet-and-eat-yii\protected\controllers\EventsController.php (223)
+in C:\xampp\htdocs\meet-and-eat-yii\index.php (13)
+2014/03/31 15:29:42 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand konnte das SQL-Statement nicht ausführen: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`meet-and-eat`.`guests`, CONSTRAINT `fk_GUESTS_EVENTS1` FOREIGN KEY (`EVENTS_idEVENTS`) REFERENCES `events` (`idEVENTS`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: DELETE FROM `events` WHERE `events`.`idEVENTS`=2' in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:358
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(1802): CDbCommand->execute()
+#1 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(1222): CActiveRecord->deleteByPk('2')
+#2 C:\xampp\htdocs\meet-and-eat-yii\protected\controllers\EventsController.php(223): CActiveRecord->delete()
+#3 [internal function]: EventsController->actionDelete('2')
+#4 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(EventsController), Array)
+#5 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(EventsController), Object(ReflectionMethod), Array)
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1116): CFilterChain->run()
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterPostOnly(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#16 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('delete')
+#18 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('events/delete')
+#19 C:\xampp\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#20 C:\xampp\htdocs\meet-and-eat-yii\index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/meet-and-eat-yii/index.php?r=events/delete&id=2
+HTTP_REFERER=http://localhost/meet-and-eat-yii/index.php?r=events/view&id=2
+---
+2014/03/31 16:02:16 [error] [exception.CException] exception 'CException' with message 'Weder Events noch zugehörige Behavior haben einen Scope "findById".' in C:\xampp\htdocs\yii\framework\base\CComponent.php:266
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(227): CComponent->__call('findById', Array)
+#1 C:\xampp\htdocs\meet-and-eat-yii\protected\controllers\GuestsController.php(100): CActiveRecord->__call('findById', Array)
+#2 C:\xampp\htdocs\meet-and-eat-yii\protected\controllers\GuestsController.php(100): Events->findById('11')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): GuestsController->actionCreateManual()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('createManual')
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('guests/createMa...')
+#14 C:\xampp\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\meet-and-eat-yii\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/meet-and-eat-yii/index.php?r=guests/createManual&id=11
+HTTP_REFERER=http://localhost/meet-and-eat-yii/index.php?r=events/view&id=11
+---
+2014/03/31 16:03:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Konnte den Request "index.php?r=events/view" nicht auflösen.' in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('index.php?r=eve...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\meet-and-eat-yii\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/meet-and-eat-yii/index.php?r=index.php?r=events/view&id=2
+---
+2014/03/31 16:03:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Konnte den Request "index.php?r=events/view" nicht auflösen.' in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('index.php?r=eve...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\meet-and-eat-yii\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/meet-and-eat-yii/index.php?r=index.php?r=events/view&id=2
+HTTP_REFERER=http://localhost/meet-and-eat-yii/index.php?r=events/view&id=10
+---
+2014/03/31 16:05:55 [error] [exception.CException] exception 'CException' with message 'Eigenschaft "Events.idEVENT ist nicht definiert.' in C:\xampp\htdocs\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(145): CComponent->__get('idEVENT')
+#1 C:\xampp\htdocs\meet-and-eat-yii\protected\controllers\GuestsController.php(114): CActiveRecord->__get('idEVENT')
+#2 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): GuestsController->actionCreateManual()
+#3 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('createManual')
+#12 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('guests/createMa...')
+#13 C:\xampp\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#14 C:\xampp\htdocs\meet-and-eat-yii\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/meet-and-eat-yii/index.php?r=guests/createManual&id=1
+HTTP_REFERER=http://localhost/meet-and-eat-yii/index.php?r=events/view&id=1
+---
+2014/03/31 16:07:21 [error] [exception.CException] exception 'CException' with message 'Weder Events noch zugehörige Behavior haben einen Scope "redirect".' in C:\xampp\htdocs\yii\framework\base\CComponent.php:266
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(227): CComponent->__call('redirect', Array)
+#1 C:\xampp\htdocs\meet-and-eat-yii\protected\controllers\GuestsController.php(114): CActiveRecord->__call('redirect', Array)
+#2 C:\xampp\htdocs\meet-and-eat-yii\protected\controllers\GuestsController.php(114): Events->redirect(Array)
+#3 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): GuestsController->actionCreateManual()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('createManual')
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('guests/createMa...')
+#14 C:\xampp\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\meet-and-eat-yii\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/meet-and-eat-yii/index.php?r=guests/createManual&id=9
+HTTP_REFERER=http://localhost/meet-and-eat-yii/index.php?r=events/view&id=9
+---
+2014/03/31 16:29:21 [error] [exception.CException] exception 'CException' with message 'Eigenschaft "User.approved ist nicht definiert.' in C:\xampp\htdocs\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(145): CComponent->__get('approved')
+#1 C:\xampp\htdocs\meet-and-eat-yii\protected\views\events\guests_view.php(13): CActiveRecord->__get('approved')
+#2 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\xampp\htdocs...')
+#3 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', Array, true)
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
+#5 C:\xampp\htdocs\meet-and-eat-yii\protected\views\events\view.php(101): CController->renderPartial('guests_view', Array)
+#6 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\xampp\htdocs...')
+#7 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', Array, true)
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
+#9 C:\xampp\htdocs\yii\framework\web\CController.php(782): CController->renderPartial('view', Array, true)
+#10 C:\xampp\htdocs\meet-and-eat-yii\protected\controllers\EventsController.php(82): CController->render('view', Array)
+#11 [internal function]: EventsController->actionView('15')
+#12 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(EventsController), Array)
+#13 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(EventsController), Object(ReflectionMethod), Array)
+#14 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#15 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#16 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#17 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#18 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#19 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#20 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#21 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#22 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('view')
+#23 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('events/view')
+#24 C:\xampp\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#25 C:\xampp\htdocs\meet-and-eat-yii\index.php(13): CApplication->run()
+#26 {main}
+REQUEST_URI=/meet-and-eat-yii/index.php?r=events/view&id=15
+---
+2014/03/31 16:30:26 [error] [php] Object of class User could not be converted to string (C:\xampp\htdocs\meet-and-eat-yii\protected\views\events\guests_view.php:13)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(869): EventsController->renderFile()
+#1 C:\xampp\htdocs\meet-and-eat-yii\protected\views\events\view.php(101): EventsController->renderPartial()
+#2 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require()
+#3 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): EventsController->renderInternal()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(869): EventsController->renderFile()
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(782): EventsController->renderPartial()
+#6 C:\xampp\htdocs\meet-and-eat-yii\protected\controllers\EventsController.php(82): EventsController->render()
+#7 unknown(0): EventsController->actionView()
+#8 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs()
+#9 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#11 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): EventsController->runAction()
+#12 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#13 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#14 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): EventsController->filterAccessControl()
+#15 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#16 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#17 C:\xampp\htdocs\yii\framework\web\CController.php(265): EventsController->runActionWithFilters()
+#18 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): EventsController->run()
+#19 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#20 C:\xampp\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#21 C:\xampp\htdocs\meet-and-eat-yii\index.php(13): CWebApplication->run()
+REQUEST_URI=/meet-and-eat-yii/index.php?r=events/view&id=15
+in C:\xampp\htdocs\meet-and-eat-yii\protected\views\events\guests_view.php (13)
+in C:\xampp\htdocs\meet-and-eat-yii\protected\views\events\view.php (101)
+in C:\xampp\htdocs\meet-and-eat-yii\protected\controllers\EventsController.php (82)
+2014/03/31 16:31:19 [error] [exception.CException] exception 'CException' with message 'Eigenschaft "User.approved ist nicht definiert.' in C:\xampp\htdocs\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(145): CComponent->__get('approved')
+#1 C:\xampp\htdocs\meet-and-eat-yii\protected\views\events\guests_view.php(13): CActiveRecord->__get('approved')
+#2 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\xampp\htdocs...')
+#3 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', Array, true)
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
+#5 C:\xampp\htdocs\meet-and-eat-yii\protected\views\events\view.php(101): CController->renderPartial('guests_view', Array)
+#6 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\xampp\htdocs...')
+#7 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', Array, true)
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
+#9 C:\xampp\htdocs\yii\framework\web\CController.php(782): CController->renderPartial('view', Array, true)
+#10 C:\xampp\htdocs\meet-and-eat-yii\protected\controllers\EventsController.php(82): CController->render('view', Array)
+#11 [internal function]: EventsController->actionView('15')
+#12 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(EventsController), Array)
+#13 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(EventsController), Object(ReflectionMethod), Array)
+#14 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#15 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#16 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#17 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#18 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#19 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#20 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#21 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#22 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('view')
+#23 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('events/view')
+#24 C:\xampp\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#25 C:\xampp\htdocs\meet-and-eat-yii\index.php(13): CApplication->run()
+#26 {main}
+REQUEST_URI=/meet-and-eat-yii/index.php?r=events/view&id=15
+---
+2014/03/31 16:39:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Das System konnte die angeforderte Action "acceptGuest" nicht finden.' in C:\xampp\htdocs\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('acceptGuest')
+#1 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('acceptGuest')
+#2 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('guests/acceptGu...')
+#3 C:\xampp\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\meet-and-eat-yii\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/meet-and-eat-yii/index.php?r=guests/acceptGuest&id=23
+HTTP_REFERER=http://localhost/meet-and-eat-yii/index.php?r=events/view&id=3
+---
+2014/03/31 16:41:28 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Sie sind nicht berechtigt, diese Aktion auszuführen.' in C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'Sie sind nicht ...')
+#1 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('acceptGuest')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('guests/acceptGu...')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\meet-and-eat-yii\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/meet-and-eat-yii/index.php?r=guests/acceptGuest&id=23
+HTTP_REFERER=http://localhost/meet-and-eat-yii/index.php?r=events/view&id=3
+---
+2014/03/31 16:41:48 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Sie sind nicht berechtigt, diese Aktion auszuführen.' in C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'Sie sind nicht ...')
+#1 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('acceptGuest')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('guests/acceptGu...')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\meet-and-eat-yii\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/meet-and-eat-yii/index.php?r=guests/acceptGuest&id=23
+HTTP_REFERER=http://localhost/meet-and-eat-yii/index.php?r=events/view&id=3
+---
+2014/03/31 16:50:56 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Sie sind nicht berechtigt, diese Aktion auszuführen.' in C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'Sie sind nicht ...')
+#1 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('declineGuest')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('guests/declineG...')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\meet-and-eat-yii\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/meet-and-eat-yii/index.php?r=guests/declineGuest&id=25
+HTTP_REFERER=http://localhost/meet-and-eat-yii/index.php?r=events/view&id=7
+---
+2014/03/31 16:51:13 [error] [exception.CException] exception 'CException' with message 'Eigenschaft "GuestsController.EVENTS_idEVENTS ist nicht definiert.' in C:\xampp\htdocs\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\htdocs\meet-and-eat-yii\protected\controllers\GuestsController.php(160): CComponent->__get('EVENTS_idEVENTS')
+#1 [internal function]: GuestsController->actionDeclineGuest('25')
+#2 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(GuestsController), Array)
+#3 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(GuestsController), Object(ReflectionMethod), Array)
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('declineGuest')
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('guests/declineG...')
+#14 C:\xampp\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\meet-and-eat-yii\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/meet-and-eat-yii/index.php?r=guests/declineGuest&id=25
+HTTP_REFERER=http://localhost/meet-and-eat-yii/index.php?r=events/view&id=7
+---
+2014/03/31 16:53:31 [error] [php] Undefined variable: model (C:\xampp\htdocs\meet-and-eat-yii\protected\controllers\GuestsController.php:155)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#1 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): GuestsController->runAction()
+#3 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#5 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): GuestsController->filterAccessControl()
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(265): GuestsController->runActionWithFilters()
+#9 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): GuestsController->run()
+#10 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#11 C:\xampp\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#12 C:\xampp\htdocs\meet-and-eat-yii\index.php(13): CWebApplication->run()
+REQUEST_URI=/meet-and-eat-yii/index.php?r=guests/declineGuest&id=26
+in C:\xampp\htdocs\meet-and-eat-yii\protected\controllers\GuestsController.php (155)
+in C:\xampp\htdocs\meet-and-eat-yii\index.php (13)
+2014/03/31 17:01:03 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action' in C:\xampp\htdocs\meet-and-eat-yii\protected\controllers\GuestsController.php:149
+Stack trace:
+#0 [internal function]: GuestsController->actionAcceptGuest('28')
+#1 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(GuestsController), Array)
+#2 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(GuestsController), Object(ReflectionMethod), Array)
+#3 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('acceptGuest')
+#12 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('guests/acceptGu...')
+#13 C:\xampp\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#14 C:\xampp\htdocs\meet-and-eat-yii\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/meet-and-eat-yii/index.php?r=guests/acceptGuest&id=28
+HTTP_REFERER=http://localhost/meet-and-eat-yii/index.php?r=events/view&id=8
+---
+2014/03/31 17:19:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Konnte den Request "js:document.location.href="index.php?r=guests/declineGuest" nicht auflösen.' in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js:document.loc...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\meet-and-eat-yii\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/meet-and-eat-yii/index.php?r=js:document.location.href=%22index.php?r=guests/declineGuest&id=6%22
+HTTP_REFERER=http://localhost/meet-and-eat-yii/index.php?r=events/view&id=1
+---
+2014/03/31 17:20:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Konnte den Request "js:document.location.href="index.php?r=guests/declineGuest" nicht auflösen.' in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js:document.loc...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\meet-and-eat-yii\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/meet-and-eat-yii/index.php?r=js:document.location.href=%22index.php?r=guests/declineGuest&id=6%22
+---
+2014/03/31 17:21:18 [error] [php] htmlspecialchars() expects parameter 1 to be string, array given (C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php:103)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php(158): renderAttributes()
+#1 C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php(465): tag()
+#2 C:\xampp\htdocs\meet-and-eat-yii\protected\views\events\guests_view.php(21): button()
+#3 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require()
+#4 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): EventsController->renderInternal()
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(869): EventsController->renderFile()
+#6 C:\xampp\htdocs\meet-and-eat-yii\protected\views\events\view.php(101): EventsController->renderPartial()
+#7 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require()
+#8 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): EventsController->renderInternal()
+#9 C:\xampp\htdocs\yii\framework\web\CController.php(869): EventsController->renderFile()
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(782): EventsController->renderPartial()
+#11 C:\xampp\htdocs\meet-and-eat-yii\protected\controllers\EventsController.php(82): EventsController->render()
+#12 unknown(0): EventsController->actionView()
+#13 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs()
+#14 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#15 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#16 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): EventsController->runAction()
+#17 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#18 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#19 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): EventsController->filterAccessControl()
+#20 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#21 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#22 C:\xampp\htdocs\yii\framework\web\CController.php(265): EventsController->runActionWithFilters()
+#23 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): EventsController->run()
+#24 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#25 C:\xampp\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#26 C:\xampp\htdocs\meet-and-eat-yii\index.php(13): CWebApplication->run()
+REQUEST_URI=/meet-and-eat-yii/index.php?r=events/view&id=1
+in C:\xampp\htdocs\meet-and-eat-yii\protected\views\events\guests_view.php (21)
+in C:\xampp\htdocs\meet-and-eat-yii\protected\views\events\view.php (101)
+in C:\xampp\htdocs\meet-and-eat-yii\protected\controllers\EventsController.php (82)

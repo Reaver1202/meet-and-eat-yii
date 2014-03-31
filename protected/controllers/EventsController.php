@@ -119,7 +119,8 @@ class EventsController extends Controller
 						$model_course->course_number=$i+1;						
 						$model_course->save();		// speichern in DB
 					}
-				 } 					
+				$this->redirect(array('view','id'=>$model->idEVENTS));
+				} 					
 			}
 			
 
@@ -216,8 +217,27 @@ class EventsController extends Controller
 	{
 		//if(Yii::app()->user->getId()==$model->USER_idUser){
 		$model=$this->loadModel($id);
-		$params = array('events'=>$model);
 		if(Yii::app()->user->checkAccess('deleteOwnEvent', $params) || Yii::app()->user->checkAccess('deleteEvent')){
+		//Courses zu bestimmtem Event in Array
+		$model_courses= Courses::model()->findAllByAttributes(
+			array('EVENTS_idEVENTS'=>$model->idEVENTS)); 
+			
+			
+			//Löschen der Courses im array
+		for($d=0; $d<sizeof($model_courses); $d++){		// löscht zunächst alle bisherigen Courses
+						$model_courses[$d]->delete(); 
+					}
+					
+		$model_guests= Guests::model()->findAllByAttributes(
+			array('EVENTS_idEVENTS'=>$model->idEVENTS)); 
+			//Löschen der Courses im array
+		for($d=0; $d<sizeof($model_guests); $d++){		// löscht zunächst alle bisherigen Courses
+						$model_guests[$d]->delete(); 
+					}			
+					
+		
+		$params = array('events'=>$model);
+		
 
 			$this->loadModel($id)->delete();
 

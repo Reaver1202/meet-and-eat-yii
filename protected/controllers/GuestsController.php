@@ -32,7 +32,7 @@ class GuestsController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','createManual'),
+				'actions'=>array('create','update','createManual','acceptGuest', 'declineGuest'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -95,22 +95,23 @@ class GuestsController extends Controller
 		
 			$model->EVENTS_idEVENTS=$_GET['id'];
 			$model->USER_idUser=Yii::app()->user->getId();;
-			$model->approved=1;
+			$model->approved=0;
 			
+			//$event = Events::model()->findByPk($model->EVENTS_idEVENTS); 
 			//$compare_model=Guests::model()->findByAttributes($id);
 			$compare_model=Guests::model()->find(array(
 				'select'=>'*',
-				'condition'=>'EVENTS_idEVENTS=:eventID',
-				'params'=>array(':eventID'=>$model->EVENTS_idEVENTS),
-				'condition'=>'USER_idUser=:userID',
-				'params'=>array(':userID'=>$model->USER_idUser),
+				'condition'=>'EVENTS_idEVENTS=:eventID AND USER_idUser=:userID',
+				'params'=>array(':eventID'=>$model->EVENTS_idEVENTS,':userID'=>$model->USER_idUser),
+				//'condition'=>'USER_idUser=:userID',
+				//'params'=>array(':userID'=>$model->USER_idUser),
 			));
 		 
 			
-			
+			var_dump($compare_model); 
 			if(!$compare_model){
 			if($model->save()){};
-				//$this->redirect(array('view','id'=>$model->idGUESTS));
+				$this->redirect(array('events/view','id'=>$model->EVENTS_idEVENTS));
 		}else{
 
       //  Yii::app()->user->setFlash('block-error', '<h4 class="alert-heading">Attention</h4><p>Lorem ipsum dolor sit amet, consetetur sadipscing elite...</p><p>'.EBootstrap::ibutton('Primary', '#', 'danger').' '.EBootstrap::ibutton('Default', '#').'</p>');
@@ -128,11 +129,53 @@ print '<script> window.confirm("Sie haben sich bereits eingetragen"); window.loc
 		//));
 	}
 	
+	public function actionAcceptGuest($id)
+	{
+		$model=$this->loadModel($id);
+		// check access, ob aktueller User ein Admin oder der Author des Events ist
+		$params = array('events'=>$model);
+		if(Yii::app()->user->checkAccess('updateOwnEvent',$params) || Yii::app()->user->checkAccess('updateEvent')){
+
+			// Uncomment the following line if AJAX validation is needed
+			// $this->performAjaxValidation($model);				
+			
+				$model->approved=1;
+				if($model->save())
+					$this->redirect(array('events/view','id'=>$model->EVENTS_idEVENTS));		
+
+			//$this->render('update',array(
+			//	'model'=>$model,
+		//	));
+		}else throw new CHttpException(403, 'You are not authorized to perform this action');
+	}
+	
+	public function actionDeclineGuest($id)
+	{
+		$model=$this->loadModel($id);
+		// check access, ob aktueller User ein Admin oder der Author des Events ist
+		$params = array('events'=>$model);
+		if(Yii::app()->user->checkAccess('updateOwnEvent',$params) || Yii::app()->user->checkAccess('updateEvent')){
+
+			$idEVENT=$model->EVENTS_idEVENTS; 
+			
+			$model->delete(); 
+			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+			//if(!isset($_GET['ajax']))
+			//		$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+			$this->redirect(array('events/view','id'=>$idEVENT));
+		}else throw new CHttpException(403, 'You are not authorized to perform this action');
+	}
+	
+	
+	
+	
 	/**
 	 * Updates a particular model.
 	 * If update is successful, the browser will be redirected to the 'view' page.
 	 * @param integer $id the ID of the model to be updated
 	 */
+	 
+	 
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
@@ -151,6 +194,7 @@ print '<script> window.confirm("Sie haben sich bereits eingetragen"); window.loc
 			'model'=>$model,
 		));
 	}
+
 
 	/**
 	 * Deletes a particular model.
