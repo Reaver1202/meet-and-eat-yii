@@ -57,6 +57,8 @@ $_GET['test']=CHtml::listData(Recipe::model()->findAll(),'idRECIPE','name');
 			//alert(js_array[4]);
     
 	console.log(document.getElementsByName("Courses[0][idRECIPE]")[0]);
+        // falls bisher Rezepte als Gänge beim Event angelegt wurden, soll die For-Schleife ausgeführt werden
+	// Die For-Schleife  die dazu all zuvor eingetragenen Gänge in einem Array zu speichern, sodass die Werte wiederhergestellt werden
 	if(typeof(document.getElementsByName("Courses[0][idRECIPE]")[0])!='undefined'){
 	
 		for(var x=0;x<=counter_courses-1; x++){
@@ -69,7 +71,9 @@ $_GET['test']=CHtml::listData(Recipe::model()->findAll(),'idRECIPE','name');
 		erzeugten Input-Feldern erhalten bleibt.
 		Momentan wird das Div neu geschrieben.
 	*/ 
+                var current_course = i+1;
 		div_courses.innerHTML+='<div class="row">'
+		+current_course+'. Gang: '
 		+'<select name="Courses['+i+'][idRECIPE]" id="x'+i+'">';
 		
 	    console.log(js_array); 
