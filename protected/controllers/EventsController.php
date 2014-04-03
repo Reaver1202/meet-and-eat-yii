@@ -217,35 +217,37 @@ class EventsController extends Controller
 	{
 		//if(Yii::app()->user->getId()==$model->USER_idUser){
 		$model=$this->loadModel($id);
-		if(Yii::app()->user->checkAccess('deleteOwnEvent', $params) || Yii::app()->user->checkAccess('deleteEvent')){
-		//Courses zu bestimmtem Event in Array
-		$model_courses= Courses::model()->findAllByAttributes(
-			array('EVENTS_idEVENTS'=>$model->idEVENTS)); 
-			
-			
-			//Löschen der Courses im array
-		for($d=0; $d<sizeof($model_courses); $d++){		// löscht zunächst alle bisherigen Courses
-						$model_courses[$d]->delete(); 
-					}
-					
-		$model_guests= Guests::model()->findAllByAttributes(
-			array('EVENTS_idEVENTS'=>$model->idEVENTS)); 
-			//Löschen der Courses im array
-		for($d=0; $d<sizeof($model_guests); $d++){		// löscht zunächst alle bisherigen Courses
-						$model_guests[$d]->delete(); 
-					}			
-					
-		
 		$params = array('events'=>$model);
+		if(Yii::app()->user->checkAccess('deleteOwnEvent', $params) || Yii::app()->user->checkAccess('deleteEvent')){
+		
+			//Courses zu bestimmtem Event in Array
+			$model_courses= Courses::model()->findAllByAttributes(
+				array('EVENTS_idEVENTS'=>$model->idEVENTS)); 		
+				//Löschen der Courses im array
+			for($d=0; $d<sizeof($model_courses); $d++){		// löscht zunächst alle bisherigen Courses
+				$model_courses[$d]->delete(); 
+			}
+						
+			$model_guests= Guests::model()->findAllByAttributes(
+				array('EVENTS_idEVENTS'=>$model->idEVENTS)); 
+				//Löschen der Courses im array
+			for($d=0; $d<sizeof($model_guests); $d++){		// löscht zunächst alle bisherigen Courses
+				$model_guests[$d]->delete(); 
+			}			
+					
 		
 
 			$this->loadModel($id)->delete();
-
+//############################
+//TO DO rediret zum ListView
+			
+			
 			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 			if(!isset($_GET['ajax']))
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
 
-		}else $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));		
+		//}else $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));	
+		} else throw new CHttpException(403, 'You are not authorized to perform this action');		
 				
 	}
 

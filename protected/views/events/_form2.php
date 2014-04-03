@@ -71,7 +71,8 @@ $_GET['test']=CHtml::listData(Recipe::model()->findAll(),'idRECIPE','name');
 		div_courses.innerHTML+='<div class="row">'
 				+'<select name="Courses['+i+'][idRECIPE]" id="x'+i+'">';
 		
-		
+		//#####################################################################################
+		//fehler beim selct fehlen die letzten rezepte
 		 
 			select_Recipe = document.getElementById('x'+i);
 			console.log(select_Recipe);
