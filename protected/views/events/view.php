@@ -49,45 +49,51 @@ if (Yii::app()->user->checkAccess('manageEvent'))
 
 ?>
 
-<h1>Event by <?php echo $model->uSERIdUser->Username; ?></h1>
-
-<?php 
-    $this->widget('zii.widgets.CDetailView', array(
-	'data'=>$model,
-	'attributes'=>array(
-            //'idEVENTS',
-            'date',
-            //'USER_idUser',
-            'description:html',
-            'max_guests',
-            array(
-                'label' => 'Maximum number <br>of Guests',
-                'value' => $model->max_guests
-            )
-	),
-    )); 
-?>
+<div id="view_event">
+    <?php 
+//        $this->widget('zii.widgets.CDetailView', array(
+//    	'data'=>$model,
+//    	'attributes'=>array(
+//                //'idEVENTS',
+//                'date',
+//                //'USER_idUser',
+//                'description:html',
+//                'max_guests',
+//                array(
+//                    'label' => 'Maximum number <br>of Guests',
+//                    'value' => $model->max_guests
+//                )
+//    	),
+//        )); 
+    ?>
+    <?php 
+            $this->renderPartial('view_event',array(
+                'post'=>$model,
+                'event'=>$model,
+            )); 
+    ?>
+</div>
 
 <!--user_view--> 
-<div id="user">
+<div id="view_user">
       <?php
-        $this->widget('zii.widgets.CDetailView', array(
-	'data'=>$model->uSERIdUser,
-	'attributes'=>array(
-            'Username',
-            'first_name',
-            'last_name',
-            'city',
-            'street',
-            'house_number',
-            'year_of_birth',
-            'score',
-	),
-            ));
+//        $this->widget('zii.widgets.CDetailView', array(
+//            'data'=>$model->uSERIdUser,
+//            'attributes'=>array(
+//                'Username',
+//                'first_name',
+//                'last_name',
+//                'city',
+//                'street',
+//                'house_number',
+//                'year_of_birth',
+//                'score',
+//            ),
+//        ));
     ?>
 
     <?php 
-        $this->renderPartial('user_view',array(
+        $this->renderPartial('view_user',array(
             'post'=>$model,
             'user'=>$model->uSERIdUser,
         )); 
@@ -95,9 +101,8 @@ if (Yii::app()->user->checkAccess('manageEvent'))
 </div>
 
 <!--recipe_view-->
-<div id="recipe">
-
-        <?php $this->renderPartial('recipe_view',array(
+<div id="view_recipes">
+        <?php $this->renderPartial('view_recipe',array(
             'post'=>$model,
             'course'=>$model->courses,
         )); ?>
@@ -105,9 +110,8 @@ if (Yii::app()->user->checkAccess('manageEvent'))
 </div>
 
 <!--guests_view-->
-<div id="guests">
-	
-        <?php $this->renderPartial('guests_view',array(
+<div id="view_guests">	
+        <?php $this->renderPartial('view_guests',array(
             'post'=>$model,
             'guests'=>$model->guests,
         )); ?>
@@ -121,5 +125,5 @@ if (Yii::app()->user->checkAccess('manageEvent'))
 
 <!--Teilnehmen button, der guests/createManual aufruft und einen neuen Teilnehmer 
 anlegt, der aber noch vom Author angenommen werden muss-->
-<?php echo CHtml::button('Teilnehmen', array('onclick' => 'js:document.location.href="index.php?r=guests/createManual&id='.$model->idEVENTS.'"')); ?>
+<?php echo CHtml::button('Teilnehmen', array('class'=>'Button_event','onclick' => 'js:document.location.href="index.php?r=guests/createManual&id='.$model->idEVENTS.'"')); ?>
 

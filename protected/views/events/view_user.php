@@ -1,7 +1,5 @@
-<h1>Veranstalter:</h1>
-
-
-<div class="Event_Author" id="<?php echo $user->idUser; ?>">
+<div class="Author" id="<?php echo $user->idUser; ?>">
+    <h1>Veranstalter:</h1>
     <?php echo "Nutzername: ".$user->Username."<br>";
         echo $user->first_name." ".$user->last_name."<br>";
         echo "Wohnort: ".$user->city."<br>";
@@ -10,6 +8,5 @@
         echo "Jahrgang: ".$user->year_of_birth."<br>";
         echo "Bewertung: ".$user->score;
     ?> 
-
 </div>
 
