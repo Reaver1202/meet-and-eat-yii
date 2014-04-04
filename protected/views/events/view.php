@@ -49,52 +49,64 @@ if (Yii::app()->user->checkAccess('manageEvent'))
 
 ?>
 
-<h1>View Events #<?php echo $model->idEVENTS; ?></h1>
+<h1>Event by <?php echo $model->uSERIdUser->Username; ?></h1>
 
-<?php $this->widget('zii.widgets.CDetailView', array(
+<?php 
+    $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
-		'idEVENTS',
-		'date',
-		'USER_idUser',
-		'description',
-		'max_guests',
+            //'idEVENTS',
+            'date',
+            //'USER_idUser',
+            'description:html',
+            'max_guests',
+            array(
+                'label' => 'Maximum number <br>of Guests',
+                'value' => $model->max_guests
+            )
 	),
-)); ?>
+    )); 
+?>
 
+<!--user_view--> 
 <div id="user">
+      <?php
+        $this->widget('zii.widgets.CDetailView', array(
+	'data'=>$model->uSERIdUser,
+	'attributes'=>array(
+            'Username',
+            'first_name',
+            'last_name',
+            'city',
+            'street',
+            'house_number',
+            'year_of_birth',
+            'score',
+	),
+            ));
+    ?>
+
     <?php 
-		
-	?>
-       
-        <?php $this->renderPartial('user_view',array(
+        $this->renderPartial('user_view',array(
             'post'=>$model,
             'user'=>$model->uSERIdUser,
-        )); ?>
-   
+        )); 
+    ?>   
 </div>
 
+<!--recipe_view-->
 <div id="recipe">
-    <?php 
-		//$course_tbl = $model->courses;
-		//foreach $course_tbl
-		//echo $course_tbl->idCOURSES;
-		
-		//$test=Recipe::model()->findBySql("SELECT * FROM Recipe WHERE idRecipe = ".course_tbl->RECIPE_idRECIPE.";");
-		//echo $test;
-	?>
-		
-		
+
         <?php $this->renderPartial('recipe_view',array(
             'post'=>$model,
             'course'=>$model->courses,
         )); ?>
    
 </div>
+
+<!--guests_view-->
 <div id="guests">
-    
-		
-		
+	
         <?php $this->renderPartial('guests_view',array(
             'post'=>$model,
             'guests'=>$model->guests,
@@ -107,6 +119,7 @@ if (Yii::app()->user->checkAccess('manageEvent'))
     }
 ?>
 
-
+<!--Teilnehmen button, der guests/createManual aufruft und einen neuen Teilnehmer 
+anlegt, der aber noch vom Author angenommen werden muss-->
 <?php echo CHtml::button('Teilnehmen', array('onclick' => 'js:document.location.href="index.php?r=guests/createManual&id='.$model->idEVENTS.'"')); ?>
 
