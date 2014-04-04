@@ -130,7 +130,7 @@ $_GET['test']=CHtml::listData(Recipe::model()->findAll(),'idRECIPE','name');
 	
 	
 	<div class="row buttons">
-		<button type="button" onClick="generateNewCourse()">New Course</button>
+		<button type="button" classe="Button_event" onClick="generateNewCourse()">New Course</button>
 	</div>
 	
 	
