@@ -15,6 +15,15 @@
 .table_row_odd{
     background-color: #B7D6E7;    
 }
+.table_cell_label{
+    font-weight: bold;
+    color: #000;
+    width: 150px;
+}
+.table_cell_value{
+    
+}
+
 .Button_event{
     background-color: #000;
     color: #099;
