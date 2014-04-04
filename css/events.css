@@ -1,5 +1,19 @@
-.Name{
-    background-color: #000;
+.Div_information{
+    border-radius: 10px;
+    border-color: #06c;
+    border-width: 3px;
+    padding: 5px;
+    margin-bottom: 10px;
+    background-color: #B7D6E7;
+}
+.table_information{
+    margin: 0px;
+}
+.table_row_even{
+    background-color: #fff;
+}
+.table_row_odd{
+    background-color: #B7D6E7;    
 }
 .Button_event{
     background-color: #000;

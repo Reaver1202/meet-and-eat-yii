@@ -1,3 +1,6 @@
+<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/<?php echo $this->id;?>.css" />
+
+
 <?php
 /* @var $this EventsController */
 /* @var $model Events */

@@ -9629,3 +9629,31 @@ Stack trace:
 #12 {main}
 REQUEST_URI=/meet-and-eat-yii/index.php?r=events/delete
 ---
+2014/04/04 14:33:04 [error] [php] Undefined variable: recipe (C:\xampp\htdocs\MaE\protected\views\events\view_recipe.php:15)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(869): EventsController->renderFile()
+#1 C:\xampp\htdocs\MaE\protected\views\events\view.php(108): EventsController->renderPartial()
+#2 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require()
+#3 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): EventsController->renderInternal()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(869): EventsController->renderFile()
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(782): EventsController->renderPartial()
+#6 C:\xampp\htdocs\MaE\protected\controllers\EventsController.php(82): EventsController->render()
+#7 unknown(0): EventsController->actionView()
+#8 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs()
+#9 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#11 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): EventsController->runAction()
+#12 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#13 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#14 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): EventsController->filterAccessControl()
+#15 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#16 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#17 C:\xampp\htdocs\yii\framework\web\CController.php(265): EventsController->runActionWithFilters()
+#18 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): EventsController->run()
+#19 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#20 C:\xampp\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#21 C:\xampp\htdocs\MaE\index.php(13): CWebApplication->run()
+REQUEST_URI=/MaE/index.php?r=events/view&id=2
+in C:\xampp\htdocs\MaE\protected\views\events\view_recipe.php (15)
+in C:\xampp\htdocs\MaE\protected\views\events\view.php (108)
+in C:\xampp\htdocs\MaE\protected\controllers\EventsController.php (82)
