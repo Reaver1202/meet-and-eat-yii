@@ -13,7 +13,8 @@
     ?>    
             <td class="table_cell_label"> <?php $course_numer = $i+1; echo $course_numer.'. Course'; ?> </td>
             <?php $recipe =$course->rECIPEIdRECIPE; ?>
-            <td class="table_cell_value"><?php echo "<a href='http://localhost/meet-and-eat-yii/index.php?r=recipe/view&id=".$recipe->idRECIPE."'>".$recipe->name."</a>" ?></td>
+            <td class="table_cell_value"><?php echo CHtml::link($recipe->name, array('recipe/view', 'id'=>$recipe->idRECIPE)); ?></td>
+                        
         </tr>
         
     
