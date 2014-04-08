@@ -90,7 +90,7 @@ class EventsController extends Controller
 	{
 		$model=new Events;				// Events Object das an View via render() übergeben wird
 		$model_courses= new Courses; 	// Courses Object das an View via render() übergeben wird
-
+               // $model_picturesrecipe = new PicturesRecipe; 
 
 //var_dump($params);
 //var_dump(Yii::app()->user->checkAccess('createEvent'));
@@ -126,7 +126,8 @@ class EventsController extends Controller
 
 			$this->render('create',array(		// rendered create view von Events
 				'model'=>$model,					// event model wird übergeben
-				'model_courses'=>$model_courses,	// courses model wird übergeben
+				'model_courses'=>$model_courses,
+                                //'model_picturesrecipe'=>$model_picturesrecipe,                                        // courses model wird übergeben
 			));
 
 		}

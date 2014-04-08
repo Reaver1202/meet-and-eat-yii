@@ -63,25 +63,40 @@ class RecipeController extends Controller
 	public function actionCreate()
 	{
 		$model=new Recipe;
-		$model_ingredents= new Ingredents; // für den Array in der $_POSTS Variable
-		
-
+		$model_ingredents= new Ingredents; // fï¿½r den Array in der $_POSTS Variable
+		$model_picturesrecipe = new PicturesRecipe; 
+                
+              
+                var_dump($_POST);
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Recipe'],$_POST['Ingredents']))
+		if(isset($_POST['Recipe'],$_POST['Ingredents'],$_POST['PicturesRecipe']))
 		{
+                    var_dump($_POST);
+                    
+                      //haardcoded pfad
+                $savestring='C:\xampp\htdocs\meet-and-eat-yii-git\\';
+                $model_picturesrecipe->attributes=$_POST['PicturesRecipe'];
+                $model_picturesrecipe->file_name=  CUploadedFile::getInstance($model_picturesrecipe, 'file_name');
+                $savestring.=$model_picturesrecipe->file_name->getName();
+                    
 			$model->attributes=$_POST['Recipe'];
 
-			var_dump($_POST['Recipe']);
-			var_dump($_POST['Ingredents']);
-			var_dump($_POST['Ingredents']['0']);
+//			var_dump($_POST['Recipe']);
+//			var_dump($_POST['Ingredents']);
+//			var_dump($_POST['Ingredents']['0']);
 			
 			//setting the current user id while creating a new recipe
 			//$model->attributes->USER_idUser=Yii::app()->user->getId();
 			if($model->save())
 			{
-			//´go through array of ingredents and save it 
+                            //save picture
+                            $model_picturesrecipe->RECIPE_idRECIPE=$model->idRECIPE;
+                            $model_picturesrecipe->save();
+                            $model_picturesrecipe->file_name->saveAs($savestring);
+                            
+			//ï¿½go through array of ingredents and save it 
 				for ($i=0; $i< sizeof($_POST['Ingredents']); $i++){
 					
 					$model_ingredent= new Ingredents; // einzelnes Ingredent
@@ -94,7 +109,7 @@ class RecipeController extends Controller
 				}
 				
 				
-				$this->redirect(array('view','id'=>$model->idRECIPE));	
+				//$this->redirect(array('view','id'=>$model->idRECIPE));	
 			}
 				
 		}
@@ -102,6 +117,7 @@ class RecipeController extends Controller
 		$this->render('create',array(
 			'model'=>$model,
 			'model_ingredents'=>$model_ingredents,
+                        'model_picturesrecipe'=>$model_picturesrecipe,
 		));
 	}
 
@@ -179,7 +195,7 @@ class RecipeController extends Controller
 	public function loadModel($id)
 	{
 		$model=Recipe::model()->findByPk($id);
-		//model für die Zutaten 
+		//model fï¿½r die Zutaten 
 		//$model_ingredents=Ingredents::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');

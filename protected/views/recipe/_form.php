@@ -14,6 +14,9 @@
 	// There is a call to performAjaxValidation() commented in generated controller code.
 	// See class documentation of CActiveForm for details on this.
 	'enableAjaxValidation'=>false,
+        'htmlOptions'=>array(
+                'enctype'=>'multipart/form-data'),
+        
 )); ?>
 
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
@@ -40,8 +43,13 @@
 		<?php echo $form->error($model,'number_of_persons'); ?>
 	</div>
 	
-<!-- Input felder für die Zutat, welche in ihre eigene Tabelle soll -->
+<!-- Input felder fï¿½r die Zutat, welche in ihre eigene Tabelle soll -->
 
+<div class="row" id='picturesrecipe'>
+			<?php  echo $form->labelEx($model_picturesrecipe,'file_name'); ?>
+			<?php  echo CHtml::activeFileField($model_picturesrecipe, 'file_name'); ?>
+			<?php  echo $form->error($model_picturesrecipe,'file_name'); ?>
+		</div>
 	
 
 	<div id="div_ingredents">
@@ -78,6 +86,8 @@
 			amount_description: <input type="text" name="Ingredents[0][amount_description]">
 		</div>
 	</div>
+
+
 
 	<script>
 		var counter_ingredents=0;
@@ -133,7 +143,7 @@
 	//	console.log(counter_ingredents); 
 	//	var_dump(previous_input[x]); 
 	//	}
-		//   < weil counter vorher erhöt wird ( nach dem speichern ) 
+		//   < weil counter vorher erhï¿½t wird ( nach dem speichern ) 
 for(var y=0; y<counter_ingredents; y++){
 		document.getElementsByName("Ingredents["+y+"][name]")[0].value=previous_input_name[y]; 
 		document.getElementsByName("Ingredents["+y+"][amount]")[0].value=previous_input_amount[y]; 
@@ -151,7 +161,7 @@ for(var y=0; y<counter_ingredents; y++){
 		<button type="button" onClick="generateNewIngredent()">New Ingredent</button>
 	</div>
 
-<!--nur ein test für die mehrfache eingabe von zutaten -->
+<!--nur ein test fï¿½r die mehrfache eingabe von zutaten -->
 
 
 
@@ -176,4 +186,4 @@ for(var y=0; y<counter_ingredents; y++){
 
 
 
-<!-- beginnn der Form-inputs, mit listenfunktion um direkt mehrere tutaten einzugeben  für die Zutaten  http://www.yiiframework.com/doc/guide/1.1/en/form.table-->	
+<!-- beginnn der Form-inputs, mit listenfunktion um direkt mehrere tutaten einzugeben  fï¿½r die Zutaten  http://www.yiiframework.com/doc/guide/1.1/en/form.table-->	

@@ -15,4 +15,4 @@ $this->menu=array(
 
 <h1>Create Recipe</h1>
 <!--rendern des 2ten modells -->
-<?php $this->renderPartial('_form', array('model'=>$model, 'model_ingredents'=>$model_ingredents)); ?>
+<?php $this->renderPartial('_form', array('model'=>$model, 'model_ingredents'=>$model_ingredents,'model_picturesrecipe'=>$model_picturesrecipe)); ?>
