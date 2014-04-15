@@ -105,7 +105,7 @@ class Events extends CActiveRecord
     //methode zum setzen des Benutzernames
   
             # set time on creating posts
-            $this->USER_idUser=Yii::app()->user->getId();
+          //  $this->USER_idUser=Yii::app()->user->getId();
             
         
         return true;
