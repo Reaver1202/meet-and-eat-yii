@@ -45,11 +45,16 @@
 	
 <!-- Input felder f�r die Zutat, welche in ihre eigene Tabelle soll -->
 
-<div class="row" id='picturesrecipe'>
-			<?php  echo $form->labelEx($model_picturesrecipe,'file_name'); ?>
-			<?php  echo CHtml::activeFileField($model_picturesrecipe, 'file_name'); ?>
-			<?php  echo $form->error($model_picturesrecipe,'file_name'); ?>
-		</div>
+        <div class="row" id='picturesrecipe'>
+            <?php  
+                // checks if model_picturerecipe was set before 
+                if (isset($model_picturesrecipe)){
+                    echo $form->labelEx($model_picturesrecipe,'file_name'); 
+                    echo CHtml::activeFileField($model_picturesrecipe, 'file_name'); 
+                    echo $form->error($model_picturesrecipe,'file_name'); 
+                }
+            ?>
+        </div>
 	
 
 	<div id="div_ingredents">

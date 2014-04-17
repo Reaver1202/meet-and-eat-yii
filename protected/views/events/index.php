@@ -88,6 +88,6 @@ echo '</select>';
 )); 
 
 $list_data=User::model()->findAllBySQL('Select city from user');
-var_dump($list_data[0]->city);
+
 
 ?>

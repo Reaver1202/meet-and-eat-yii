@@ -26,23 +26,24 @@ class RecipeController extends Controller
 	 */
 	public function accessRules()
 	{
-		return array(
-			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
-				'users'=>array('*'),
-			),
-			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
-				'users'=>array('@'),
-			),
-			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
-			),
-			array('deny',  // deny all users
-				'users'=>array('*'),
-			),
-		);
+        return array(
+            array('allow', // allow all users to perform 'index' and 'view' actions
+                'actions' => array('index', 'view','indexFiltered'), // actions, die users oder roles verwenden dürfen
+                'users' => array('*'), // spezielle User auswählen; HIER: alle
+                'roles' => array('reader'), // spezielle Rolle: reader
+            ),
+            array('allow', // allow authenticated user to perform 'create' 'update' 'delete' actions
+                'actions' => array('create', 'update', 'delete'),
+                'roles' => array('author'),
+            ),
+            array('allow', // allow admin user to perform all actions
+                'actions' => array('create', 'update', 'delete', 'admin'),
+                'roles' => array('admin'),
+            ),
+            array('deny', // deny all users
+                'users' => array('*'),
+            ),
+        );
 	}
 
 	/**
@@ -51,6 +52,15 @@ class RecipeController extends Controller
 	 */
 	public function actionView($id)
 	{
+// TESTING: funktioniert
+// $model = $this->loadModel($id);
+// $params = array('recipe'=>$model);
+// var_dump(Yii::app()->user->checkAccess('readRecipe'));
+// var_dump(Yii::app()->user->checkAccess('createRecipe'));
+// var_dump(Yii::app()->user->checkAccess('updateOwnRecipe',$params));
+// var_dump(Yii::app()->user->checkAccess('deleteOwnRecipe',$params));
+// var_dump(Yii::app()->user->checkAccess('manageRecipe'));            
+            
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
 		));
@@ -67,7 +77,7 @@ class RecipeController extends Controller
 		$model_picturesrecipe = new PicturesRecipe; 
                 
               
-                var_dump($_POST);
+
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
@@ -75,11 +85,11 @@ class RecipeController extends Controller
 		{
                     var_dump($_POST);
                     
-                      //haardcoded pfad
-                $savestring='C:\xampp\htdocs\meet-and-eat-yii-git\\';
-                $model_picturesrecipe->attributes=$_POST['PicturesRecipe'];
-                $model_picturesrecipe->file_name=  CUploadedFile::getInstance($model_picturesrecipe, 'file_name');
-                $savestring.=$model_picturesrecipe->file_name->getName();
+
+                    $savestring=dirname(Yii::app()->request->scriptFile)."\\";
+                    $model_picturesrecipe->attributes=$_POST['PicturesRecipe'];
+                    $model_picturesrecipe->file_name=  CUploadedFile::getInstance($model_picturesrecipe, 'file_name');
+                    $savestring.=$model_picturesrecipe->file_name->getName();
                     
 			$model->attributes=$_POST['Recipe'];
 
@@ -109,7 +119,7 @@ class RecipeController extends Controller
 				}
 				
 				
-				//$this->redirect(array('view','id'=>$model->idRECIPE));	
+				$this->redirect(array('view','id'=>$model->idRECIPE));	
 			}
 				
 		}

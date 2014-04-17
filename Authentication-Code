@@ -14,20 +14,79 @@ $bizRule='return Yii::app()->user->id==$params["events"]->USER_idUser;';
 $task=$auth->createTask('deleteOwnEvent','delete a Event by author himself',$bizRule);
 $task->addChild('deleteEvent');
  
+
+
+$auth->createOperation('createRecipe','create a Recipe');
+$auth->createOperation('readRecipe','read a Recipe');
+$auth->createOperation('updateRecipe','update a Recipe');
+$auth->createOperation('deleteRecipe','delete a Recipe');
+$auth->createOperation('manageRecipe','manage a Recipe');
+ 
+$bizRule='return Yii::app()->user->id==$params["recipe"]->USER_idUser;';
+$task=$auth->createTask('updateOwnRecipe','update a Recipe by author himself',$bizRule);
+$task->addChild('updateRecipe');
+
+$bizRule='return Yii::app()->user->id==$params["recipe"]->USER_idUser;';
+$task=$auth->createTask('deleteOwnRecipe','delete a Recipe by author himself',$bizRule);
+$task->addChild('deleteRecipe');
+
+
+
+
+$auth->createOperation('createUser','create a User');
+$auth->createOperation('readUser','read a User');
+$auth->createOperation('updateUser','update a User');
+$auth->createOperation('deleteUser','delete a User');
+$auth->createOperation('manageUser','manage a User');
+ 
+$bizRule='return Yii::app()->user->id==$params["user"]->idUser;';
+$task=$auth->createTask('readOwnUser','read own User profile',$bizRule);
+$task->addChild('readUser');
+
+$bizRule='return Yii::app()->user->id==$params["user"]->idUser;';
+$task=$auth->createTask('updateOwnUser','update own User profile',$bizRule);
+$task->addChild('updateUser');
+
+$bizRule='return Yii::app()->user->id==$params["user"]->idUser;';
+$task=$auth->createTask('deleteOwnUser','delete own User profile',$bizRule);
+$task->addChild('deleteUser');
+
+
+
+
 $role=$auth->createRole('reader');
 $role->addChild('readEvent');
+$role->addChild('readRecipe');
+
  
 $role=$auth->createRole('author');
 $role->addChild('reader');
 $role->addChild('createEvent');
 $role->addChild('updateOwnEvent');
 $role->addChild('deleteOwnEvent');
+$role->addChild('createRecipe');
+$role->addChild('updateOwnRecipe');
+$role->addChild('deleteOwnRecipe');
+$role->addChild('readOwnUser');
+$role->addChild('updateOwnUser');
+$role->addChild('deleteOwnUser');
+
 
 $role=$auth->createRole('admin');
 $role->addChild('author');
 $role->addChild('updateEvent');
 $role->addChild('deleteEvent');
 $role->addChild('manageEvent');
+$role->addChild('updateRecipe');
+$role->addChild('deleteRecipe');
+$role->addChild('manageRecipe');
+$role->addChild('createUser');
+$role->addChild('readUser');
+$role->addChild('updateUser');
+$role->addChild('deleteUser');
+$role->addChild('manageUser');
+
+
 
 $auth->assign('admin','1');
 $auth->assign('reader','2');

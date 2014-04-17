@@ -26,27 +26,24 @@ class UserController extends Controller
 	 */
 	public function accessRules()
 	{
-		return array(
-			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view','create'),
-				'users'=>array('*'),
-			),
-			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('update'),
-				'users'=>array('@'),
-			),
-                    array('deny', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create'),
-				'users'=>array('@'),
-			),
-			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
-			),
-			array('deny',  // deny all users
-				'users'=>array('*'),
-			),
-		);
+        return array(
+//            array('allow', // allow all users to perform 'index' and 'view' actions
+//                'actions' => array(), // actions, die users oder roles verwenden dürfen
+//                'users' => array('*'), // spezielle User auswählen; HIER: alle
+//                'roles' => array('reader'), // spezielle Rolle: reader
+//            ),
+            array('allow', // allow authenticated user to perform 'create' 'update' 'delete' actions
+                'actions' => array('view','update','delete'),
+                'roles' => array('author'),
+            ),
+            array('allow', // allow admin user to perform all actions
+                'actions' => array('index', 'view','indexFiltered','create', 'update', 'delete', 'admin'),
+                'roles' => array('admin'),
+            ),
+            array('deny', // deny all users
+                'users' => array('*'),
+            ),
+        );
 	}
 
 	/**
@@ -55,9 +52,24 @@ class UserController extends Controller
 	 */
 	public function actionView($id)
 	{
-		$this->render('view',array(
-			'model'=>$this->loadModel($id),
-		));
+// TESTING: funktioniert
+ $model = $this->loadModel($id);
+ $params = array('user'=>$model);
+ var_dump(Yii::app()->user->checkAccess('readUser'));
+ var_dump(Yii::app()->user->checkAccess('createUser'));
+ var_dump(Yii::app()->user->checkAccess('readOwnUser',$params));
+ var_dump(Yii::app()->user->checkAccess('updateOwnUser',$params));
+ var_dump(Yii::app()->user->checkAccess('deleteOwnUser',$params));
+ var_dump(Yii::app()->user->checkAccess('manageUser')); 
+ 
+                $model = $this->loadModel($id);
+                $params = array('user'=>$model);
+                if (Yii::app()->user->checkAccess('readOwnUser',$params)){
+                    $this->render('view',array(
+                            'model'=>$this->loadModel($id),
+                    ));
+                }else
+                    throw new CHttpException(403, 'You are not authorized to perform this action');
 	}
 
 	/**
@@ -77,7 +89,7 @@ class UserController extends Controller
 			$model->attributes=$_POST['User'];
 			if($model->save()){
 				$auth=Yii::app()->authManager;
-$auth->assign('author',$model->idUser);
+                                $auth->assign('author',$model->idUser);
 				$this->redirect(array('view','id'=>$model->idUser));
                         }
 		}
@@ -99,8 +111,9 @@ $auth->assign('author',$model->idUser);
 	 */
 	public function actionUpdate($id)
 	{
-		$model=$this->loadModel($id);
-
+            $model=$this->loadModel($id);
+            $params = array('user'=>$model);
+            if (Yii::app()->user->checkAccess('updateOwnUser',$params)){
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
@@ -114,6 +127,8 @@ $auth->assign('author',$model->idUser);
 		$this->render('update',array(
 			'model'=>$model,
 		));
+            }else
+                    throw new CHttpException(403, 'You are not authorized to perform this action');
 	}
 
 	/**
@@ -123,11 +138,15 @@ $auth->assign('author',$model->idUser);
 	 */
 	public function actionDelete($id)
 	{
-		$this->loadModel($id)->delete();
+            $model=$this->loadModel($id);
+            $params = array('user'=>$model);
+            if (Yii::app()->user->checkAccess('deleteOwnUser',$params)){
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));             
+            }else
+                    throw new CHttpException(403, 'You are not authorized to perform this action');
 	}
 
 	/**

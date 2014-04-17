@@ -29,7 +29,12 @@ $this->menu=array(
 	),
 )); ?>
 
-<?php echo CHtml::image($model->picturesRecipes[0]->file_name) ?>
+<?php 
+// checks if pictures are present
+if ($model->picturesRecipes){
+    echo CHtml::image($model->picturesRecipes[0]->file_name);
+}
+?>
 
 <div id="ingredents">
     <?php //if($model->commentCount>=1) //bereich um Zutatetn �ber eigenen view zu rendern : ?>
