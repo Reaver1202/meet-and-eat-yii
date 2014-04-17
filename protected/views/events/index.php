@@ -30,11 +30,36 @@ if (Yii::app()->user->checkAccess('manageEvent'))
 ?>
 
 <h1>Events</h1>
-
+<script>
+    function filter(){
+        
+       // document.getElementById('city').value();
+   var test = document.location;
+   test= test.href;
+test=test.split("?");
+test=test[0]
+        window.location=(test+"?r=events/indexFiltered&city="+document.getElementById('city').value);
+        //alert(document.getElementById('city').value);
+    }
+    function filter_clear(){
+        
+       // document.getElementById('city').value();
+   var test = document.location;
+   test= test.href;
+test=test.split("?");
+test=test[0]
+        window.location=(test+"?r=events/index");
+        //alert(document.getElementById('city').value);
+    }
+</script>
 Nach Stadt filtern
 
-<?php
+<input type="text" id="city"></input>
+<input type="button" id="filter" value="anwenden" onclick="filter();"></input>
+<input type="button" id="filter" value="alle zeigen" onclick="filter_clear();"></input>
 
+<?php
+/*
 echo '<select>';
 //$counter =countBySql('Select city from user');
 $list_data=User::model()->findAllBySQL('Select city from user');
@@ -44,6 +69,8 @@ for($i=0; $i<3;$i++){
     echo '</option>';
 }
 echo '</select>';
+*/
+
 
 ?>
 
@@ -62,4 +89,5 @@ echo '</select>';
 
 $list_data=User::model()->findAllBySQL('Select city from user');
 var_dump($list_data[0]->city);
+
 ?>
