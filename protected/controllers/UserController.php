@@ -28,11 +28,15 @@ class UserController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array('index','view','create'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('update'),
+				'users'=>array('@'),
+			),
+                    array('deny', // allow authenticated user to perform 'create' and 'update' actions
+				'actions'=>array('create'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -62,6 +66,7 @@ class UserController extends Controller
 	 */
 	public function actionCreate()
 	{
+            if(!Yii::app()->user->getId()){
 		$model=new User;
 
 		// Uncomment the following line if AJAX validation is needed
@@ -70,17 +75,19 @@ class UserController extends Controller
 		if(isset($_POST['User']))
 		{
 			$model->attributes=$_POST['User'];
-			if($model->save())
+			if($model->save()){
 				$auth=Yii::app()->authManager;
 $auth->assign('author',$model->idUser);
 				$this->redirect(array('view','id'=>$model->idUser));
+                        }
 		}
 
 		$this->render('create',array(
 			'model'=>$model,
 		));
-	
-
+            }else{
+                $this->redirect(array('index'));
+            }
 		
 		
 	}

@@ -34,7 +34,7 @@
 				array('label'=>'Recipes', 'url'=>array('/recipe/index')),
 				array('label'=>'Courses', 'url'=>array('/courses/index')),
 				array('label'=>'Users', 'url'=>array('/user/index')),
-
+                                array('label'=>'Mein Profil', 'url'=>array('/user/view&id='.Yii::app()->user->getId()), 'visible'=>!Yii::app()->user->isGuest),
 				//array('label'=>'Contact', 'url'=>array('/site/contact')),
 				array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
 				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)

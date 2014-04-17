@@ -11193,3 +11193,136 @@ Stack trace:
 #12 {main}
 REQUEST_URI=/meet-and-eat-yii-git/index.php?r=events/indexFiltered
 ---
+2014/04/17 10:36:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Das System konnte die angeforderte Action "createUser" nicht finden.' in C:\xampp\htdocs\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('createUser')
+#1 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('createUser')
+#2 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('user/createUser')
+#3 C:\xampp\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\meet-and-eat-yii-git\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/meet-and-eat-yii-git/index.php?r=user/createUser
+HTTP_REFERER=http://localhost/meet-and-eat-yii-git/index.php?r=site/login
+---
+2014/04/17 10:43:44 [error] [php] Undefined variable: auth (C:\xampp\htdocs\meet-and-eat-yii-git\protected\controllers\UserController.php:76)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): UserController->runAction()
+#1 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): UserController->filterAccessControl()
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): UserController->runActionWithFilters()
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): UserController->run()
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\meet-and-eat-yii-git\index.php(13): CWebApplication->run()
+REQUEST_URI=/meet-and-eat-yii-git/index.php?r=user/create
+in C:\xampp\htdocs\meet-and-eat-yii-git\protected\controllers\UserController.php (76)
+in C:\xampp\htdocs\meet-and-eat-yii-git\index.php (13)
+2014/04/17 11:11:17 [error] [php] Undefined variable: auth (C:\xampp\htdocs\meet-and-eat-yii-git\protected\controllers\UserController.php:80)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): UserController->runAction()
+#1 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): UserController->filterAccessControl()
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): UserController->runActionWithFilters()
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): UserController->run()
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\meet-and-eat-yii-git\index.php(13): CWebApplication->run()
+REQUEST_URI=/meet-and-eat-yii-git/index.php?r=user/create
+in C:\xampp\htdocs\meet-and-eat-yii-git\protected\controllers\UserController.php (80)
+in C:\xampp\htdocs\meet-and-eat-yii-git\index.php (13)
+2014/04/17 11:14:05 [error] [system.db.CDbCommand] CDbCommand::execute() fehlgeschlagen: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'author-4' for key 'PRIMARY'. Der SQL-Ausdruck war: INSERT INTO `AuthAssignment` (`itemname`, `userid`, `bizrule`, `data`) VALUES (:itemname, :userid, :bizrule, :data).
+in C:\xampp\htdocs\meet-and-eat-yii-git\protected\controllers\UserController.php (80)
+in C:\xampp\htdocs\meet-and-eat-yii-git\index.php (13)
+2014/04/17 11:14:05 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand konnte das SQL-Statement nicht ausführen: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'author-4' for key 'PRIMARY'. The SQL statement executed was: INSERT INTO `AuthAssignment` (`itemname`, `userid`, `bizrule`, `data`) VALUES (:itemname, :userid, :bizrule, :data)' in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:358
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(1250): CDbCommand->execute(Array)
+#1 C:\xampp\htdocs\yii\framework\web\auth\CDbAuthManager.php(263): CDbCommand->insert('AuthAssignment', Array)
+#2 C:\xampp\htdocs\meet-and-eat-yii-git\protected\controllers\UserController.php(80): CDbAuthManager->assign('author', '4')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): UserController->actionCreate()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('create')
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('user/create')
+#14 C:\xampp\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\meet-and-eat-yii-git\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/meet-and-eat-yii-git/index.php?r=user/create
+HTTP_REFERER=http://localhost/meet-and-eat-yii-git/index.php?r=user/create
+---
+2014/04/17 11:20:17 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in C:\xampp\htdocs\meet-and-eat-yii-git\protected\controllers\UserController.php:170
+Stack trace:
+#0 C:\xampp\htdocs\meet-and-eat-yii-git\protected\controllers\UserController.php(59): UserController->loadModel('')
+#1 [internal function]: UserController->actionView('')
+#2 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(UserController), Array)
+#3 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(UserController), Object(ReflectionMethod), Array)
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('view')
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('user/view')
+#14 C:\xampp\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\meet-and-eat-yii-git\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/meet-and-eat-yii-git/index.php?r=user/view&id=
+HTTP_REFERER=http://localhost/meet-and-eat-yii-git/index.php?r=site/login
+---
+2014/04/17 11:20:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in C:\xampp\htdocs\meet-and-eat-yii-git\protected\controllers\UserController.php:170
+Stack trace:
+#0 C:\xampp\htdocs\meet-and-eat-yii-git\protected\controllers\UserController.php(59): UserController->loadModel('')
+#1 [internal function]: UserController->actionView('')
+#2 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(UserController), Array)
+#3 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(UserController), Object(ReflectionMethod), Array)
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('view')
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('user/view')
+#14 C:\xampp\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\meet-and-eat-yii-git\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/meet-and-eat-yii-git/index.php?r=user/view&id=
+HTTP_REFERER=http://localhost/meet-and-eat-yii-git/index.php?r=user/view&id=
+---
+2014/04/17 11:20:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in C:\xampp\htdocs\meet-and-eat-yii-git\protected\controllers\UserController.php:170
+Stack trace:
+#0 C:\xampp\htdocs\meet-and-eat-yii-git\protected\controllers\UserController.php(59): UserController->loadModel('')
+#1 [internal function]: UserController->actionView('')
+#2 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(UserController), Array)
+#3 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(UserController), Object(ReflectionMethod), Array)
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('view')
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('user/view')
+#14 C:\xampp\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\meet-and-eat-yii-git\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/meet-and-eat-yii-git/index.php?r=user/view&id=
+---
