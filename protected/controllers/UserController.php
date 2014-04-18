@@ -53,18 +53,18 @@ class UserController extends Controller
 	public function actionView($id)
 	{
 // TESTING: funktioniert
- $model = $this->loadModel($id);
- $params = array('user'=>$model);
- var_dump(Yii::app()->user->checkAccess('readUser'));
- var_dump(Yii::app()->user->checkAccess('createUser'));
- var_dump(Yii::app()->user->checkAccess('readOwnUser',$params));
- var_dump(Yii::app()->user->checkAccess('updateOwnUser',$params));
- var_dump(Yii::app()->user->checkAccess('deleteOwnUser',$params));
- var_dump(Yii::app()->user->checkAccess('manageUser')); 
+// $model = $this->loadModel($id);
+// $params = array('user'=>$model);
+// var_dump(Yii::app()->user->checkAccess('readUser'));
+// var_dump(Yii::app()->user->checkAccess('createUser'));
+// var_dump(Yii::app()->user->checkAccess('readOwnUser',$params));
+// var_dump(Yii::app()->user->checkAccess('updateOwnUser',$params));
+// var_dump(Yii::app()->user->checkAccess('deleteOwnUser',$params));
+// var_dump(Yii::app()->user->checkAccess('manageUser')); 
  
                 $model = $this->loadModel($id);
                 $params = array('user'=>$model);
-                if (Yii::app()->user->checkAccess('readOwnUser',$params)){
+                if (Yii::app()->user->checkAccess('readOwnUser',$params) || Yii::app()->user->checkAccess('readUser')){
                     $this->render('view',array(
                             'model'=>$this->loadModel($id),
                     ));
@@ -113,7 +113,7 @@ class UserController extends Controller
 	{
             $model=$this->loadModel($id);
             $params = array('user'=>$model);
-            if (Yii::app()->user->checkAccess('updateOwnUser',$params)){
+            if (Yii::app()->user->checkAccess('updateOwnUser',$params) || Yii::app()->user->checkAccess('updateUser')){
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
@@ -140,7 +140,7 @@ class UserController extends Controller
 	{
             $model=$this->loadModel($id);
             $params = array('user'=>$model);
-            if (Yii::app()->user->checkAccess('deleteOwnUser',$params)){
+            if (Yii::app()->user->checkAccess('deleteOwnUser',$params) || Yii::app()->user->checkAccess('deleteUser')){
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))
