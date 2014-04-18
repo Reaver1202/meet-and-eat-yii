@@ -2,11 +2,11 @@
 /* @var $this EventsController */
 /* @var $model Events */
 
-$this->breadcrumbs=array(
-	'Events'=>array('index'),
-	$model->idEVENTS=>array('view','id'=>$model->idEVENTS),
-	'Update',
-);
+//$this->breadcrumbs=array(
+//	'Events'=>array('index'),
+//	$model->idEVENTS=>array('view','id'=>$model->idEVENTS),
+//	'Update',
+//);
 
 // ###########################################################
 // ###### Menu Column2 on the right ##########################

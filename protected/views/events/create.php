@@ -2,10 +2,10 @@
 /* @var $this EventsController */
 /* @var $model Events */
 
-$this->breadcrumbs=array(
-	'Events'=>array('index'),
-	'Create',
-);
+//$this->breadcrumbs=array(
+//	'Events'=>array('index'),
+//	'Create',
+//);
 
 // ###########################################################
 // ###### Menu Column2 on the right ##########################

@@ -2,10 +2,10 @@
 /* @var $this EventsController */
 /* @var $model Events */
 
-$this->breadcrumbs=array(
-	'Events'=>array('index'),
-	'Manage',
-);
+//$this->breadcrumbs=array(
+//	'Events'=>array('index'),
+//	'Manage',
+//);
 
 
 // ###########################################################

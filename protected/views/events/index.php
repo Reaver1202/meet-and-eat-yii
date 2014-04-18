@@ -2,9 +2,9 @@
 /* @var $this EventsController */
 /* @var $dataProvider CActiveDataProvider */
 
-$this->breadcrumbs=array(
-	'Events',
-);
+//$this->breadcrumbs=array(
+//	'Events',
+//);
 
 // ###########################################################
 // ###### Menu Column2 on the right ##########################
