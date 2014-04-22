@@ -5,10 +5,10 @@
 /* @var $this EventsController */
 /* @var $model Events */
 
-$this->breadcrumbs=array(
-	'Events'=>array('index'),
-	$model->idEVENTS,
-);
+//$this->breadcrumbs=array(
+//	'Events'=>array('index'),
+//	$model->idEVENTS,
+//);
 
 
 // ###########################################################

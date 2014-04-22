@@ -34,20 +34,20 @@ if (Yii::app()->user->checkAccess('manageEvent'))
     function filter(){
         
        // document.getElementById('city').value();
-   var test = document.location;
-   test= test.href;
-test=test.split("?");
-test=test[0]
+    var test = document.location;
+    test= test.href;
+    test=test.split("?");
+    test=test[0]
         window.location=(test+"?r=events/indexFiltered&city="+document.getElementById('city').value);
         //alert(document.getElementById('city').value);
     }
     function filter_clear(){
         
        // document.getElementById('city').value();
-   var test = document.location;
-   test= test.href;
-test=test.split("?");
-test=test[0]
+    var test = document.location;
+    test= test.href;
+    test=test.split("?");
+    test=test[0]
         window.location=(test+"?r=events/index");
         //alert(document.getElementById('city').value);
     }

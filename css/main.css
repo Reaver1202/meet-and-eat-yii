@@ -78,7 +78,9 @@ body
 #mainmenu ul li a:hover, #mainmenu ul li.active a
 {
 	background-color:#FFF;
-	text-decoration:none;        
+	text-decoration:none;   
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
 }
 
 div.flash-error, div.flash-notice, div.flash-success
