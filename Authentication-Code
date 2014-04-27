@@ -57,6 +57,7 @@ $task->addChild('deleteUser');
 $role=$auth->createRole('reader');
 $role->addChild('readEvent');
 $role->addChild('readRecipe');
+$role->addChild('createUser');
 
  
 $role=$auth->createRole('author');
@@ -88,7 +89,7 @@ $role->addChild('manageUser');
 
 
 
-$auth->assign('admin','1');
-$auth->assign('reader','2');
-$auth->assign('reader','3');
+$auth->assign('author','1');
+$auth->assign('author','2');
+$auth->assign('admin','3');
 $auth->assign('author','4');

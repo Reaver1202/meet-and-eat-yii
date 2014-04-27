@@ -6,6 +6,10 @@
     margin-bottom: 10px;
     background-color: #B7D6E7;
 }
+
+.grid-view table.items th{
+    background: #EBFFEB;
+}
 .table_information{
     margin: 0px;
 }

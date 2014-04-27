@@ -6,11 +6,14 @@ $this->breadcrumbs=array(
 	'Users'=>array('index'),
 	'Create',
 );
-
-$this->menu=array(
-	array('label'=>'List User', 'url'=>array('index')),
-	array('label'=>'Manage User', 'url'=>array('admin')),
-);
+// role: admin
+if (Yii::app()->user->checkAccess('manageUser'))
+{
+    $this->menu=array(
+            array('label'=>'List User', 'url'=>array('index')),
+            array('label'=>'Manage User', 'url'=>array('admin')),
+    );
+}
 ?>
 
 <h1>Create User</h1>

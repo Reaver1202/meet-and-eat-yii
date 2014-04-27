@@ -230,4 +230,5 @@ div.search-form
 {
 	background: #FFF;
         font: bold 14px Arial;
+        border-radius: 5px;
 }
