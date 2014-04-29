@@ -51,7 +51,11 @@ if (Yii::app()->user->checkAccess('manageEvent'))
 
 
 ?>
+<h1>Meet-and-Eat Event organized by <?php echo $model->uSERIdUser->Username; ?></h1>
 
+<table width="100%">
+<tr>
+<td width="50%">
 <div id="view_event">
     <?php 
 //        $this->widget('zii.widgets.CDetailView', array(
@@ -76,7 +80,10 @@ if (Yii::app()->user->checkAccess('manageEvent'))
             )); 
     ?>
 </div>
-
+</td>
+<td width="15%">    
+</td>
+<td widht="35%">
 <!--user_view--> 
 <div id="view_user">
       <?php
@@ -102,7 +109,10 @@ if (Yii::app()->user->checkAccess('manageEvent'))
         )); 
     ?>   
 </div>
-
+</td>
+</tr>
+<tr>
+<td colspan="3">
 <!--recipe_view-->
 <div id="view_recipes">
         <?php $this->renderPartial('view_recipe',array(
@@ -111,6 +121,10 @@ if (Yii::app()->user->checkAccess('manageEvent'))
         )); ?>
    
 </div>
+</td>    
+</tr>
+<tr>
+<td colspan="3">
 
 <!--guests_view-->
 <div id="view_guests">	
@@ -120,6 +134,9 @@ if (Yii::app()->user->checkAccess('manageEvent'))
         )); ?>
    
 </div>
+</td>
+</tr>
+</table>
 <?php
     foreach(Yii::app()->user->getFlashes() as $key => $message) {
         echo '<div class="flash-' . $key . '">' . $message . "</div>\n";

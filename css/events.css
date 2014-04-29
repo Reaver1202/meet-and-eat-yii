@@ -4,7 +4,7 @@
     border-width: 3px;
     padding: 5px;
     margin-bottom: 10px;
-    background-color: #B7D6E7;
+    background-color: #00b800;
 }
 
 .grid-view table.items th{
@@ -12,29 +12,73 @@
 }
 .table_information{
     margin: 0px;
+/*    border-collapse: collapse;
+    border-radius: 10px;*/
 }
 .table_row_even{
     background-color: #fff;
 }
 .table_row_odd{
-    background-color: #B7D6E7;    
+    background-color: #EBFFEB;    
 }
 .table_cell_label{
     font-weight: bold;
     color: #000;
-    width: 150px;
-    border-radius: 10px;
+    width: 100px;
+/*    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;*/
 }
 .table_cell_value{
-    border-radius: 10px;
+    /*border-radius: 10px;*/
+/*    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;*/
 }
 
 .Button_event{
-    background-color: #000;
-    color: #099;
+    background-color: #00b800;
+    color: #FFF;
     border-radius: 5px;
 }
 
 .portlet-title{
+    
+}
+
+.table_event_head{
+    background-color:#00b800;
+}
+.table_event_head a:hover{
+    color: #000;
+    background: #FFF;
+    font: bold 14px Arial;
+    border-radius: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.table_event_head a{
+    color:#000;
+}
+A:link {text-decoration: none}
+A:visited {text-decoration: none}
+A:active {text-decoration: none}
+A:hover {text-decoration: none}
+
+div.view
+{
+	padding: 0px;
+	margin: 10px 0;
+	border: 1px solid #00b800;
+}
+
+#view_event{
+
+}
+#view_user{
+
+}
+#view_recipes{
+    
+}
+#view_guests{
     
 }
