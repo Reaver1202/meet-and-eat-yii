@@ -5,17 +5,17 @@
 
 <div class="view">
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('idEVENTS')); ?>:</b>
-	<?php echo CHtml::link(CHtml::encode($data->idEVENTS), array('view', 'id'=>$data->idEVENTS)); ?>
+	<b><?php echo CHtml::link(CHtml::encode($data->USER_idUser)."´s Event", array('view', 'id'=>$data->idEVENTS)); ?></b>
+	
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('date')); ?>:</b>
 	<?php echo CHtml::encode($data->date); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('USER_idUser')); ?>:</b>
+<!--	<b><?php echo CHtml::encode($data->getAttributeLabel('USER_idUser')); ?>:</b>
 	<?php echo CHtml::encode($data->USER_idUser); ?>
-	<br />
+	<br />-->
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('description')); ?>:</b>
 	<?php echo CHtml::encode($data->description); ?>
