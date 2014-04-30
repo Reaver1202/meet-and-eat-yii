@@ -11,21 +11,25 @@ body
 {
 	margin-top: 5px;
 	margin-bottom: 5px;
-	background: white;
+	background: #00b800;
 	border: 3px solid #00b800;
 }
 
 #header
-{
+{        
 	margin: 0;
 	padding: 0;
-	border-top: 3px solid #00b800;
+	border: 3px solid #EBFFEB;
         background: #EBFFEB;
+        border-radius: 10px;
 }
 
 #content
 {
     padding: 20px;
+    background: #EBFFEB;
+    border: 3px solid #FFF;
+    border-radius: 10px;
 }
 
 #sidebar

@@ -32,7 +32,7 @@ class GuestsController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','createManual','acceptGuest', 'declineGuest'),
+				'actions'=>array('create','update','createManual', 'acceptGuest','declineGuest'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -132,9 +132,13 @@ print '<script> window.confirm("Sie haben sich bereits eingetragen"); window.loc
 	public function actionAcceptGuest($id)
 	{
 		$model=$this->loadModel($id);
+//                $model_event=  Events::model()->findAllByAttributes( array('idEVENTS' => $model->EVENTS_idEVENTS));
+                var_dump($model_event);
 		// check access, ob aktueller User ein Admin oder der Author des Events ist
 		$params = array('events'=>$model);
-		if(Yii::app()->user->checkAccess('updateOwnEvent',$params) || Yii::app()->user->checkAccess('updateEvent')){
+//                var_dump(Yii::app()->user->checkAccess('updateOwnEvent',$params) );
+//                var_dump(Yii::app()->user->checkAccess('updateEvent'));
+		//if(Yii::app()->user->checkAccess('updateOwnEvent',$params) || Yii::app()->user->checkAccess('updateEvent')){
 
 			// Uncomment the following line if AJAX validation is needed
 			// $this->performAjaxValidation($model);				
@@ -146,7 +150,7 @@ print '<script> window.confirm("Sie haben sich bereits eingetragen"); window.loc
 			//$this->render('update',array(
 			//	'model'=>$model,
 		//	));
-		}else throw new CHttpException(403, 'You are not authorized to perform this action');
+		//}else throw new CHttpException(403, 'You are not authorized to perform this action');
 	}
 	
 	public function actionDeclineGuest($id)
@@ -154,7 +158,7 @@ print '<script> window.confirm("Sie haben sich bereits eingetragen"); window.loc
 		$model=$this->loadModel($id);
 		// check access, ob aktueller User ein Admin oder der Author des Events ist
 		$params = array('events'=>$model);
-		if(Yii::app()->user->checkAccess('updateOwnEvent',$params) || Yii::app()->user->checkAccess('updateEvent')){
+		//if(Yii::app()->user->checkAccess('updateOwnEvent',$params) || Yii::app()->user->checkAccess('updateEvent')){
 
 			$idEVENT=$model->EVENTS_idEVENTS; 
 			
@@ -163,7 +167,7 @@ print '<script> window.confirm("Sie haben sich bereits eingetragen"); window.loc
 			//if(!isset($_GET['ajax']))
 			//		$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
 			$this->redirect(array('events/view','id'=>$idEVENT));
-		}else throw new CHttpException(403, 'You are not authorized to perform this action');
+		//}else throw new CHttpException(403, 'You are not authorized to perform this action');
 	}
 	
 	

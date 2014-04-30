@@ -1,10 +1,10 @@
 .Div_information{
     border-radius: 10px;
-    border-color: #06c;
-    border-width: 3px;
+/*    border-color: #06c;
+    border-width: 3px;*/
     padding: 5px;
-    margin-bottom: 10px;
-    background-color: #00b800;
+    margin-bottom: 20px;
+    background-color: #00CC00;
 }
 
 .grid-view table.items th{
@@ -20,6 +20,26 @@
 }
 .table_row_odd{
     background-color: #EBFFEB;    
+}
+.table_row_top-left{
+    border-top-left-radius: 10px;
+}
+.table_row_top-right{
+    border-top-right-radius: 10px;
+}
+.table_row_bottom-left{
+    border-bottom-left-radius: 10px;
+}
+.table_row_bottom-right{
+    border-bottom-right-radius: 10px;
+}
+.table_row_single-left{
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+.table_row_single-right{
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 .table_cell_label{
     font-weight: bold;
@@ -65,9 +85,11 @@ A:hover {text-decoration: none}
 
 div.view
 {
-	padding: 0px;
+	padding: 5px;
 	margin: 10px 0;
 	border: 1px solid #00b800;
+        background: #00b800;
+        border-radius: 10px;
 }
 
 #view_event{

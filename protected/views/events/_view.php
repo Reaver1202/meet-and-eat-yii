@@ -17,10 +17,10 @@
             </th>
         </tr>
         <tr class="table_row table_row_even">
-            <td width="20%">
+            <td width="20%" class="table_row_top-left">
                 <b><?php echo CHtml::encode($data->getAttributeLabel('date')); ?>:</b>
             </td>
-            <td>
+            <td class="table_row_top-right">
                 <?php echo CHtml::encode(date("d.m.Y",strtotime($data->date))); ?>
             </td>
         </tr>
@@ -33,10 +33,10 @@
             </td>
         </tr>
         <tr class="table_row table_row_even">
-            <td>
+            <td class="table_row_bottom-left">
                 <b><?php echo CHtml::encode($data->getAttributeLabel('max_guests')); ?>:</b>
             </td>
-            <td>
+            <td class="table_row_bottom-right">
                 <?php echo CHtml::encode($data->max_guests); ?>
             </td>
         </tr>
