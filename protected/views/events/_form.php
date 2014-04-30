@@ -1,3 +1,4 @@
+<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/<?php echo $this->id;?>.css" />
 <?php
 /* @var $this EventsController */
 /* @var $model Events */
@@ -130,12 +131,12 @@ $_GET['test']=CHtml::listData(Recipe::model()->findAll(),'idRECIPE','name');
 	
 	
 	<div class="row buttons">
-		<button type="button" classe="Button_event" onClick="generateNewCourse()">New Course</button>
+		<button type="button" class="Button_event" onClick="generateNewCourse()">New Course</button>
 	</div>
 	
 	
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save',array("class"=>"Button_event")); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

@@ -108,7 +108,7 @@ class GuestsController extends Controller
 			));
 		 
 			
-			var_dump($compare_model); 
+			//var_dump($compare_model); 
 			if(!$compare_model){
 			if($model->save()){};
 				$this->redirect(array('events/view','id'=>$model->EVENTS_idEVENTS));
@@ -132,8 +132,6 @@ print '<script> window.confirm("Sie haben sich bereits eingetragen"); window.loc
 	public function actionAcceptGuest($id)
 	{
 		$model=$this->loadModel($id);
-//                $model_event=  Events::model()->findAllByAttributes( array('idEVENTS' => $model->EVENTS_idEVENTS));
-                var_dump($model_event);
 		// check access, ob aktueller User ein Admin oder der Author des Events ist
 		$params = array('events'=>$model);
 //                var_dump(Yii::app()->user->checkAccess('updateOwnEvent',$params) );

@@ -12577,3 +12577,30 @@ REQUEST_URI=/MaE/index.php?r=events/view&id=19
 in C:\xampp\htdocs\MaE\protected\views\events\view_event.php (6)
 in C:\xampp\htdocs\MaE\protected\views\events\view.php (80)
 in C:\xampp\htdocs\MaE\protected\controllers\EventsController.php (75)
+2014/04/30 20:59:07 [error] [php] Undefined variable: model_event (C:\xampp\htdocs\MaE\protected\controllers\GuestsController.php:136)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#1 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): GuestsController->runAction()
+#3 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#5 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): GuestsController->filterAccessControl()
+#6 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(265): GuestsController->runActionWithFilters()
+#9 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): GuestsController->run()
+#10 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#11 C:\xampp\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#12 C:\xampp\htdocs\MaE\index.php(13): CWebApplication->run()
+REQUEST_URI=/MaE/index.php?r=guests/acceptGuest&id=24
+in C:\xampp\htdocs\MaE\protected\controllers\GuestsController.php (136)
+in C:\xampp\htdocs\MaE\index.php (13)
+2014/04/30 21:20:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "recipes/index".' in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('recipes/index')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\MaE\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/MaE/index.php?r=recipes/index
+HTTP_REFERER=http://localhost/MaE/index.php?r=site/index
+---

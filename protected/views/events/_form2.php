@@ -2,10 +2,10 @@
 /* @var $this EventsController */
 /* @var $model Events */
 /* @var $form CActiveForm */
-//alle verfügbaren Rezepte für DropDown 
+//alle verfï¿½gbaren Rezepte fï¿½r DropDown 
 $_GET['test']=CHtml::listData(Recipe::model()->findAll(),'idRECIPE','name');
 //var_dump($_GET['test']); 
-//bisher ausgewählte Rezepte
+//bisher ausgewï¿½hlte Rezepte
 //$_GET['courses']=$_GET; 
 //var_dump($_GET['courses']); 
 
@@ -173,12 +173,12 @@ $_GET['test']=CHtml::listData(Recipe::model()->findAll(),'idRECIPE','name');
 	
 	
 	<div class="row buttons">
-		<button type="button" onClick="generateNewCourse()">New Course</button>
+		<button type="button" class="Button_event" onClick="generateNewCourse()">New Course</button>
 	</div>
 	
 	
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save', array("class"=>"Button_event")); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

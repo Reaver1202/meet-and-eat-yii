@@ -82,7 +82,7 @@ echo '</select>';
     
 	'itemView'=>'_view',
 )); 
-
+// Liste von allen Städten der User --> für Filter
 $list_data=User::model()->findAllBySQL('Select city from user');
 
 
