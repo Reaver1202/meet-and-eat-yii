@@ -8,15 +8,22 @@
 }
 
 .grid-view table.items th{
-    background: #EBFFEB;
+    background: #00CC00;
+    color: #FFF;
 }
 .table_information{
     margin: 0px;
 /*    border-collapse: collapse;
     border-radius: 10px;*/
 }
+.grid-view table.items tr.even{
+    background-color: #fff;
+}
 .table_row_even{
     background-color: #fff;
+}
+.grid-view table.items tr.odd{
+    background-color: #EBFFEB;  
 }
 .table_row_odd{
     background-color: #EBFFEB;    
@@ -59,11 +66,6 @@
     color: #FFF;
     border-radius: 5px;
 }
-
-.portlet-title{
-    
-}
-
 .table_event_head{
     background-color:#00b800;
 }
@@ -90,6 +92,11 @@ div.view
 	border: 1px solid #00b800;
         background: #00b800;
         border-radius: 10px;
+}
+.grid-view{
+    background-color: #00b800;
+    border: 3px solid #00b800;
+    border-radius: 10px;
 }
 
 #view_event{

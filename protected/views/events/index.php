@@ -52,11 +52,11 @@ if (Yii::app()->user->checkAccess('manageEvent'))
         //alert(document.getElementById('city').value);
     }
 </script>
-Nach Stadt filtern
+Filter for City:
 
 <input type="text" id="city"></input>
-<input type="button" id="filter" value="anwenden" onclick="filter();"></input>
-<input type="button" id="filter" value="alle zeigen" onclick="filter_clear();"></input>
+<input type="button" class="Button_event" id="filter" value="filter" onclick="filter();"></input>
+<input type="button" class="Button_event" id="filter" value="show all" onclick="filter_clear();"></input>
 
 <?php
 /*

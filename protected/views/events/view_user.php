@@ -10,7 +10,7 @@
             <td class="table_cell_value"><?php echo $user->first_name." ".$user->last_name ?></td>
         </tr>
         <tr class="table_row table_row_even">
-            <td class="table_cell_label">Wohnort:</td>
+            <td class="table_cell_label">City:</td>
             <td class="table_cell_value"><?php echo $user->city ?></td>
         </tr>
         <tr class="table_row table_row_odd">
