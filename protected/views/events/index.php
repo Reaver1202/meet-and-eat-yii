@@ -78,11 +78,7 @@ echo '</select>';
 
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,
-    'enableSorting'=>1,
-    'sortableAttributes'=>array(
-                        'description' => 'description',               
-                        ),
-    
+ 
     
 	'itemView'=>'_view',
 )); 
