@@ -47,7 +47,7 @@ $this->breadcrumbs=array(
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton('Login'); ?>
-               <?php echo CHtml::Button('Regsdsdistrieren', array('onclick' => 'js:document.location.href="index.php?r=user/create"'));?>
+               <?php echo CHtml::Button('Registrieren', array('onclick' => 'js:document.location.href="index.php?r=user/create"'));?>
 	</div>
 
 <?php $this->endWidget(); ?>

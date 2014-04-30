@@ -32,7 +32,7 @@ $this->menu=array(
 <?php 
 // checks if pictures are present
 if ($model->picturesRecipes){
-    echo CHtml::image($model->picturesRecipes[0]->file_name);
+    echo CHtml::image(Yii::app()->getBaseUrl(true)."//pictures_recipes/".$model->picturesRecipes[0]->file_name);
 }
 ?>
 

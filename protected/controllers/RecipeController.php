@@ -86,7 +86,7 @@ class RecipeController extends Controller
                     var_dump($_POST);
                     
 
-                    $savestring=dirname(Yii::app()->request->scriptFile)."\\";
+                    $savestring=dirname(Yii::app()->request->scriptFile)."\\"."pictures_recipes"."\\";
                     $model_picturesrecipe->attributes=$_POST['PicturesRecipe'];
                     $model_picturesrecipe->file_name=  CUploadedFile::getInstance($model_picturesrecipe, 'file_name');
                     $savestring.=$model_picturesrecipe->file_name->getName();
