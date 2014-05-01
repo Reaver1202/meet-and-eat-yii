@@ -253,9 +253,16 @@ class EventsController extends Controller {
        // $city=$_GET['city'];
         
        // $sql = 'SELECT * FROM events';
-        $dataProvider = new CActiveDataProvider('Events');
+     //   $dataProvider = new CActiveDataProvider('Events');
 
-
+$dataProvider = new CActiveDataProvider('Events', array(
+        'criteria' => array(
+        'condition' => "date>='".date('Y-m-d H:i:s')."'",
+        )));
+        
+        
+        
+        
         $this->render('index', array(
             'dataProvider' => $dataProvider,
         ));
