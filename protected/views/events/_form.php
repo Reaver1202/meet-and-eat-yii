@@ -74,7 +74,7 @@ $_GET['test']=CHtml::listData(Recipe::model()->findAll(),'idRECIPE','name');
 	*/ 
                 var current_course = i+1;
 		div_courses.innerHTML+='<div class="row">'
-		+current_course+'. Gang: '
+		+current_course+'. Course: '
 		+'<select name="Courses['+i+'][idRECIPE]" id="x'+i+'">';
 		
 	    console.log(js_array); 
@@ -83,7 +83,7 @@ $_GET['test']=CHtml::listData(Recipe::model()->findAll(),'idRECIPE','name');
 		console.log(select_Recipe);
 		select_Recipe.innerHTML+='<option value="'+j+'">'+js_array[j]+'</option>';
 	
-		for(var j=1; j<Object.keys(js_array).length;j++){
+		for(var j=2; j<=Object.keys(js_array).length;j++){
 			
 			select_Recipe.innerHTML+='<option value="'+j+'">'+js_array[j]+'</option>';
 		

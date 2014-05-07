@@ -85,12 +85,13 @@ class RecipeController extends Controller
 		{
                     var_dump($_POST);
                     
-
-                    $savestring=dirname(Yii::app()->request->scriptFile)."\\"."pictures_recipes"."\\";
-                    $model_picturesrecipe->attributes=$_POST['PicturesRecipe'];
-                    $model_picturesrecipe->file_name=  CUploadedFile::getInstance($model_picturesrecipe, 'file_name');
-                    $savestring.=$model_picturesrecipe->file_name->getName();
                     
+                        $savestring=dirname(Yii::app()->request->scriptFile)."\\"."pictures_recipes"."\\";
+                        $model_picturesrecipe->attributes=$_POST['PicturesRecipe'];
+                    if (CUploadedFile::getInstance($model_picturesrecipe, 'file_name')){
+                        $model_picturesrecipe->file_name=  CUploadedFile::getInstance($model_picturesrecipe, 'file_name');
+                        $savestring.=$model_picturesrecipe->file_name->getName();
+                    }
 			$model->attributes=$_POST['Recipe'];
 
 //			var_dump($_POST['Recipe']);
@@ -101,10 +102,12 @@ class RecipeController extends Controller
 			//$model->attributes->USER_idUser=Yii::app()->user->getId();
 			if($model->save())
 			{
-                            //save picture
-                            $model_picturesrecipe->RECIPE_idRECIPE=$model->idRECIPE;
-                            $model_picturesrecipe->save();
-                            $model_picturesrecipe->file_name->saveAs($savestring);
+                            if (CUploadedFile::getInstance($model_picturesrecipe, 'file_name')){
+                                //save picture
+                                $model_picturesrecipe->RECIPE_idRECIPE=$model->idRECIPE;
+                                $model_picturesrecipe->save();
+                                $model_picturesrecipe->file_name->saveAs($savestring);
+                            }
                             
 			//�go through array of ingredents and save it 
 				for ($i=0; $i< sizeof($_POST['Ingredents']); $i++){

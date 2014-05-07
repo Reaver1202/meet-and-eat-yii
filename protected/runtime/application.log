@@ -12804,3 +12804,138 @@ Stack trace:
 #29 {main}
 REQUEST_URI=/meet-and-eat-yii-git/index.php?r=events/index
 ---
+2014/05/07 15:25:23 [error] [php] Undefined offset: 0 (C:\xampp\htdocs\MaE\protected\views\events\view_recipe.php:17)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(869): EventsController->renderFile()
+#1 C:\xampp\htdocs\MaE\protected\views\events\view.php(121): EventsController->renderPartial()
+#2 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require()
+#3 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): EventsController->renderInternal()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(869): EventsController->renderFile()
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(782): EventsController->renderPartial()
+#6 C:\xampp\htdocs\MaE\protected\controllers\EventsController.php(75): EventsController->render()
+#7 unknown(0): EventsController->actionView()
+#8 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs()
+#9 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#11 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): EventsController->runAction()
+#12 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#13 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#14 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): EventsController->filterAccessControl()
+#15 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#16 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#17 C:\xampp\htdocs\yii\framework\web\CController.php(265): EventsController->runActionWithFilters()
+#18 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): EventsController->run()
+#19 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#20 C:\xampp\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#21 C:\xampp\htdocs\MaE\index.php(13): CWebApplication->run()
+REQUEST_URI=/MaE/index.php?r=events/view&id=24
+in C:\xampp\htdocs\MaE\protected\views\events\view_recipe.php (17)
+in C:\xampp\htdocs\MaE\protected\views\events\view.php (121)
+in C:\xampp\htdocs\MaE\protected\controllers\EventsController.php (75)
+2014/05/07 15:49:18 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('admin')
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('recipe/admin')
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\MaE\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/MaE/index.php?r=recipe/admin
+HTTP_REFERER=http://localhost/MaE/index.php?r=recipe/index
+---
+2014/05/07 15:49:52 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`meet-and-eat`.`pictures_recipe`, CONSTRAINT `fk_PICTURES_RECIPE_RECIPE1` FOREIGN KEY (`RECIPE_idRECIPE`) REFERENCES `recipe` (`idRECIPE`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: DELETE FROM `recipe` WHERE `recipe`.`idRECIPE`=22.
+in C:\xampp\htdocs\MaE\protected\controllers\RecipeController.php (165)
+in C:\xampp\htdocs\MaE\index.php (13)
+2014/05/07 15:49:52 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`meet-and-eat`.`pictures_recipe`, CONSTRAINT `fk_PICTURES_RECIPE_RECIPE1` FOREIGN KEY (`RECIPE_idRECIPE`) REFERENCES `recipe` (`idRECIPE`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: DELETE FROM `recipe` WHERE `recipe`.`idRECIPE`=22' in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:358
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(1802): CDbCommand->execute()
+#1 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(1222): CActiveRecord->deleteByPk('22')
+#2 C:\xampp\htdocs\MaE\protected\controllers\RecipeController.php(165): CActiveRecord->delete()
+#3 [internal function]: RecipeController->actionDelete('22')
+#4 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(RecipeController), Array)
+#5 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(RecipeController), Object(ReflectionMethod), Array)
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1116): CFilterChain->run()
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterPostOnly(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#16 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('delete')
+#18 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('recipe/delete')
+#19 C:\xampp\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#20 C:\xampp\htdocs\MaE\index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/MaE/index.php?ajax=recipe-grid&id=22&r=recipe%2Fdelete
+HTTP_REFERER=http://localhost/MaE/index.php?r=recipe/admin
+---
+2014/05/07 15:50:07 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`meet-and-eat`.`pictures_recipe`, CONSTRAINT `fk_PICTURES_RECIPE_RECIPE1` FOREIGN KEY (`RECIPE_idRECIPE`) REFERENCES `recipe` (`idRECIPE`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: DELETE FROM `recipe` WHERE `recipe`.`idRECIPE`=30.
+in C:\xampp\htdocs\MaE\protected\controllers\RecipeController.php (165)
+in C:\xampp\htdocs\MaE\index.php (13)
+2014/05/07 15:50:07 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`meet-and-eat`.`pictures_recipe`, CONSTRAINT `fk_PICTURES_RECIPE_RECIPE1` FOREIGN KEY (`RECIPE_idRECIPE`) REFERENCES `recipe` (`idRECIPE`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: DELETE FROM `recipe` WHERE `recipe`.`idRECIPE`=30' in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:358
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(1802): CDbCommand->execute()
+#1 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(1222): CActiveRecord->deleteByPk('30')
+#2 C:\xampp\htdocs\MaE\protected\controllers\RecipeController.php(165): CActiveRecord->delete()
+#3 [internal function]: RecipeController->actionDelete('30')
+#4 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(RecipeController), Array)
+#5 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(RecipeController), Object(ReflectionMethod), Array)
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1116): CFilterChain->run()
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterPostOnly(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#16 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('delete')
+#18 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('recipe/delete')
+#19 C:\xampp\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#20 C:\xampp\htdocs\MaE\index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/MaE/index.php?ajax=recipe-grid&id=30&r=recipe%2Fdelete
+HTTP_REFERER=http://localhost/MaE/index.php?r=recipe/admin
+---
+2014/05/07 15:50:22 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`meet-and-eat`.`pictures_recipe`, CONSTRAINT `fk_PICTURES_RECIPE_RECIPE1` FOREIGN KEY (`RECIPE_idRECIPE`) REFERENCES `recipe` (`idRECIPE`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: DELETE FROM `recipe` WHERE `recipe`.`idRECIPE`=22.
+in C:\xampp\htdocs\MaE\protected\controllers\RecipeController.php (165)
+in C:\xampp\htdocs\MaE\index.php (13)
+2014/05/07 15:50:22 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`meet-and-eat`.`pictures_recipe`, CONSTRAINT `fk_PICTURES_RECIPE_RECIPE1` FOREIGN KEY (`RECIPE_idRECIPE`) REFERENCES `recipe` (`idRECIPE`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: DELETE FROM `recipe` WHERE `recipe`.`idRECIPE`=22' in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:358
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(1802): CDbCommand->execute()
+#1 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(1222): CActiveRecord->deleteByPk('22')
+#2 C:\xampp\htdocs\MaE\protected\controllers\RecipeController.php(165): CActiveRecord->delete()
+#3 [internal function]: RecipeController->actionDelete('22')
+#4 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(RecipeController), Array)
+#5 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(RecipeController), Object(ReflectionMethod), Array)
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#7 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#8 C:\xampp\htdocs\yii\framework\web\CController.php(1116): CFilterChain->run()
+#9 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterPostOnly(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#16 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('delete')
+#18 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('recipe/delete')
+#19 C:\xampp\htdocs\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#20 C:\xampp\htdocs\MaE\index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/MaE/index.php?r=recipe/delete&id=22
+HTTP_REFERER=http://localhost/MaE/index.php?r=recipe/view&id=22
+---

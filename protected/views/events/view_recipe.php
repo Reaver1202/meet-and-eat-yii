@@ -14,7 +14,9 @@
             }            
             $course_number = $i+1;
             $recipe =$course[$j]->rECIPEIdRECIPE;
-            $recipe_picture = $recipe->picturesRecipes[0]->file_name;
+            if (isset($recipe->picturesRecipes[0])){
+                $recipe_picture = $recipe->picturesRecipes[0]->file_name;
+            }
             if ($j ==0 && $j == sizeof($course)-1 ){
                 $style_left = " table_row_single-left";
                 $style_right = " table_row_single-right";                
@@ -29,7 +31,11 @@
                 $style_right = "";         
             }
             echo "<td class='table_cell_label'".$style_left."'>".$course_number.". Course </td>";
-            echo "<td width='100px'> ". CHtml::image(Yii::app()->getBaseUrl(true).'/pictures_recipes/'.$recipe_picture, 'DORE',array('style'=>'width: 100px')); "</td>";
+            if (isset($recipe_picture)){
+                echo "<td width='100px'> ". CHtml::image(Yii::app()->getBaseUrl(true).'/pictures_recipes/'.$recipe_picture, 'DORE',array('style'=>'width: 100px')); "</td>";
+            } else {
+                echo "<td width='100px'> </td>";
+            }
             echo "<td class='table_cell_value".$style_right."'>". CHtml::link($recipe->name, array('recipe/view', 'id'=>$recipe->idRECIPE)); "</td>";
             echo "</tr>"; 
             $i++;
