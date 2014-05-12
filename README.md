@@ -3,12 +3,5 @@ meet-and-eat-yii
 
 Studienarbeit
 
-GitHub Test
-
-GitHub Test 2
-
-GitHub Test 3
-
-GitHub Test 4
-
-GutHub Test 5 Stefan :) 
+1. Projekt in htdocs Ordner
+2. MeetAndEat_SQL_Dump.sql in phpMyAdmin importieren
