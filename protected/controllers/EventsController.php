@@ -144,7 +144,7 @@ class EventsController extends Controller {
             $idArray[$i] = $model_courses[$i]->RECIPE_idRECIPE;
         }
         $_GET['courses_IDs'] = $idArray;   // damit die View später in JavaScript mit den Daten arbeiten kann, wird hier das Array mit den Courses bzw. Rezept IDs in eine GET Variable geschrieben
-        var_dump($idArray);
+        // var_dump($idArray);
 
 // TESTING: funktioniert
 // $params = array('events'=>$model);
@@ -316,7 +316,7 @@ $dataProvider = new CActiveDataProvider('Events', array(
         $model = new Events('search');
         $model->unsetAttributes();  // clear any default values
 
-        var_dump(Yii::app()->user->checkAccess('manageEvent'));
+        //var_dump(Yii::app()->user->checkAccess('manageEvent'));
         if (Yii::app()->user->checkAccess('manageEvent')) {
 
             if (isset($_GET['Events']))

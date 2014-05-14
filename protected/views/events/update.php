@@ -40,6 +40,6 @@ if (Yii::app()->user->checkAccess('manageEvent'))
 
 ?>
 
-<h1>Update Events <?php echo $model->idEVENTS; ?></h1>
+<h1>Update Event from <?php echo User::model()->findByPk($model->USER_idUser)->Username; ?></h1>
 
 <?php $this->renderPartial('_form2', array('model'=>$model, 'model_courses'=>$model_courses)); ?>

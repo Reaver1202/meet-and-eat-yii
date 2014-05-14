@@ -30,6 +30,6 @@ if (Yii::app()->user->checkAccess('createEvent') &&
 }
 ?>
 
-<h1>Create Events</h1>
+<h1>Create Event</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model,'model_courses'=>$model_courses)); ?>

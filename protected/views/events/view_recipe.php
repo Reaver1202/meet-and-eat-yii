@@ -30,7 +30,7 @@
                 $style_left = "";
                 $style_right = "";         
             }
-            echo "<td class='table_cell_label'".$style_left."'>".$course_number.". Course </td>";
+            echo "<td class='table_cell_label".$style_left."'>".$course_number.". Course </td>";
             if (isset($recipe_picture)){
                 echo "<td width='100px'> ". CHtml::image(Yii::app()->getBaseUrl(true).'/pictures_recipes/'.$recipe_picture, 'DORE',array('style'=>'width: 100px')); "</td>";
             } else {

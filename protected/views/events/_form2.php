@@ -32,6 +32,7 @@ $_GET['test']=CHtml::listData(Recipe::model()->findAll(),'idRECIPE','name');
 		<?php echo $form->labelEx($model,'date'); ?>
 		<?php echo $form->textField($model,'date'); ?>
 		<?php echo $form->error($model,'date'); ?>
+                e.g. 2001-01-30 13:35:15           
 	</div>
 
 
