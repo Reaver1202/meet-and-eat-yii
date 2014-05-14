@@ -4,11 +4,12 @@
     border-radius: 5px;
     border-color:#00b800;
     border-width: 0px;
+    font-weight: bold;
 }
 
 .Button_event:hover{
     background-color: #FFF;
-    font-weight: bold;
+    font-size: 14px;
 }
 
 
