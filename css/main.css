@@ -1,10 +1,15 @@
 .Button_event{
     background-color: #00b800;
-    color: #FFF;
+    color: #000;
     border-radius: 5px;
+    border-color:#00b800;
+    border-width: 0px;
 }
 
-
+.Button_event:hover{
+    background-color: #FFF;
+    font-weight: bold;
+}
 
 
 body
