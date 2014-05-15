@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 12. Mai 2014 um 21:37
--- Server Version: 5.5.32
--- PHP-Version: 5.4.19
+-- Erstellungszeit: 15. Mai 2014 um 22:25
+-- Server Version: 5.6.11
+-- PHP-Version: 5.5.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -44,7 +44,8 @@ INSERT INTO `authassignment` (`itemname`, `userid`, `bizrule`, `data`) VALUES
 ('admin', '3', NULL, 'N;'),
 ('author', '1', NULL, 'N;'),
 ('author', '2', NULL, 'N;'),
-('author', '4', NULL, 'N;');
+('author', '4', NULL, 'N;'),
+('author', '5', NULL, 'N;');
 
 -- --------------------------------------------------------
 
@@ -158,17 +159,24 @@ CREATE TABLE IF NOT EXISTS `courses` (
   UNIQUE KEY `idCOURSES_UNIQUE` (`idCOURSES`),
   KEY `fk_COURSES_EVENTS1_idx` (`EVENTS_idEVENTS`),
   KEY `fk_COURSES_RECIPE1_idx` (`RECIPE_idRECIPE`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=51 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=65 ;
 
 --
 -- Daten für Tabelle `courses`
 --
 
 INSERT INTO `courses` (`idCOURSES`, `course_number`, `EVENTS_idEVENTS`, `RECIPE_idRECIPE`) VALUES
-(36, '1', 22, 1),
-(37, '2', 22, 2),
 (49, '1', 26, 2),
-(50, '2', 26, 6);
+(50, '2', 26, 6),
+(51, '1', 27, 4),
+(52, '2', 27, 2),
+(53, '3', 27, 3),
+(57, '1', 22, 1),
+(58, '2', 22, 2),
+(59, '3', 22, 36),
+(60, '4', 22, 8),
+(63, '1', 29, 36),
+(64, '2', 29, 2);
 
 -- --------------------------------------------------------
 
@@ -200,7 +208,7 @@ CREATE TABLE IF NOT EXISTS `events` (
   PRIMARY KEY (`idEVENTS`),
   UNIQUE KEY `idEVENTS_UNIQUE` (`idEVENTS`),
   KEY `fk_EVENTS_USER1_idx` (`USER_idUser`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=27 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=30 ;
 
 --
 -- Daten für Tabelle `events`
@@ -208,7 +216,9 @@ CREATE TABLE IF NOT EXISTS `events` (
 
 INSERT INTO `events` (`idEVENTS`, `date`, `USER_idUser`, `description`, `max_guests`) VALUES
 (22, '2030-06-20 14:00:00', 1, 'Finalspiel Vollyball', 6),
-(26, '2014-02-12 00:00:00', 2, '22. Geburtstag', 7);
+(26, '2014-02-12 00:00:00', 2, '22. Geburtstag', 7),
+(27, '2015-02-12 12:00:00', 2, '23. Geburtstag', 7),
+(29, '2014-12-02 00:00:00', 3, 'Wettessen', 10);
 
 -- --------------------------------------------------------
 
@@ -249,7 +259,7 @@ CREATE TABLE IF NOT EXISTS `ingredents` (
   PRIMARY KEY (`idingredents`),
   UNIQUE KEY `idingredents_UNIQUE` (`idingredents`),
   KEY `fk_ingredents_RECIPE1_idx` (`RECIPE_idRECIPE`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=43 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=45 ;
 
 --
 -- Daten für Tabelle `ingredents`
@@ -272,9 +282,10 @@ INSERT INTO `ingredents` (`idingredents`, `RECIPE_idRECIPE`, `name`, `amount`, `
 (36, 6, 'Erdbeeren', 500, 'g'),
 (37, 6, 'Erdbeerjoghurt', 1, 'Becher'),
 (38, 6, 'Geliermasse', 1, 'Tüte'),
-(40, 33, 'Rindfleisch', 400, 'g'),
-(41, 34, 'Birnen', 5, 'Stück'),
-(42, 34, 'Apfel', 2, 'kg');
+(41, 8, 'Birnen', 5, 'Stück'),
+(42, 8, 'Apfel', 2, 'kg'),
+(43, 36, 'Käse', 3, 'Scheiben'),
+(44, 36, 'Sandwichscheiben', 2, 'Stück');
 
 -- --------------------------------------------------------
 
@@ -289,7 +300,7 @@ CREATE TABLE IF NOT EXISTS `pictures_recipe` (
   PRIMARY KEY (`idPICTURES_RECIPE`),
   UNIQUE KEY `idPICTURES_RECIPE_UNIQUE` (`idPICTURES_RECIPE`),
   KEY `fk_PICTURES_RECIPE_RECIPE1_idx` (`RECIPE_idRECIPE`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
 -- Daten für Tabelle `pictures_recipe`
@@ -302,7 +313,7 @@ INSERT INTO `pictures_recipe` (`idPICTURES_RECIPE`, `file_name`, `RECIPE_idRECIP
 (4, 'CaesarSalad.jpg', 4),
 (5, 'krautsalat.jpg', 5),
 (6, 'erdbeertorte.jpg', 6),
-(10, 'obstsal_exot.jpg', 34);
+(7, 'obstsal_exot.jpg', 8);
 
 -- --------------------------------------------------------
 
@@ -334,7 +345,7 @@ CREATE TABLE IF NOT EXISTS `recipe` (
   PRIMARY KEY (`idRECIPE`),
   UNIQUE KEY `idRECIPE_UNIQUE` (`idRECIPE`),
   KEY `fk_RECIPE_USER1_idx` (`USER_idUser`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=35 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=37 ;
 
 --
 -- Daten für Tabelle `recipe`
@@ -347,8 +358,9 @@ INSERT INTO `recipe` (`idRECIPE`, `name`, `USER_idUser`, `manual`, `number_of_pe
 (4, 'Cesar-Salat', 1, 'Salat waschen und schneiden. Alle anderen Zutaten klein schneiden und gut mit dem Salat vermischen. Dresseng als letztes in kleinen Mengen drübergießen. Bei Bedarf mit frischen Grutons garnieren', 6),
 (5, 'Krautsalat', 1, 'Kraut schneiden. Danach mit Essig, Öl und salz nach belieben würzen.', 6),
 (6, 'Erdbeertorte', 1, 'Boden mit Erdbeerjoghurt leicht bestreichen. Erdbeeren waschen und auf dem Kuchen verteilen. Geliermasse vorbereiten und auf den Erdbeeren verteilen. Kuchen für ca. 1h in den Kühlschrank stellen', 8),
-(33, 'Cheese Burger', 3, 'Fleisch braten, Zutaten klein schneiden, Brötchen aufschneiden und belegen', 2),
-(34, 'Obstsalat', 3, 'Obst schneiden und in Schälchen tun', 3);
+(7, 'Cheese Burger', 3, 'Fleisch braten, Zutaten klein schneiden, Brötchen aufschneiden und belegen', 2),
+(8, 'Obstsalat', 3, 'Obst schneiden und in Schälchen tun', 3),
+(36, 'Käse-Sandwich', 3, 'Käse auf Sandwichscheiben legen.', 1);
 
 -- --------------------------------------------------------
 
@@ -423,7 +435,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `role` int(11) DEFAULT NULL,
   PRIMARY KEY (`idUser`),
   UNIQUE KEY `idUser_UNIQUE` (`idUser`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Daten für Tabelle `user`
@@ -433,7 +445,8 @@ INSERT INTO `user` (`idUser`, `Username`, `first_name`, `last_name`, `EMail`, `y
 (1, 'stefan', 'stefan', 'dreher', 'dreher.stefan@live.de', 1993, 'Musterweg ', '22', '97797', 'Dessau', 'Hallo ich bin Stefan und koche sehr gern, am liebsten für eine sehr gesellige Runde', '2014-01-07', 0, 0, 'stefan', 0),
 (2, 'Tobias', 'Tobias', 'Mauritz', 'tobias@mauritz.de', 1992, 'Bahnhofstraße', '68', '55296', 'Harxheim', 'Ich bin Tobi.', '2014-04-20', 0, 0, 'tobias', NULL),
 (3, 'admin', 'admin', 'admin', 'admin@admin.de', 1992, 'admin', '1', '12345', 'admin', 'admin', '2014-04-27', 0, 0, 'admin', NULL),
-(4, 'author', 'author', 'author', 'author@author.de', 0000, 'author', '11', '03432', 'author', 'author', '2011-11-20', 0, 0, 'author', 0);
+(4, 'author', 'author', 'author', 'author@author.de', 0000, 'author', '11', '03432', 'author', 'author', '2011-11-20', 0, 0, 'author', 0),
+(5, 'Testuser', 'test', 'user', 'test@user.de', 0000, '', '', '', 'test', '', '2014-05-20', 0, 0, 'test', NULL);
 
 --
 -- Constraints der exportierten Tabellen
