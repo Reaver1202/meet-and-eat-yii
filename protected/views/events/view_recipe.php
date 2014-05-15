@@ -14,6 +14,7 @@
             }            
             $course_number = $i+1;
             $recipe =$course[$j]->rECIPEIdRECIPE;
+            $recipe_picture = NULL;
             if (isset($recipe->picturesRecipes[0])){
                 $recipe_picture = $recipe->picturesRecipes[0]->file_name;
             }

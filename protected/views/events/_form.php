@@ -3,8 +3,8 @@
 /* @var $this EventsController */
 /* @var $model Events */
 /* @var $form CActiveForm */
-$_GET['test']=CHtml::listData(Recipe::model()->findAll(),'idRECIPE','name');
-//var_dump($_GET['test']); 
+$_GET['RecipeList']=CHtml::listData(Recipe::model()->findAll(),'idRECIPE','name');
+//var_dump($_GET['RecipeList']); 
 
 ?>
 
@@ -44,75 +44,70 @@ $_GET['test']=CHtml::listData(Recipe::model()->findAll(),'idRECIPE','name');
 	</div>
 
 	
-	<script>
+    <script>
 		
-	var counter_courses=0;
-	
-	var js_array = <?php echo json_encode($_GET['test']); ?>;
+	var counter_courses=0;	
+        // Object mit allen Recipse
+	var recipeListObject = <?php echo json_encode($_GET['RecipeList']); ?>;
 	var previous_course = new Array(); 
 	
 	
 	function generateNewCourse(){
-	var div_courses = document.getElementById("div_courses");
-			
-			var i = counter_courses;
-			//alert(js_array[4]);
+            var div_courses = document.getElementById("div_courses");			
+            var i = counter_courses;
     
-	console.log(document.getElementsByName("Courses[0][idRECIPE]")[0]);
-        // falls bisher Rezepte als Gänge beim Event angelegt wurden, soll die For-Schleife ausgeführt werden
-	// Die For-Schleife  die dazu all zuvor eingetragenen Gänge in einem Array zu speichern, sodass die Werte wiederhergestellt werden
-	if(typeof(document.getElementsByName("Courses[0][idRECIPE]")[0])!='undefined'){
-	
-		for(var x=0;x<=counter_courses-1; x++){
-			previous_course[x]=document.getElementsByName("Courses["+x+"][idRECIPE]")[0].value; 
-		}
-			
-	}		
-			
-	/* DOM Manipulation einbauen, sodass die Inhalte von bisher 
-		erzeugten Input-Feldern erhalten bleibt.
-		Momentan wird das Div neu geschrieben.
-	*/ 
-                var current_course = i+1;
-		div_courses.innerHTML+='<div class="row">'
-		+current_course+'. Course: '
-		+'<select name="Courses['+i+'][idRECIPE]" id="x'+i+'">';
+            //console.log(document.getElementsByName("Courses[0][idRECIPE]")[0]);
+            //
+            // falls bisher Rezepte als Gänge beim Event angelegt wurden, soll die For-Schleife ausgeführt werden
+            // Die For-Schleife  die dazu all zuvor eingetragenen Gänge in einem Array zu speichern, sodass die Werte wiederhergestellt werden
+            if(typeof(document.getElementsByName("Courses[0][idRECIPE]")[0])!='undefined'){
+                for(var x=0;x<=counter_courses-1; x++){
+                        previous_course[x]=document.getElementsByName("Courses["+x+"][idRECIPE]")[0].value; 
+                }			
+            }				
+
+            var current_course = i+1;
+            // div + select Anfang:
+            div_courses.innerHTML+='<div class="row">'
+                +current_course+'. Course: '
+                +'<select name="Courses['+i+'][idRECIPE]" id="x'+i+'">';
 		
-	    console.log(js_array); 
-		var j=1; 
-		select_Recipe = document.getElementById('x'+i);
-		console.log(select_Recipe);
-		select_Recipe.innerHTML+='<option value="'+j+'">'+js_array[j]+'</option>';
-	
-		for(var j=2; j<=Object.keys(js_array).length;j++){
-			
-			select_Recipe.innerHTML+='<option value="'+j+'">'+js_array[j]+'</option>';
+//	    console.log(recipeListObject); 
+//	    
+            // letztes Select Element bekommen
+            select_Recipe = document.getElementById('x'+i);
+            console.log(select_Recipe);
+            //select_Recipe.innerHTML+='<option value="'+j+'">'+recipeListObject[j]+'</option>';
+
+            // Schleife durch die Objekte
+            for(var index in recipeListObject) { 
+                // alle select-Optionen generieren
+                select_Recipe.innerHTML+='<option value="'+index+'">'+recipeListObject[index]+'</option>';
+            }
+            // select element schließen
+            div_courses.innerHTML+='</select></div>';
+            
+            /* alter Code
+             * Probleme wegen nicht fortlaufenden ID´s
+             */
+//		for(var j=2; j<=Object.keys(recipeListObject).length;j++){
+//			
+//			select_Recipe.innerHTML+='<option value="'+j+'">'+recipeListObject[j]+'</option>';
+//		
+//		if(j==Object.keys(recipeListObject).length-1)div_courses.innerHTML+='</select></div>';
+//		
+//		}
+	    
+            // Anzahl der gesetzten Gänge erhöhen
+            counter_courses++;			
 		
-		if(j==Object.keys(js_array).length-1)div_courses.innerHTML+='</select></div>';
-		
-		}
-			
-		
-			
-			
-		counter_courses++;	
-		
-		
-	if(previous_course[0]){
-	
+            if(previous_course[0]){	
 		for(var y=0;y<counter_courses; y++){
 			document.getElementsByName("Courses["+y+"][idRECIPE]")[0].value=previous_course[y]; 
-		}
-			
-	}	
-		
-		
-		
-		
+		}			
+            }	
 	}
-	
-	
-	</script>
+    </script>
 	
 	<div id="div_courses">
 	<div class="row">

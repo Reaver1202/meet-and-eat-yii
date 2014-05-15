@@ -6,7 +6,6 @@
     border-width: 0px;
     font-weight: bold;
 }
-
 .Button_event:hover{
     background-color: #FFF;
     font-size: 14px;
@@ -43,7 +42,7 @@ body
 {
     padding: 20px;
     background: #EBFFEB;
-    border: 3px solid #FFF;
+    border: 3px solid #EBFFEB;
     border-radius: 10px;
 }
 
@@ -96,7 +95,7 @@ body
 
 #mainmenu ul li a:hover, #mainmenu ul li.active a
 {
-	background-color:#FFF;
+	background-color:#EBFFEB;
 	text-decoration:none;   
         border-top-left-radius: 5px;
         border-top-right-radius: 5px;
