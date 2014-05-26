@@ -13017,3 +13017,37 @@ Stack trace:
 REQUEST_URI=/meet-and-eat-yii/index.php?ajax=recipe-grid&id=33&r=recipe%2Fdelete
 HTTP_REFERER=http://localhost/meet-and-eat-yii/index.php?r=recipe/admin
 ---
+2014/05/16 15:37:50 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\xampp\htdocs\meet-and-eat-yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\meet-and-eat-yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\xampp\htdocs\meet-and-eat-yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\meet-and-eat-yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\meet-and-eat-yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\meet-and-eat-yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\meet-and-eat-yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\meet-and-eat-yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\meet-and-eat-yii\framework\web\CWebApplication.php(282): CController->run('admin')
+#8 C:\xampp\htdocs\meet-and-eat-yii\framework\web\CWebApplication.php(141): CWebApplication->runController('recipe/admin')
+#9 C:\xampp\htdocs\meet-and-eat-yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\meet-and-eat-yii\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/meet-and-eat-yii/index.php?r=recipe/admin
+HTTP_REFERER=http://localhost/meet-and-eat-yii/index.php?r=recipe/view&id=1
+---
+2014/05/16 15:40:04 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\xampp\htdocs\meet-and-eat-yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\meet-and-eat-yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\xampp\htdocs\meet-and-eat-yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\meet-and-eat-yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\meet-and-eat-yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\meet-and-eat-yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\meet-and-eat-yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\meet-and-eat-yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\meet-and-eat-yii\framework\web\CWebApplication.php(282): CController->run('admin')
+#8 C:\xampp\htdocs\meet-and-eat-yii\framework\web\CWebApplication.php(141): CWebApplication->runController('user/admin')
+#9 C:\xampp\htdocs\meet-and-eat-yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\meet-and-eat-yii\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/meet-and-eat-yii/index.php?r=user/admin
+HTTP_REFERER=http://localhost/meet-and-eat-yii/index.php?r=user/update&id=2
+---
